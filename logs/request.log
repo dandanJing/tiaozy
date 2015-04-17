@@ -246,3 +246,10 @@ Traceback (most recent call last):
   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
     __import__(name)
 ImportError: No module named urls
+[2015-04-17 16:24:21,632] [django.request] [ERROR] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/html_files/views.py", line 5, in index
+    return render_to_response('index.html')
+NameError: global name 'render_to_response' is not defined
