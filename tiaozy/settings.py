@@ -51,13 +51,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'tiaozy.urls'
 
 WSGI_APPLICATION = 'tiaozy.wsgi.application'
 
+AUTH_USER_MODEL  = "ssl_users.tzy_users"
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -65,7 +66,7 @@ WSGI_APPLICATION = 'tiaozy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'datebase.sqlite3'),
     }
 }
 

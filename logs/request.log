@@ -253,3 +253,153 @@ Traceback (most recent call last):
   File "/home/jing/python_app/tiaozy/application/html_files/views.py", line 5, in index
     return render_to_response('index.html')
 NameError: global name 'render_to_response' is not defined
+[2015-04-17 18:16:51,191] [django.request] [ERROR] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/html_files/views.py", line 8
+    return render_to_response('index.html','login_user':request.user})
+                                                       ^
+SyntaxError: invalid syntax
+[2015-04-17 18:17:18,611] [django.request] [ERROR] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/html_files/views.py", line 10, in index
+    auth.logout(request)
+NameError: global name 'auth' is not defined
+[2015-04-17 18:17:42,683] [django.request] [ERROR] Internal Server Error: /reg/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/ssl_users/views.py", line 5, in reg
+    return render_to_response('reg.html')
+NameError: global name 'render_to_response' is not defined
+[2015-04-17 18:36:05,013] [django.request] [ERROR] Internal Server Error: /reg/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/ssl_users/views.py", line 21
+SyntaxError: Non-ASCII character '\xe7' in file /home/jing/python_app/tiaozy/application/ssl_users/views.py on line 21, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+[2015-04-17 18:42:55,392] [django.request] [ERROR] Internal Server Error: /reg/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/ssl_users/views.py", line 22
+SyntaxError: Non-ASCII character '\xe7' in file /home/jing/python_app/tiaozy/application/ssl_users/views.py on line 22, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+[2015-04-17 18:51:11,450] [django.request] [ERROR] Internal Server Error: /reg/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 343, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 372, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 366, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/tiaozy/urls.py", line 10, in <module>
+    url(r'^', include('application.ssl_users.urls')),
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/conf/urls/__init__.py", line 28, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/ssl_users/urls.py", line 12
+    url(r'^check-user','application.ssl_users.views.checkUser',name='checkUser')
+      ^
+SyntaxError: invalid syntax
+[2015-04-17 18:51:41,062] [django.request] [ERROR] Internal Server Error: /check-user
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/ssl_users/views.py", line 84, in checkUser
+    filterResults = ssl_users.objects.filter(username=username)
+NameError: global name 'ssl_users' is not defined
+[2015-04-17 18:53:16,298] [django.request] [ERROR] Internal Server Error: /check-user
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/ssl_users/views.py", line 100, in checkUser
+    return HttpResponse(json_data,content_type="application/json")
+NameError: global name 'HttpResponse' is not defined
+[2015-04-17 18:54:25,858] [django.request] [ERROR] Internal Server Error: /check-user
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/ssl_users/views.py", line 99, in checkUser
+    return HttpResponse(json_data,content_type="application/json")
+NameError: global name 'HttpResponse' is not defined
+[2015-04-17 18:54:46,622] [django.request] [ERROR] Internal Server Error: /check-user
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/ssl_users/views.py", line 99, in checkUser
+    return HttpResponse(json_data,content_type="application/json")
+NameError: global name 'HttpResponse' is not defined
+[2015-04-17 18:58:14,221] [django.request] [ERROR] Internal Server Error: /reg-username/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/ssl_users/views.py", line 71, in regUsername
+    auth_user = auth.authenticate(username=username,password=password)
+NameError: global name 'auth' is not defined
+[2015-04-17 19:09:30,706] [django.request] [ERROR] Internal Server Error: /loginout/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 118, in get_callable
+    (lookup_view, mod_name))
+ViewDoesNotExist: Could not import application.ssl_users.views.logout. View does not exist in module application.ssl_users.views.

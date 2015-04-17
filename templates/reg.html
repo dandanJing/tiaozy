@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//WSC//DTD XHTML 1.0 Transitional //EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="zh-cn"/>
+    <title>注册会员-尚书林</title>
+    <link rel="shortcut icon" href="/static/images/ssl-icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/styles/reg.css">
+    <script language="javascript"  src="/static/scripts/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/scripts/validate.js"></script>
+    <script type="text/javascript" src="/static/scripts/reg.js"></script>
+</head>
+<body>
+    <div class="header">
+        <a href="/" id="logo">
+            <img src="/static/images/logo.gif" alt="尚书林">
+        </a>
+        <div class="header-title">用户注册</div>
+        <div class="steps">
+            <ol>
+                {% if user or is_success%}
+                <li>
+                {% else %}
+                <li class="active">
+                {% endif %}
+                    <i>1</i>
+                    <span class="step1">设置用户名</span>
+                </li>
+                {% if user %}
+                <li class="active">
+                {% else %}
+                <li>
+                {% endif %}
+                    <i>2</i>
+                    <span class="step2">完善基本资料</span>
+                </li>
+                {% if is_success %}
+                <li class="active">
+                {% else %}
+                <li>
+                {% endif %}
+                    <i class="step-finish">3</i>
+                    <span class="step3">注册成功</span>
+                </li>
+            </ol>
+        </div>
+        <div class="return-home">
+            <a href="/">返回首页</a>
+        </div>
+    </div>
+    {% if user %}
+    <div class="user-info">
+        <div class="info-body">
+            <form id="reg-user-info-form" action="/reg-user-info/" method="post">
+                <div class="infoWrap">
+                    <div class="info-block">
+                        <span class="info-title">用&nbsp;户&nbsp;名:</span>
+                        <span class="info-username">{{user.username}}</span>
+                    </div>
+                    <div class="info-block">
+                        <span class="info-title">手&nbsp;&nbsp;机:</span>
+                        <input id="phone" class="inp inw" type="text" name="phone" value="{{user.mobilephone}}" size="20">
+                        </input>
+                    </div>
+                    <div class="info-block">
+                        <span class="info-title">Q&nbsp;&nbsp;Q:</span>
+                        <input id="qq" class="inp inw" type="text" name="qq" size="20">
+                        </input>
+                    </div>
+                    <div class="info-block">
+                        <span class="info-title">身&nbsp;&nbsp;份:</span>
+                        <input id="status" class="status-radio" type="radio" name="is-student" value="1" checked>学生
+                        </input>
+                        <input id="status" class="status-radio" type="radio" name="is-student" value="0">其他
+                        </input>
+                    </div>
+                    <div>
+                         <input id="info-btn" class="info-btns" type="button" style="width:110px;height:34px;" checked="checked" value="确定"></input>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    {% if not is_success %}
+    <div class="content">
+        {%  if errors %}
+        <div class="errors">
+            <ul>
+            {% for error in errors%}
+                <li>{{error}}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <form id="reg-form" action="/reg-username/" method="post" name="register-form">
+            <!-- {% csrf_token %} -->
+            <div class="regform-body">
+                <div class="regMenu">
+                    <span id="mobileReg" class="active"><a>手机注册</a></span>
+                    <span id="emailReg"><a>邮箱注册</a></span>
+                    <div id="loginTab">已有账号？<a href="/login/">登录</a></div>
+                </div>
+                <div class="regWrap">
+                    <div class="nameWrap">
+                        <div class="username-input">
+                            <p>
+                                <span class="regtlx">用户名</span>
+                                <input id="username" class="inp inw" type="text" name="username" maxlength="20" value="" size="20">
+                                </input>
+                                <span id="username_Tip">
+                                    <span class="action_label"></span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="phoneWrap">
+                        <div class="phone-input">
+                            <p>
+                                <span class="regtlx">手机号</span>
+                                <input id="phone" class="inp inw" type="text" name="phone" maxlength="20" value="" size="20">
+                                </input>
+                                <span id="phone_Tip">
+                                    <span class="action_label"></span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="emailWrap" style="display:none">
+                        <div class="email-input">
+                            <p>
+                                <span class="regtlx">邮箱</span>
+                                <input id="email" class="inp inw" type="text" name="email" maxlength="40" value="" size="40">
+                                </input>
+                                <span id="email_Tip">
+                                    <span class="action_label"></span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="password-input">
+                        <p> 
+                            <span class="regtlx">密码</span>
+                            <input id="password" class="inp inw wrong_color" type="password" maxlength="16" onpaste="return false" onkeyup="$.c.user.reg.CheckPasswordStrength(this)" name="password" size="30">
+                            </input>
+                            <span id="password_Tip">
+                                <span class="action_label"></span>
+                            </span>
+                        </p>
+                        <p>
+                            <span class="regtlx">确认密码</span>
+                            <input id="cpassword" class="inp inw" type="password" onpaste="return false" maxlength="16" name="cpassword" size="30"></input>
+                            <span id="cpassword_Tip">
+                                <span class="action_label"></span>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="submit_btn">
+                        <p id="nextwrap" style="display: block;">
+                             <span class="regtlx"></span>
+                             <label id="btn" class="btn">
+                                <input id="btnNext" class="btns" type="button" style="width:110px;height:34px;" checked="checked" value="确定"></input>
+                            </label>
+                            <span id="loginOpt">已有账号？<a href="/login/">登录</a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>                  
+        </form>
+    </div>
+     {% else %}
+     <div class="success-content">
+        <div class="remind-box"><span><p>恭喜您，注册成功</p></span></div>
+        <div class="success-return"><a href="/">回到首页</a></div>
+     </div>
+     {% endif %}
+     {% endif %}
+    <div class="footer"></div>
+</body>
+</html>

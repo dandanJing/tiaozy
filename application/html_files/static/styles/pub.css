@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+body{
+    font: 12px/1.2 Arial,Tahoma,"宋体",sans-serif;
+    color: #333;
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+}
+
+div{
+    display: block;
+}
+
+a{
+    text-decoration: none;
+}
+
+.header{
+    width: 1000px;
+    height: 79px;
+    border-bottom: 1px solid #DBE0E3;
+    margin: 0px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+#logo{
+    left: 20px;
+    top: 17px;
+    position: absolute;
+}
+
+.header-title{
+    float: left;
+    height: 39px;
+    border-left: 1px solid #EAEAEA;
+    margin-left: 240px;
+    margin-top: 25px;
+    padding-left: 15px;
+    font: 24px/1.8 "微软雅黑","黑体",sans-serif;
+    color: #666;
+}
+
+.return-home{
+    float: right;
+    right: 10px;
+    margin-top: 54px;
+}
+
+.return-home a{
+    margin: 0px 14px;
+    color: #666;
+}
+
+.follow-steps {
+    width: 1000px;
+    height: 35px;
+    overflow: hidden;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.follow-steps ol{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.follow-steps li {
+    width: 314px;
+    float: left;
+    padding: 0px;
+    background: url("/static/images/flow_step.png") no-repeat scroll 100% -150px #EEE;
+    color: #333;
+    font: 400 14px/30px arial,"宋体",sans-serif;
+    text-align: center;
+    position: relative;
+}
+
+.follow-steps li i {
+    font: 700 20px Arial,Helvetica,sans-serif;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.follow-steps strong {
+    font-weight: 400;
+}
+
+.follow-steps .step1 span,.follow-steps .step2 span,.follow-steps .step3 span{
+    display: block;
+    width: 18px;
+    height: 30px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: url("/static/images/flow_step.png") no-repeat scroll 100% -60px transparent;
+    color: #FFF;
+}
+
+em .f1{
+    position: absolute;
+    width: 3px;
+    height: 30px;
+    left: 0px;
+    top: 0px;
+    background: url("/static/images/flow_step.padding") no-repeat scroll 0px -180px transparent;
+}
