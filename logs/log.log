@@ -1,0 +1,279 @@
+2015-03-11 10:35:33,087 [application.user.views:72] [DEBUG]- request: POST /_/launch {}
+2015-03-11 10:39:12,053 [application.question.views:72] [DEBUG]- request: POST /_/post-question {"Message":"男朋友快要过生日了，送他什么礼物好？希望男生来说一下"}
+2015-03-11 10:39:48,542 [application.question.views:72] [DEBUG]- request: POST /_/post-question {"Message":"XBox One和PS4哪个号？"}
+2015-03-11 10:40:07,507 [application.question.views:72] [DEBUG]- request: POST /_/post-question {"Message":"五道口有什么好吃的火锅店？"}
+2015-03-11 10:40:36,361 [application.question.views:72] [DEBUG]- request: POST /_/open-question {"QuestionId":"e3189cd6ff5fec1a1fa6af752cdaf2a4"}
+2015-03-11 10:41:15,797 [application.question.views:72] [DEBUG]- request: POST /_/questions {"PullToRefresh":false}
+2015-03-11 10:41:15,799 [application.question.views:78] [DEBUG]- 问题请求失败: global name 'SecretStream' is not defined
+2015-03-11 10:41:43,406 [application.question.views:72] [DEBUG]- request: POST /_/questions {"PullToRefresh":false}
+2015-03-11 10:43:24,204 [application.user.views:72] [DEBUG]- request: POST /_/launch {}
+2015-03-11 10:50:35,734 [application.question.views:72] [DEBUG]- request: POST /_/post-question {"Message":"暑假哪里去旅游？"}
+2015-03-11 10:51:38,722 [application.question.views:72] [DEBUG]- request: POST /_/open-question "QuestionId": "987363c34aa07ac52b56cfceed5aab96"
+2015-03-11 10:51:47,270 [application.question.views:72] [DEBUG]- request: POST /_/open-question {"QuestionId": "987363c34aa07ac52b56cfceed5aab96"}
+2015-03-11 10:53:13,282 [application.question.views:72] [DEBUG]- request: POST /_/questions {"PullToRefresh":false}
+2015-03-11 11:12:19,462 [application.answer.views:72] [DEBUG]- request: POST /_/post-answer {"QuestionId":"987363c34aa07ac52b56cfceed5aab96","Message": "四川！"}
+2015-03-11 11:12:19,507 [application.answer.views:78] [DEBUG]- 回答失败: (1054, "Unknown column 'answer_secretanswer.SecQuestion_id' in 'field list'")
+2015-03-11 11:14:59,564 [application.answer.views:72] [DEBUG]- request: POST /_/post-answer {"QuestionId":"987363c34aa07ac52b56cfceed5aab96","Message": "四川！"}
+2015-03-11 11:14:59,568 [application.answer.views:78] [DEBUG]- 回答失败: (1146, "Table 'kuaiwenserver.answer_secretanswer' doesn't exist")
+2015-03-11 11:20:02,539 [application.answer.views:72] [DEBUG]- request: POST /_/post-answer {"QuestionId":"987363c34aa07ac52b56cfceed5aab96","Message": "四川！"}
+2015-03-11 11:20:53,668 [application.question.views:72] [DEBUG]- request: POST /_/open-question {"QuestionId":"987363c34aa07ac52b56cfceed5aab96"}
+2015-03-11 11:22:56,742 [application.question.views:72] [DEBUG]- request: POST /_/open-question {"QuestionId":"987363c34aa07ac52b56cfceed5aab96"}
+2015-03-18 16:02:16,173 [application.question.views] [DEBUG]- request:  POST /_/share-question {"QuestionId":"987363c34aa07ac52b56cfceed5aab96"}
+2015-03-27 10:48:56,052 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 10:48:56,060 [application.question.views] [DEBUG]- 获取收藏过的问题失败: [302] global name 'request' is not defined
+2015-03-27 10:51:03,048 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 10:51:03,048 [application.question.views] [DEBUG]- 获取收藏过的问题失败: [302] global name 'request' is not defined
+2015-03-27 10:51:54,804 [application.question.views] [DEBUG]- request:  POST /_/all-answer-questions {}
+2015-03-27 10:51:54,804 [application.question.views] [DEBUG]- 获取回答过的问题失败: [264] global name 'request' is not defined
+2015-03-27 10:52:59,345 [application.question.views] [DEBUG]- request:  POST /_/all-answer-questions {}
+2015-03-27 10:52:59,348 [application.question.views] [DEBUG]- 获取回答过的问题失败: [264] global name 'request' is not defined
+2015-03-27 10:53:31,603 [application.question.views] [DEBUG]- request:  POST /_/all-post-questions {}
+2015-03-27 10:53:31,604 [application.question.views] [DEBUG]- 获取发布过的问题失败: [226] global name 'request' is not defined
+2015-03-27 10:55:00,469 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 10:55:00,470 [application.question.views] [DEBUG]- 问题请求失败: [30] global name 'request' is not defined
+2015-03-27 11:10:31,553 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 11:10:31,598 [application.question.views] [DEBUG]- 问题请求失败: [36] global name 'Lat' is not defined
+2015-03-27 11:11:24,796 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 11:11:36,533 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 11:13:33,504 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 11:13:40,888 [application.question.views] [DEBUG]- request:  POST /_/all-post-questions {}
+2015-03-27 11:14:31,671 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 11:15:39,707 [application.question.views] [DEBUG]- request:  POST /_/collect-question {"QuestionId":"987363c34aa07ac52b56cfceed5aab96"}
+2015-03-27 11:16:12,726 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 11:16:16,162 [application.question.views] [DEBUG]- request:  POST /_/collect-question {"QuestionId":"987363c34aa07ac52b56cfceed5aab96"}
+2015-03-27 11:16:25,605 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 11:16:30,792 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 11:16:44,666 [application.question.views] [DEBUG]- request:  POST /_/collect-question {"QuestionId":"987363c34aa07ac52b56cfceed5aab96"}
+2015-03-27 11:16:48,599 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 11:16:51,790 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 11:17:00,089 [application.question.views] [DEBUG]- request:  POST /_/collect-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+2015-03-27 11:17:03,017 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 11:17:13,336 [application.question.views] [DEBUG]- request:  POST /_/uncollect-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+2015-03-27 11:17:16,346 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 11:17:20,065 [application.question.views] [DEBUG]- request:  POST /_/uncollect-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+2015-03-27 11:17:22,431 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 11:17:33,768 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 13:38:52,232 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 13:39:15,609 [application.question.views] [DEBUG]- request:  POST /_/collect-question {}
+2015-03-27 13:39:15,615 [application.question.views] [DEBUG]- [31m收藏问题失败: [147] (1048, "Column 'QuestionId' cannot be null")[0m
+2015-03-27 14:01:35,967 [application.question.views] [DEBUG]- request:  POST /_/collect-question {}
+2015-03-27 14:01:36,000 [application.question.views] [DEBUG]- [31m收藏问题失败: [147] (1048, "Column 'QuestionId' cannot be null")[0m
+2015-03-27 15:29:00,034 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 15:29:13,177 [application.question.views] [DEBUG]- request:  POST /_/collect-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+2015-03-27 15:29:16,880 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 15:30:23,580 [application.question.views] [DEBUG]- request:  POST /_/report-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9","Reason":"广告垃圾"}
+2015-03-27 15:30:31,432 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 15:30:58,612 [application.question.views] [DEBUG]- request:  POST /_/report-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9","Reason":"广告垃圾"}
+2015-03-27 15:31:02,040 [application.question.views] [DEBUG]- request:  POST /_/questions {}
+2015-03-27 15:31:10,069 [application.question.views] [DEBUG]- request:  POST /_/all-collect-questions {}
+2015-03-27 15:50:50,778 [application.question.views] [10] [DEBUG]- request:  POST /_/questions {}
+[2015-03-27 16:15:55,406] [application.question.views] [36mrequest:  POST /_/questions {}[0m
+[2015-03-27 16:18:20,012] [application.question.views] utils [36mrequest:  POST /_/questions {}[0m
+[2015-03-27 16:39:37,377] [application.question.views] [6470 139781935830784] [DEBUG] request:  POST /_/questions {}
+[2015-03-27 16:39:57,888] [application.question.views] [6484 140220296746752] [DEBUG] request:  POST /_/questions {}
+[2015-03-27 16:55:46,363] [application.question.views] [DEBUG] request:  POST /_/questions {}
+[2015-03-27 16:56:05,500] [application.question.views] [DEBUG] request:  POST /_/questions {}
+[2015-03-27 17:40:40,263] [application.question.views] [DEBUG] request:  POST /_/questions {}
+[2015-03-27 18:05:59,908] [application.question.views] [DEBUG] request:  POST /_/questions {}
+[2015-03-27 18:06:41,526] [application.question.views] [DEBUG] request:  POST /_/report-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:06:41,541] [application.question.views] [DEBUG] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+[2015-03-27 18:07:38,764] [application.question.views] [INFO] request:  POST /_/report-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:07:38,792] [application.question.views] [DEBUG] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+[2015-03-27 18:08:05,740] [application.question.views] [INFO] request:  POST /_/report-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:08:05,760] [application.question.views] [ERROR] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+Traceback (most recent call last):
+  File "/home/cheng-shiwen/Project/kuaiwen_server/application/question/views.py", line 225, in report_question
+    sq = SecretQuestion.objects.get(QuestionId=QuestionId)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 307, in get
+    self.model._meta.object_name)
+DoesNotExist: SecretQuestion matching query does not exist.
+[2015-03-27 18:08:22,723] [application.question.views] [INFO] request:  POST /_/report-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:08:22,741] [application.question.views] [ERROR] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+Traceback (most recent call last):
+  File "/home/cheng-shiwen/Project/kuaiwen_server/application/question/views.py", line 225, in report_question
+    sq = SecretQuestion.objects.get(QuestionId=QuestionId)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 307, in get
+    self.model._meta.object_name)
+DoesNotExist: SecretQuestion matching query does not exist.
+[2015-03-27 18:09:18,186] [application.question.views] [INFO] request:  POST /_/report-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:09:18,211] [application.question.views] [ERROR] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+[2015-03-27 18:10:37,496] [application.question.views] [INFO] request:  POST /_/report-question {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:10:37,522] [application.question.views] [ERROR] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+[2015-03-27 18:25:37,633] [application.question.views] [INFO] [32mBroswer 127.0.0.1 POST /_/report-question[0m {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:25:37,646] [application.question.views] [ERROR] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+[2015-03-27 18:26:10,017] [application.question.views] [INFO] [32mBroswer 127.0.0.1 POST /_/report-question[0m {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:26:10,036] [application.question.views] [ERROR] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+[2015-03-27 18:29:07,881] [application.question.views] [INFO] [32mBroswer 127.0.0.1 GET /_/report-question[0m 
+[2015-03-27 18:31:50,089] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/report-question[0m {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:31:50,114] [application.question.views] [ERROR] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+[2015-03-27 18:31:50,476] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/report-question[0m {"QuestionId":"67d9d7b2e13b844efd54bf935fefaab9"}
+[2015-03-27 18:31:50,480] [application.question.views] [ERROR] [31m举报问题失败: [225] SecretQuestion matching query does not exist.[0m
+[2015-03-27 18:32:09,256] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/questions[0m {}
+[2015-03-27 18:39:09,218] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-answer[0m {"QuestionId":"987363c34aa07ac52b56cfceed5aab96","Message": "四川！"}
+[2015-03-27 18:39:09,252] [application.answer.views] [ERROR] [31m回答失败: [43] (1146, "Table 'kuaiwenserver.notice_secretnotice' doesn't exist")[0m
+[2015-03-27 18:40:02,578] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-answer[0m {"QuestionId":"987363c34aa07ac52b56cfceed5aab96","Message": "四川！"}
+[2015-03-27 18:59:13,934] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-answer[0m {"QuestionId":"987363c34aa07ac52b56cfceed5aab96","Message": "四川！"}
+[2015-03-27 19:37:43,813] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-answer[0m {"QuestionId":"987363c34aa07ac52b56cfceed5aab96","Message": "四川！"}
+[2015-03-28 15:50:38,851] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 15:50:38,855] [application.display.views] [DEBUG] pull-questions: global name 'SecretQuestion' is not defined
+[2015-03-28 16:14:51,718] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:14:51,721] [application.display.views] [DEBUG] pull-questions: global name 'SecretQuestion' is not defined
+[2015-03-28 16:14:59,415] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:14:59,415] [application.display.views] [DEBUG] pull-questions: global name 'SecretQuestion' is not defined
+[2015-03-28 16:15:48,774] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:15:48,775] [application.display.views] [DEBUG] pull-questions: global name 'SecretQuestion' is not defined
+[2015-03-28 16:18:50,303] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:18:50,303] [application.display.views] [DEBUG] pull-questions: global name 'SecretQuestion' is not defined
+[2015-03-28 16:19:33,013] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:20:06,334] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:20:08,330] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:39:40,983] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:40:03,838] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:40:35,925] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:41:42,243] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:54:02,022] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:54:30,284] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:55:09,099] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:55:42,621] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:55:56,833] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:57:46,338] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 16:58:24,051] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:00:07,468] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:05:59,391] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:06:16,243] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:06:45,743] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:07:56,782] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:09:01,132] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:10:34,331] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:10:44,166] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:27:03,758] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:27:09,946] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/unlike-question[0m [33m{"QuestionId":0}[0m
+[2015-03-28 17:27:10,031] [application.question.views] [ERROR] [31m取赞问题失败: [218] SecretQuestion matching query does not exist.[0m
+[2015-03-28 17:28:01,974] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:28:21,402] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/unlike-question[0m [33m{"QuestionId":0}[0m
+[2015-03-28 17:28:21,406] [application.question.views] [ERROR] [31m取赞问题失败: [218] SecretQuestion matching query does not exist.[0m
+[2015-03-28 17:29:41,711] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:29:45,689] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-question[0m [33m{"QuestionId":"f20298ed11b85ffb0e3a1ebd567add5b"}[0m
+[2015-03-28 17:29:53,759] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/unlike-question[0m [33m{"QuestionId":"f20298ed11b85ffb0e3a1ebd567add5b"}[0m
+[2015-03-28 17:37:57,394] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:39:37,059] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:39:45,652] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-answer[0m [33m{"QuestionId":"95b6826e57ee839ccaa639403012e74a","Message":"你猜"}[0m
+[2015-03-28 17:40:04,645] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:40:09,610] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-question[0m [33m{"QuestionId":"95b6826e57ee839ccaa639403012e74a"}[0m
+[2015-03-28 17:40:10,313] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/unlike-question[0m [33m{"QuestionId":"95b6826e57ee839ccaa639403012e74a"}[0m
+[2015-03-28 17:41:58,511] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 17:42:04,676] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-answer[0m [33m{"QuestionId":"f20298ed11b85ffb0e3a1ebd567add5b","Message":"ces"}[0m
+[2015-03-28 17:42:04,978] [jpush] [ERROR] Request failed with status 400: '1011 {u'message': u'cannot find user by this audience', u'code': 1011}': "cannot find user by this audience"
+[2015-03-28 17:42:04,978] [application.notice.models] [WARNING] [31mJPush失败: cannot find user by this audience[0m
+[2015-03-28 17:47:06,378] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 19:46:35,942] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 19:51:39,724] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 19:52:01,005] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 19:52:11,971] [application.question.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-question[0m [33m{"Message":"你爱我吗"}[0m
+[2015-03-28 19:52:35,435] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 19:52:37,646] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 19:52:40,294] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 19:52:46,751] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-answer[0m [33m{"QuestionId":"0f8cf6c694910d45ce4dd34b88f6bd21","Message":"啊地方"}[0m
+[2015-03-28 19:52:49,244] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 20:40:05,233] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 20:40:06,924] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/user-stat[0m [33m[0m
+[2015-03-28 20:40:06,924] [application.display.views] [DEBUG] user-stat: global name 'PhoneNumber' is not defined
+[2015-03-28 20:40:51,919] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 20:40:53,148] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/user-stat[0m [33m[0m
+[2015-03-28 20:41:52,269] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 20:41:53,547] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/user-stat[0m [33m[0m
+[2015-03-28 21:00:25,321] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-28 21:00:32,858] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/report-question[0m [33m[0m
+[2015-03-28 21:00:35,686] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 11:27:09,687] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 11:28:14,981] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 11:30:07,496] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 11:31:55,873] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 14:47:25,391] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 14:48:09,586] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/restrict-and-delete[0m [33m[0m
+[2015-03-30 14:48:33,744] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 14:50:25,972] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 14:50:28,724] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:12:47,399] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:14:16,108] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:14:46,293] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:15:25,482] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:19:03,883] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:22:31,362] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:29:16,513] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:31:34,350] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:35:14,617] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:38:18,802] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:38:23,321] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-answer[0m [33m{"QuestionId":"95b6826e57ee839ccaa639403012e74a","Message":"adsf"}[0m
+[2015-03-30 15:38:42,546] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/post-answer[0m [33m{"QuestionId":"6df0f8441ad8a5b708601d9a4beae3f7","Message":"adsf"}[0m
+[2015-03-30 15:44:48,300] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:44:53,271] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"QuestionId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:44:53,278] [application.answer.views] [ERROR] [31m点赞回答失败: [107] SecretAnswer matching query does not exist.[0m
+[2015-03-30 15:46:07,733] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:46:11,402] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:46:19,832] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/against-answer[0m [33m{"AnswerId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:46:56,519] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:47:23,581] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/against-answer[0m [33m{"AnswerId":"567010b315a4d8c0e4004e96a4f69886"}[0m
+[2015-03-30 15:47:26,532] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:48:34,369] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:48:39,028] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:48:40,375] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:48:41,745] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"567010b315a4d8c0e4004e96a4f69886"}[0m
+[2015-03-30 15:48:42,277] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"567010b315a4d8c0e4004e96a4f69886"}[0m
+[2015-03-30 15:48:42,831] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"567010b315a4d8c0e4004e96a4f69886"}[0m
+[2015-03-30 15:48:43,655] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"567010b315a4d8c0e4004e96a4f69886"}[0m
+[2015-03-30 15:48:51,723] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:49:02,419] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"5b64808f4ca81071f72025b33a2328a0"}[0m
+[2015-03-30 15:49:02,893] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"5b64808f4ca81071f72025b33a2328a0"}[0m
+[2015-03-30 15:49:03,160] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"5b64808f4ca81071f72025b33a2328a0"}[0m
+[2015-03-30 15:49:03,366] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"5b64808f4ca81071f72025b33a2328a0"}[0m
+[2015-03-30 15:51:28,660] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:51:32,490] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:51:32,855] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:51:33,070] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:51:33,302] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:51:34,100] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"567010b315a4d8c0e4004e96a4f69886"}[0m
+[2015-03-30 15:51:34,421] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"567010b315a4d8c0e4004e96a4f69886"}[0m
+[2015-03-30 15:51:34,591] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"567010b315a4d8c0e4004e96a4f69886"}[0m
+[2015-03-30 15:52:05,723] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:52:13,649] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"ac5a54c13bd1efe4199ec2ee167a8d08"}[0m
+[2015-03-30 15:52:14,833] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"ac5a54c13bd1efe4199ec2ee167a8d08"}[0m
+[2015-03-30 15:52:17,335] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"ac5a54c13bd1efe4199ec2ee167a8d08"}[0m
+[2015-03-30 15:52:17,704] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"ac5a54c13bd1efe4199ec2ee167a8d08"}[0m
+[2015-03-30 15:52:35,569] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:52:55,368] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:53:01,337] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"5b64808f4ca81071f72025b33a2328a0"}[0m
+[2015-03-30 15:53:02,368] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"5b64808f4ca81071f72025b33a2328a0"}[0m
+[2015-03-30 15:53:12,028] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"04d098d868a29fcbc973c42132420de2"}[0m
+[2015-03-30 15:53:12,875] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"04d098d868a29fcbc973c42132420de2"}[0m
+[2015-03-30 15:53:13,388] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"04d098d868a29fcbc973c42132420de2"}[0m
+[2015-03-30 15:53:13,615] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"04d098d868a29fcbc973c42132420de2"}[0m
+[2015-03-30 15:53:13,836] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"04d098d868a29fcbc973c42132420de2"}[0m
+[2015-03-30 15:53:39,691] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:53:47,654] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/against-answer[0m [33m{"AnswerId":"07a02181bce2da5358148ac758a7c035"}[0m
+[2015-03-30 15:53:49,809] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"567010b315a4d8c0e4004e96a4f69886"}[0m
+[2015-03-30 15:56:07,586] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:56:29,951] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/against-answer[0m [33m{"AnswerId":"9f019902160cafd66babe4046b62f7a7"}[0m
+[2015-03-30 15:56:34,107] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"99ab02724b120f5919490639776b8da3"}[0m
+[2015-03-30 15:56:41,951] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/like-answer[0m [33m{"AnswerId":"efc9398059d2778f5b70aa29e1baad18"}[0m
+[2015-03-30 15:56:46,605] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/against-answer[0m [33m{"AnswerId":"f944da78601c36c1b7d514ac41ac8933"}[0m
+[2015-03-30 15:58:43,221] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 15:58:51,138] [application.answer.views] [INFO] [32mNon-Client 127.0.0.1 POST /_/against-answer[0m [33m{"AnswerId":"2cc6f320f3ef5f8ce7cf804b023e6c91"}[0m
+[2015-03-30 16:06:25,356] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 16:35:58,316] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 16:45:12,085] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 16:45:21,077] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 16:45:33,350] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 16:45:47,291] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 16:45:59,630] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 16:46:10,502] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-30 16:46:18,030] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-31 17:12:49,254] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-31 19:50:30,361] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-31 19:50:50,897] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-31 19:51:40,325] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-03-31 19:57:52,366] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
