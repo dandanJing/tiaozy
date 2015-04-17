@@ -97,12 +97,13 @@ a{
 .follow-steps .step1 span,.follow-steps .step2 span,.follow-steps .step3 span{
     display: block;
     width: 18px;
-    height: 30px;
+    height: 27px;
     position: absolute;
     right: 0px;
     top: 0px;
     background: url("/static/images/flow_step.png") no-repeat scroll 100% -60px transparent;
     color: #FFF;
+    overflow: hidden;
 }
 
 .type-box{
