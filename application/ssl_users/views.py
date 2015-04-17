@@ -98,9 +98,39 @@ def regUserInfo(request):
             request.user.qq = qq
             request.user.is_student = is_student
             request.user.save() 
-            return render_to_response('reg/index.html',{'is_success':True})
+            return render_to_response('reg.html',{'is_success':True})
 
-    return render_to_response('reg/index.html')
+    return render_to_response('reg.html')
+
+def loginAction(request):
+    errors = []
+    user = None
+    result = False
+
+    if request.method=='POST':
+        username=request.POST.get('username','')
+        password=request.POST.get('password','')
+        print "login-username:"+username
+        user = auth.authenticate(username=username,password=password)
+        if user is not None and user.is_active:
+            auth.login(request, user)
+            result = True
+        elif user is None:
+            filterResults = tzy_users.objects.filter(mobilephone=username)
+            if len(filterResults) == 0:
+                filterResults = tzy_users.objects.filter(email=username)
+            
+            if len(filterResults) > 0:  
+                user = filterResults[0]       
+            if user is not None and user.check_password(password) and user.is_active:
+                print user
+                user = auth.authenticate(username=user.username,password=password)
+                auth.login(request, user)
+                result = True
+        if result:
+            return HttpResponseRedirect("/index.html")
+    errors.append('用户名或密码错误')
+    return render_to_response('login.html',{"errors":errors})
 
 def checkUser(request):
     req = json.loads(request.body)
