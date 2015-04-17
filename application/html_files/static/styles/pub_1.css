@@ -79,6 +79,11 @@ a{
     position: relative;
 }
 
+.follow-steps .active{
+    background: url("/static/images/flow_step.png") repeat scroll 0px -120px transparent;
+    color: #FFF;
+}
+
 .follow-steps li i {
     font: 700 20px Arial,Helvetica,sans-serif;
     margin-right: 5px;
@@ -89,15 +94,19 @@ a{
     font-weight: 400;
 }
 
-.follow-steps .step1 span,.follow-steps .step2 span,.follow-steps .step3 span{
+.follow-steps .step1 span,.follow-steps .step2 span{
     display: block;
     width: 18px;
     height: 30px;
     position: absolute;
     right: 0px;
     top: 0px;
-    background: url("/static/images/flow_step.png") no-repeat scroll 100% -60px transparent;
+    background: url("/static/images/flow_step.png") no-repeat scroll 100% -30px transparent;
     color: #FFF;
+}
+
+.follow-steps .step2 span{
+     background: url("/static/images/flow_step.png") no-repeat scroll 100% -60px transparent;
 }
 
 em .f1{
@@ -106,5 +115,5 @@ em .f1{
     height: 30px;
     left: 0px;
     top: 0px;
-    background: url("/static/images/flow_step.padding") no-repeat scroll 0px -180px transparent;
+    background: url("/static/images/flow_step.png") no-repeat scroll 0px -180px transparent;
 }

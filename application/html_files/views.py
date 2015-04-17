@@ -9,4 +9,10 @@ def index(request):
         return render_to_response('index.html',{'login_user':request.user})
     else:
         auth.logout(request)
-        return render_to_response('index.html')      
+        return render_to_response('index.html')
+
+def publishItem(request):
+    return render_to_response('publish.html')   
+
+def pub_1(request):
+    return render_to_response('pub_1.html')
