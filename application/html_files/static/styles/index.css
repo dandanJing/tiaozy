@@ -1086,16 +1086,14 @@ h5{
     position: relative;
 }
 
-.good-items-body .good-item-list .change{
-    position: absolute;
-    right: 15px;
-    top: -38px;
+.items_head .change{
+    float: right;
     color: #84878c;
     cursor: pointer;
     font-size: 14px;
 }
 
-.good-items-body .good-item-list .change a{
+.items_head .change a{
     color: #000;
 }
 
