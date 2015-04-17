@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/styles/pub_1.css">
     <script language="javascript"  src="/static/scripts/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/static/scripts/validate.js"></script>
+    <script language="javascript"  src="/static/scripts/pub_1.js"></script>
 </head>
 <body>
     <div class="header">
@@ -40,7 +41,101 @@
             </li>
         </ol>
     </div>
-    <div class="type-box">
+    <div class="input-box">
+        <form id="publishForm" action="/publish-item/" method="post">
+            <div id="form-bd">
+                <div class="control-group ">
+                    <label class="control-label" for="title">
+                        <strong>标题</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="input-wrap">
+                            <input id="title" class="input title" type="text" value="" name="title">
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <label class="control-label">
+                        <strong>新旧</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="btn-group">
+                            <button class="J_RadioBtn btn active" type="button" value="0">非全新
+                            </button>
+                            <button class="J_RadioBtn btn" type="button" value="1">全新
+                            </button>
+                            <input type="hidden" value="1" name="feature" id="feature"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <label class="control-label" for="price">
+                        <strong>价格</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="input-wrap">
+                            <input id="price" class="input J_PriceCheck" type="text" value="" name="price"></input>
+                            <span>元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <label class="control-label" for="price">
+                        <strong>原价</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="input-wrap">
+                            <input id="original-price" class="input J_PriceCheck" type="text" value="" name="price"></input>
+                            <span>元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group normal">
+                    <label class="control-label" for="mobile">
+                        <strong>联系方式</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <label class="add-on" for="name">手机号：
+                            </label>
+                            <input id="mobile" class="input" type="text" value="1520151" name="mobile"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group name-wrap ">
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <label class="add-on" for="name">姓名：
+                            </label>
+                            <input id="name" class="input" type="text" value="刘先生/女士" name="name"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="pic">
+                        <strong>
+                            宝贝图片
+                        </strong>
+                    </label>
+                    <div class="controls">
+                        <div id="J_UploadPic" class="upload">
+                            <div class="upload-inner">
+                                <b></b>
+                                <ul class="operate"></ul>
+                            </div>
+                        </div>
+                        <span class="upload-tip">
+                            最多可上传十张照片，图片每张最大5M
+                        </span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <button class="btn-publish" type="submit" name="submit_btn">立刻发布</button>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>
