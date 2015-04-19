@@ -294,3 +294,4 @@ DoesNotExist: SecretQuestion matching query does not exist.
 [2015-04-19 12:55:43,653] [application.display_items.views] [DEBUG] upload-image: object of type 'NoneType' has no len()
 [2015-04-19 12:56:52,965] [application.display_items.views] [DEBUG] upload-image: "'file'"
 [2015-04-19 13:01:48,414] [application.display_items.views] [DEBUG] upload-image: 'instancemethod' object has no attribute '__getitem__'
+[2015-04-19 15:23:24,792] [application.display_items.views] [DEBUG] upload-image: no such column: ssl_users_user_items_table.itemImageurls

@@ -20,7 +20,7 @@ class user_items_table(models.Model):
     itemcostprice   = models.IntegerField(default = 0)
     itemprice       = models.IntegerField(default = 0)
     itemsnum        = models.IntegerField(default = 1)
-    itemImageurl    = models.TextField(default='[]')
+    itemImageurls    = models.TextField(default='[]')
     clickCount       = models.IntegerField(default = 0)
     postTime        = models.IntegerField(default=0)
     lastEditTime    = models.IntegerField(default=0)

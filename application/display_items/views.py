@@ -6,6 +6,8 @@ from utils.utils import *
 from application.config.globals import *
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
+from application.ssl_users.models import user_items_table
+from application.ssl_users.models import tzy_users
 import logging
 import base64
 import os
@@ -27,17 +29,24 @@ def postItem(request):
         mobile = None
         styleIndex = 1
         imageUrls = []
+        user = request.user
+        createdTime = getCurrentTime()
         if request.method == "POST":
             title = request.POST.get('title')
-            feature = request.POST.get('feature')
+            temp = request.POST.get('feature')
+            if temp == '1':
+                feature = "全新"
+            else:
+                feature = "非全新"
             oldPrice = request.POST.get('original-price')
             price = request.POST.get('price')
             postUsername = request.POST.get('name')
             mobile = request.POST.get('mobile')
-            if request.POST.get('style'):
-                styleIndex = request.POST.get('style')
+            if request.POST.get('type'):
+                styleIndex = request.POST.get('type')
+                print 'style %s' % styleIndex
             files = request.FILES.getlist('upfile[]')
-            print 'title: %s name: %s style:%s' %(title, postUsername, styleIndex)
+            print 'title: %s name: %s ' %(title, postUsername)
             print files
             SessionId = os.urandom(10)
             for fileEach in files:
@@ -47,9 +56,17 @@ def postItem(request):
                 else:
                     return render_to_response('pub_1.html')
             print imageUrls
+            itemid = user_items_table.createUniqueItemId()
+            itemObject = user_items_table.objects.create(itemid=itemid,itemname=title,itemcostprice=oldPrice,itemprice=price,itemImageurls=imageUrls,itemType=styleIndex,tzyUser=user)
+            itemObject.postTime = createdTime
+            itemObject.lastEditTime = createdTime
+            itemObject.save() 
+            print 'itemid: %s' % (itemid)
+
     except Exception as e:
         logger.debug('upload-image: %s' % e)
-    return render_to_response('pub_1.html')
+        return render_to_response('pub_1.html')
+    return render_to_response('pub_2.html')
 
 def uploadImage(image_file,SessionId):
     try:

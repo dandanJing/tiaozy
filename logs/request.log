@@ -795,3 +795,156 @@ Traceback (most recent call last):
   File "/home/jing/python_app/tiaozy/application/html_files/views.py", line 30, in pub_1
     print 'type: %i'%(typeIndex)
 TypeError: %d format: a number is required, not unicode
+[2015-04-19 14:37:25,439] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 36
+    feature = request.POST.get('feature')=='1'?"全新":"非全新"
+                                              ^
+SyntaxError: invalid syntax
+[2015-04-19 14:39:29,771] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 36
+    feature = (request.POST.get('feature')=='1')?"全新":"非全新"
+                                                ^
+SyntaxError: invalid syntax
+[2015-04-19 14:40:27,673] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 37
+    feature = temp== '1'? "全新" : "非全新"
+                        ^
+SyntaxError: invalid syntax
+[2015-04-19 14:40:58,880] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 38
+    feature = (temp== '1'? "全新" : "非全新")
+                         ^
+SyntaxError: invalid syntax
+[2015-04-19 14:41:30,338] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 38
+    feature = (temp== '1'? "全新" : "非全新")
+                         ^
+SyntaxError: invalid syntax
+[2015-04-19 14:41:51,956] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 9, in <module>
+    from application.ssl_users import user_items_table
+ImportError: cannot import name user_items_table
+[2015-04-19 15:30:23,123] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 37
+    feature = (temp== '1'? "全新" : "非全新")
+                         ^
+SyntaxError: invalid syntax
