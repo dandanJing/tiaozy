@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('application.ssl_users.urls')),
     url(r'^', include('application.html_files.urls')),
+    url(r'^', include('application.display_items.urls')),
     url(r'$','application.html_files.views.index',name='index'),
 )

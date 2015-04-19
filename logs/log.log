@@ -277,3 +277,20 @@ DoesNotExist: SecretQuestion matching query does not exist.
 [2015-03-31 19:50:50,897] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
 [2015-03-31 19:51:40,325] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
 [2015-03-31 19:57:52,366] [application.display.views] [INFO] [32mNon-Client 127.0.0.1 GET /manage/pull-questions[0m [33m[0m
+[2015-04-18 04:02:11,132] [application.display_items.views] [DEBUG] upload-image: global name 'getCurrentTime' is not defined
+[2015-04-18 04:03:52,249] [application.display_items.views] [DEBUG] upload-image: cannot concatenate 'str' and 'dict' objects
+[2015-04-18 04:04:59,021] [application.display_items.views] [DEBUG] upload-image: [Errno -2] Name or service not known
+[2015-04-18 04:20:57,525] [application.display_items.views] [DEBUG] upload-image: HTTPResponse instance has no attribute 'HTTPResponse'
+[2015-04-18 04:39:48,184] [application.display_items.views] [DEBUG] upload-image: HTTPResponse instance has no attribute 'message'
+[2015-04-18 04:42:18,391] [application.display_items.views] [DEBUG] upload-image: HTTPResponse instance has no attribute 'description'
+[2015-04-18 04:43:47,506] [application.display_items.views] [DEBUG] upload-image: HTTPResponse instance has no attribute 'description'
+[2015-04-18 04:44:34,603] [application.display_items.views] [DEBUG] upload-image: HTTPResponse instance has no attribute 'errors'
+[2015-04-18 04:54:49,074] [application.display_items.views] [DEBUG] upload-image: HTTPResponse instance has no attribute 'code'
+[2015-04-19 05:11:46,209] [application.display_items.views] [DEBUG] upload-image: 'InMemoryUploadedFile' object has no attribute 'fileName'
+[2015-04-19 12:45:07,136] [application.display_items.views] [DEBUG] upload-image: %d format: a number is required, not unicode
+[2015-04-19 12:45:54,452] [application.display_items.views] [DEBUG] upload-image: %d format: a number is required, not unicode
+[2015-04-19 12:46:53,411] [application.display_items.views] [DEBUG] upload-image: %d format: a number is required, not unicode
+[2015-04-19 12:49:11,403] [application.display_items.views] [DEBUG] upload-image: %d format: a number is required, not unicode
+[2015-04-19 12:55:43,653] [application.display_items.views] [DEBUG] upload-image: object of type 'NoneType' has no len()
+[2015-04-19 12:56:52,965] [application.display_items.views] [DEBUG] upload-image: "'file'"
+[2015-04-19 13:01:48,414] [application.display_items.views] [DEBUG] upload-image: 'instancemethod' object has no attribute '__getitem__'

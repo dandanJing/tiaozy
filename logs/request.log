@@ -466,3 +466,332 @@ Traceback (most recent call last):
     else
        ^
 SyntaxError: invalid syntax
+[2015-04-18 03:44:46,710] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/middleware/common.py", line 72, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 619, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 494, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 21
+SyntaxError: Non-ASCII character '\xe4' in file /home/jing/python_app/tiaozy/application/display_items/views.py on line 21, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+[2015-04-18 03:59:09,770] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/middleware/common.py", line 72, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 619, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 494, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 21
+SyntaxError: Non-ASCII character '\xe4' in file /home/jing/python_app/tiaozy/application/display_items/views.py on line 21, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+[2015-04-18 04:00:23,247] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/middleware/common.py", line 72, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 619, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 494, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 21
+SyntaxError: Non-ASCII character '\xe4' in file /home/jing/python_app/tiaozy/application/display_items/views.py on line 21, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+[2015-04-18 04:00:39,017] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/middleware/common.py", line 72, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 619, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 494, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 21
+SyntaxError: Non-ASCII character '\xe4' in file /home/jing/python_app/tiaozy/application/display_items/views.py on line 21, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+[2015-04-18 04:00:57,492] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/middleware/common.py", line 72, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 619, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 494, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 21
+SyntaxError: Non-ASCII character '\xe4' in file /home/jing/python_app/tiaozy/application/display_items/views.py on line 21, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+[2015-04-18 04:01:39,039] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 24, in uploadImage
+    logger.debug('upload-image: %s' % e)
+NameError: global name 'logger' is not defined
+[2015-04-18 04:02:11,166] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 28, in uploadImage
+    return handle_response(result)
+NameError: global name 'handle_response' is not defined
+[2015-04-19 04:00:42,983] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 38, in uploadImage
+    json_data = simplejson.dumps(result)
+NameError: global name 'simplejson' is not defined
+[2015-04-19 04:01:33,393] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 38, in uploadImage
+    json_data = simplejson.dumps(result)
+NameError: global name 'simplejson' is not defined
+[2015-04-19 04:02:20,734] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/middleware/common.py", line 72, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 619, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 494, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 11, in <module>
+    import JSON
+ImportError: No module named JSON
+[2015-04-19 04:03:13,951] [django.request] [ERROR] Internal Server Error: /upload-image
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/middleware/common.py", line 72, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 619, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 494, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 11, in <module>
+    import Json
+ImportError: No module named Json
+[2015-04-19 12:18:43,548] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 118, in get_callable
+    (lookup_view, mod_name))
+ViewDoesNotExist: Could not import application.display_items.views.publishItem. View does not exist in module application.display_items.views.
+[2015-04-19 12:19:43,868] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 18, in postItem
+    print request.FILES['upfile[]']
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/datastructures.py", line 319, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'upfile[]'"
+[2015-04-19 12:20:11,680] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 18, in postItem
+    print request.FILES['upfile']
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/datastructures.py", line 319, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'upfile'"
+[2015-04-19 12:20:35,064] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 18, in postItem
+    print request.FILES['file']
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/datastructures.py", line 319, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'file'"
+[2015-04-19 12:22:54,060] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 20
+    if request.method == "POST"
+                              ^
+SyntaxError: invalid syntax
+[2015-04-19 12:23:11,405] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/display_items/views.py", line 23
+    except Exception as e:
+   ^
+IndentationError: expected an indented block
+[2015-04-19 13:51:26,374] [django.request] [ERROR] Internal Server Error: /publish-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_app/tiaozy/application/html_files/views.py", line 28
+    print typeIndex
+        ^
+SyntaxError: invalid syntax
+[2015-04-19 13:52:48,688] [django.request] [ERROR] Internal Server Error: /publish-item/pub/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/Django-1.7.7-py2.7.egg/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_app/tiaozy/application/html_files/views.py", line 30, in pub_1
+    print 'type: %i'%(typeIndex)
+TypeError: %d format: a number is required, not unicode

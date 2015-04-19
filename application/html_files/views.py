@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.contrib import auth
 from django.http import HttpResponseRedirect
+import logging
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 def index(request):
@@ -19,4 +21,11 @@ def publishItem(request):
         return render_to_response("login.html")
 
 def pub_1(request):
-    return render_to_response('pub_1.html')
+    typeIndex = 1
+    try:
+        if request.method == "GET":
+            typeIndex = request.GET.get('type')
+    except Exception as e:
+        logger.debug('upload-image: %s' % e)
+    print 'type: %s'%(typeIndex)
+    return render_to_response('pub_1.html',{'typeIndex':typeIndex})

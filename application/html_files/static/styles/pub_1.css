@@ -130,7 +130,7 @@ em .f1{
 }
 
 .input-box{
-    width: 600px;
+    width: 800px;
     margin: auto;
     padding: auto;
     margin-top: 15px;
@@ -239,7 +239,8 @@ em .f1{
     margin: 0px 5px;
     position: relative;
     white-space: nowrap;
-    margin-bottom: 10px;d
+    margin-bottom: 10px;
+    float: left;
 }
 
 .upload .upload-inner {
@@ -250,20 +251,35 @@ em .f1{
     float: left;
 }
 
-.upload-inner b {
+.upload-inner img {
     background-position: -69px -20px;
     width: 66px;
     height: 54px;
     position: absolute;
     top: 28px;
     left: 21px;
-    background: url(/static/images/T1yo43FjlcXXayVAj_-280-103.png) no-repeat -70px -20px;
+}
+
+#pic-block{
+    float: left;
+    width: 500px;
+    margin-left: 10px;
+}
+
+#pic-block img{
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    margin-right: 10px;
 }
 
 .upload-tip{
     display: block;
     color: #999;
     text-align: middle;
+    width: 120px;
+    /*position: absolute;
+    top: 110px;*/
 }
 
 .btn-publish {
@@ -275,6 +291,7 @@ em .f1{
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     background-color: #F78015;
+    display: block;
 }
 
 #upload-file{
@@ -285,5 +302,5 @@ em .f1{
     margin-top: 25px;
     height: 65px;
     width: 180px;
-   /* opacity: 0;*/
+    opacity: 0;
 }
