@@ -304,3 +304,8 @@ em .f1{
     width: 180px;
     opacity: 0;
 }
+
+.controls textarea{
+    width: 400px;
+    height: 150px;
+}

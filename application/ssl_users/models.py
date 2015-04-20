@@ -6,37 +6,38 @@ from utils.utils import *
 
 # Create your models here.
 class tzy_users(AbstractUser):
-    mobilephone = models.CharField(max_length=20,default="")
-    qq          = models.IntegerField(default=0)
-    nickname    = models.CharField(max_length=20)
-    isStudent   = models.BooleanField(default=True)
+    Mobilephone = models.CharField(max_length=20,default="")
+    QQ          = models.IntegerField(default=0)
+    Nickname    = models.CharField(max_length=20)
+    IsStudent   = models.BooleanField(default=True)
 
     def __str__(self):
         return "username:%s\tphone:%s\temail:%s\t"%(self.username,self.mobilephone,self.email)
 
 class user_items_table(models.Model):
-    itemid          = models.CharField(max_length=100, unique=True)
-    itemname        = models.CharField(max_length=100)
-    itemcostprice   = models.IntegerField(default = 0)
-    itemprice       = models.IntegerField(default = 0)
-    itemsnum        = models.IntegerField(default = 1)
-    itemImageurls    = models.TextField(default='[]')
-    clickCount       = models.IntegerField(default = 0)
-    postTime        = models.IntegerField(default=0)
-    lastEditTime    = models.IntegerField(default=0)
-    isBlock         = models.BooleanField( default=True)
-    feature         = models.CharField(max_length=100,default="全新")
-    itemType        = models.CharField(max_length=20,default="")
-    tzyUser        = models.ForeignKey(tzy_users)
+    ItemId          = models.CharField(max_length=100, unique=True)
+    ItemName        = models.CharField(max_length=100)
+    ItemOldPrice    = models.IntegerField(default = 0)
+    ItemPrice       = models.IntegerField(default = 0)
+    ItemsNum        = models.IntegerField(default = 1)
+    ItemImageUrls    = models.TextField(default='[]')
+    ClickCount       = models.IntegerField(default = 0)
+    PostTime        = models.IntegerField(default=0)
+    LastEditTime    = models.IntegerField(default=0)
+    IsBlock         = models.BooleanField( default=True)
+    Feature         = models.CharField(max_length=100,default="全新")
+    ItemType        = models.CharField(max_length=20,default="")
+    TzyUser        = models.ForeignKey(tzy_users)
     LikeList        = models.TextField(default='[]')
     LikeCount       = models.IntegerField(default=0)
     ReportList      = models.TextField(default='[]')
     ReportReason    = models.TextField(default='')
+    ItemDescription = models.TextField(default='')
 
     @classmethod
     def isItemExist(cls, item_id):
         try:
-            cls.objects.get(itemid=item_id)
+            cls.objects.get(ItemId=item_id)
         except cls.DoesNotExist:
             return False
         else:
@@ -45,7 +46,7 @@ class user_items_table(models.Model):
     @classmethod
     def getObject(cls, item_id):
         try:
-            return cls.objects.get(itemid=item_id)
+            return cls.objects.get(ItemId=item_id)
         except cls.DoesNotExist:
             return None
 
@@ -87,8 +88,8 @@ class user_items_table(models.Model):
                 self.save()
 
     def clickAction(self):
-        self.clickCount = self.clickCount+1
+        self.ClickCount = self.ClickCount+1
         self.save()
     
     def __unicode__(self):
-        return self.itemid
+        return self.ItemId

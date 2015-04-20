@@ -62,16 +62,16 @@ def regUsername(request):
                 print errors
                 return render_to_response('reg.html',{'errors':errors})
 
-            filterResults = tzy_users.objects.filter(mobilephone=phone)
+            filterResults = tzy_users.objects.filter(Mobilephone=phone)
             if len(filterResults)>0:
                 errors.append('该手机号已注册')
                 print errors
                 return render_to_response('reg.html',{'errors':errors})
 
             # user input verify
-            user = tzy_users.objects.create_user(username=username,password=password,email=email,nickname=username)
+            user = tzy_users.objects.create_user(username=username,password=password,email=email,Nickname=username)
             if phone is not None:
-                user.mobilephone = phone
+                user.Mobilephone = phone
             user.is_active = True
             user.save()
             auth_user = auth.authenticate(username=username,password=password)
@@ -94,9 +94,9 @@ def regUserInfo(request):
         
         if request.user.is_authenticated():
             print request.user
-            request.user.mobilephone = phone
-            request.user.qq = qq
-            request.user.is_student = is_student
+            request.user.Mobilephone = phone
+            request.user.QQ = qq
+            request.user.IsStudent = is_student
             request.user.save() 
             return render_to_response('reg.html',{'is_success':True})
 
@@ -116,7 +116,7 @@ def loginAction(request):
             auth.login(request, user)
             result = True
         elif user is None:
-            filterResults = tzy_users.objects.filter(mobilephone=username)
+            filterResults = tzy_users.objects.filter(Mobilephone=username)
             if len(filterResults) == 0:
                 filterResults = tzy_users.objects.filter(email=username)
             
@@ -141,7 +141,7 @@ def checkUser(request):
         filterResults = tzy_users.objects.filter(username=username)
     elif req.has_key('phone'):
         phone = req['phone']
-        filterResults = tzy_users.objects.filter(mobilephone=phone)
+        filterResults = tzy_users.objects.filter(Mobilephone=phone)
     elif req.has_key('email'):
         email = req['email']
         filterResults = tzy_users.objects.filter(email=email)

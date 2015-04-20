@@ -31,6 +31,7 @@ def postItem(request):
         imageUrls = []
         user = request.user
         createdTime = getCurrentTime()
+        description = ""
         if request.method == "POST":
             title = request.POST.get('title')
             temp = request.POST.get('feature')
@@ -42,12 +43,12 @@ def postItem(request):
             price = request.POST.get('price')
             postUsername = request.POST.get('name')
             mobile = request.POST.get('mobile')
+            description = request.POST.get('description')
             if request.POST.get('type'):
                 styleIndex = request.POST.get('type')
                 print 'style %s' % styleIndex
             files = request.FILES.getlist('upfile[]')
-            print 'title: %s name: %s ' %(title, postUsername)
-            print files
+            print 'title: %s name: %s description: %s' %(title, postUsername,description)
             SessionId = os.urandom(10)
             for fileEach in files:
                 result = uploadImage(fileEach,SessionId)
@@ -55,13 +56,12 @@ def postItem(request):
                     imageUrls.append(result['ImageUrl'])
                 else:
                     return render_to_response('pub_1.html')
-            print imageUrls
             itemid = user_items_table.createUniqueItemId()
-            itemObject = user_items_table.objects.create(itemid=itemid,itemname=title,itemcostprice=oldPrice,itemprice=price,itemImageurls=imageUrls,itemType=styleIndex,tzyUser=user)
-            itemObject.postTime = createdTime
-            itemObject.lastEditTime = createdTime
+            itemObject = user_items_table.objects.create(ItemId=itemid,ItemName=title,ItemOldPrice=oldPrice,ItemPrice=price,ItemImageUrls=imageUrls,ItemType=styleIndex,TzyUser=user)
+            itemObject.PostTime = createdTime
+            itemObject.LastEditTime = createdTime
+            itemObject.ItemDescription = description
             itemObject.save() 
-            print 'itemid: %s' % (itemid)
 
     except Exception as e:
         logger.debug('upload-image: %s' % e)
