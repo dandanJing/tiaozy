@@ -969,3 +969,88 @@ Traceback (most recent call last):
   File "/home/jing/tiaozy/application/display_items/views.py", line 3, in <module>
     from oss.oss_api import *
 ImportError: No module named oss.oss_api
+[2015-04-20 03:30:33,386] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/tiaozy/application/display_items/views.py", line 21
+    if not request.user,is_authenticated():
+                       ^
+SyntaxError: invalid syntax
+[2015-04-20 03:31:46,895] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 204, in get_response
+    response = middleware_method(request, response)
+  File "/usr/local/lib/python2.7/dist-packages/django/middleware/clickjacking.py", line 31, in process_response
+    if response.get('X-Frame-Options', None) is not None:
+AttributeError: 'str' object has no attribute 'get'
+[2015-04-20 03:32:42,941] [django.request] [ERROR] Internal Server Error: /post-item/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 204, in get_response
+    response = middleware_method(request, response)
+  File "/usr/local/lib/python2.7/dist-packages/django/middleware/clickjacking.py", line 31, in process_response
+    if response.get('X-Frame-Options', None) is not None:
+AttributeError: 'str' object has no attribute 'get'
+[2015-04-20 04:21:05,042] [django.request] [ERROR] Internal Server Error: /post-ask-info/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/tiaozy/application/display_items/views.py", line 11, in <module>
+    from application.display_items.models import ask_info_table
+  File "/home/jing/tiaozy/application/display_items/models.py", line 20
+    @classmethod
+    ^
+IndentationError: unexpected indent
+[2015-04-20 04:21:31,423] [django.request] [ERROR] Internal Server Error: /post-ask-info/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/tiaozy/application/display_items/views.py", line 11, in <module>
+    from application.display_items.models import ask_info_table
+  File "/home/jing/tiaozy/application/display_items/models.py", line 4, in <module>
+    class ask_info_table(models.Model):
+  File "/home/jing/tiaozy/application/display_items/models.py", line 13, in ask_info_table
+    TzyUser        = models.ForeignKey(tzy_users)
+NameError: name 'tzy_users' is not defined

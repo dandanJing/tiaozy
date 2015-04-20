@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'application.ssl_users',
     'application.html_files',
     'application.config',
+    'application.display_items',
 )
 
 MIDDLEWARE_CLASSES = (

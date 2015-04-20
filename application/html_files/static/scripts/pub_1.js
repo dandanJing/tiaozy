@@ -1,7 +1,6 @@
 
-var upload_files = [];
+
 $(document).ready(function(){
-    upload_files = [];
 	$(".J_RadioBtn").click(function(){
         if(!$(this).hasClass("active")){
             $(this).siblings().removeClass("active");

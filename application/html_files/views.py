@@ -14,7 +14,7 @@ def index(request):
         auth.logout(request)
         return render_to_response('index.html')
 
-def publishItem(request):
+def publish(request):
     if request.user.is_authenticated():
         return render_to_response('publish.html')
     else:
@@ -22,6 +22,8 @@ def publishItem(request):
 
 def pub_1(request):
     typeIndex = 1
+    if not request.user.is_authenticated():
+        return render_to_response("login.html")
     try:
         if request.method == "GET":
             typeIndex = request.GET.get('type')
@@ -29,3 +31,6 @@ def pub_1(request):
         logger.debug('upload-image: %s' % e)
     print 'type: %s'%(typeIndex)
     return render_to_response('pub_1.html',{'typeIndex':typeIndex})
+
+def askItem(request):
+    return render_to_response('ask_item.html')

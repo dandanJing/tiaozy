@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from application.ssl_users.models import user_items_table
 from application.ssl_users.models import tzy_users
+from application.display_items.models import ask_info_table
 import logging
 import base64
 import os
@@ -18,6 +19,8 @@ logger = logging.getLogger(__name__)
 
 def postItem(request):
     print 'request info: %s %s' % (request.method, request.path)
+    if not request.user.is_authenticated():
+        return("login.html")
     try:
         result = {}
         errors=[]
@@ -41,7 +44,7 @@ def postItem(request):
                 feature = "非全新"
             oldPrice = request.POST.get('original-price')
             price = request.POST.get('price')
-            postUsername = request.POST.get('name')
+            contactUsername = request.POST.get('name')
             mobile = request.POST.get('mobile')
             description = request.POST.get('description')
             if request.POST.get('type'):
@@ -61,12 +64,15 @@ def postItem(request):
             itemObject.PostTime = createdTime
             itemObject.LastEditTime = createdTime
             itemObject.ItemDescription = description
+            itemObject.ContactUsername = contactUsername
+            itemObject.ContactUserPhone = mobile
             itemObject.save() 
+            return render_to_response('pub_2.html')
 
     except Exception as e:
         logger.debug('upload-image: %s' % e)
         return render_to_response('pub_1.html')
-    return render_to_response('pub_2.html')
+    return render_to_response('index.html')
 
 def uploadImage(image_file,SessionId):
     try:
@@ -88,3 +94,33 @@ def uploadImage(image_file,SessionId):
         logger.debug('upload-image: %s' % e)
 
     return result
+
+def postAskInfo(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    try:
+        result = {}
+        errors=[]
+        title = None
+        postUsername = None
+        mobile = None
+        user = request.user
+        createdTime = getCurrentTime()
+        description = ""
+        if request.method == "POST":
+            title = request.POST.get('title')
+            contactUsername = request.POST.get('name')
+            mobile = request.POST.get('mobile')
+            description = request.POST.get('description')
+            itemid = ask_info_table.createUniqueItemId()
+            itemObject = ask_info_table.objects.create(ItemId=itemid,ItemTitle=title,TzyUser=user)
+            itemObject.PostTime = createdTime
+            itemObject.ItemDescription = description
+            itemObject.ContactUsername = contactUsername
+            itemObject.ContactUserPhone = mobile
+            itemObject.save() 
+            return render_to_response('index.html')
+
+    except Exception as e:
+        logger.debug('upload-image: %s' % e)
+        return render_to_response('ask_item.html')
+    return render_to_response('ask_item.html')

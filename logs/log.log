@@ -295,3 +295,10 @@ DoesNotExist: SecretQuestion matching query does not exist.
 [2015-04-19 12:56:52,965] [application.display_items.views] [DEBUG] upload-image: "'file'"
 [2015-04-19 13:01:48,414] [application.display_items.views] [DEBUG] upload-image: 'instancemethod' object has no attribute '__getitem__'
 [2015-04-19 15:23:24,792] [application.display_items.views] [DEBUG] upload-image: no such column: ssl_users_user_items_table.itemImageurls
+[2015-04-20 04:23:03,088] [application.display_items.views] [DEBUG] upload-image: global name 'md5HashEncodeWithTime' is not defined
+[2015-04-20 04:23:05,000] [application.display_items.views] [DEBUG] upload-image: global name 'md5HashEncodeWithTime' is not defined
+[2015-04-20 04:24:23,197] [application.display_items.views] [DEBUG] upload-image: type object 'ask_info_table' has no attribute 'isItemExist'
+[2015-04-20 04:24:48,830] [application.display_items.views] [DEBUG] upload-image: no such table: display_items_ask_info_table
+[2015-04-20 04:26:05,483] [application.display_items.views] [DEBUG] upload-image: no such table: display_items_ask_info_table
+[2015-04-20 04:27:28,290] [application.display_items.views] [DEBUG] upload-image: 'Title' is an invalid keyword argument for this function
+[2015-04-20 04:28:31,289] [application.display_items.views] [DEBUG] upload-image: 'ItemTitle' is an invalid keyword argument for this function
