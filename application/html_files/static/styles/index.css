@@ -815,7 +815,8 @@ a:hover #fabu{
 
 .on-selling li {
     zoom: 1;
-    padding-bottom: 6px;
+    padding-bottom: 2px;
+    padding-top: 2px;
     height: 75px;
     position: relative;
     border-top: 1px #ccc solid;
@@ -862,7 +863,7 @@ h5{
 
 .on-selling .desc{
     width: 187px;
-    height:35px;
+    height:30px;
     overflow: hidden;
     margin:0;
     padding: 0;
