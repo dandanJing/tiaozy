@@ -76,11 +76,11 @@ function showBooks(ths,data){
     for(var i=0; i<data.length; i++){
         var item = data[i];
         htmlInner += "<li class=\"item\"><div class=\"item-pic\">";
-        htmlInner += "<a href=\"/show_item_detail?id="+item['ItemId']+" target=\"_blank\">";
+        htmlInner += "<a target=\"_blank\" href=\"/open_item?id="+item['ItemId']+"\">";
         htmlInner += "<img class=\"J_ItemPic\" src=\""+item['ImageUrl']+"\" title=\""+item['Title']+"\"></a>";
         htmlInner += "<span class=\"pic_action_box\"><a href=\"\"><img src=\"/static/images/buy_car_1.jpg\"></a>";
         htmlInner += "<a href=\"\"><img src=\"/static/images/upload_1.jpg\"></a></span></div>";
-        htmlInner += "<p class=\"item-title\"><a href=\"\">"+item['Title']+"</a></p>";
+        htmlInner += "<p class=\"item-title\"><a href=\"/open_item?id="+item['ItemId']+"\">"+item['Title']+"</a></p>";
         htmlInner += "<div class=\"price-block\"><p class=\"price\"><b>¥</b><em>"+item['Price']+"</em></p><p class=\"old_price\">";
         htmlInner += "<b>原价&nbsp;&nbsp;¥</b><em>"+item['OldPrice']+"</em></p></div></li>";                          
     }

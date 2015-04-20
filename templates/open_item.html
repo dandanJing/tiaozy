@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//WSC//DTD XHTML 1.0 Transitional //EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="zh-cn"/>
+    <title>跳蚤园</title>
+    <link rel="shortcut icon" href="/static/images/ssl-icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/toastr/toastr.min.css">
+    <script language="javascript"  src="/static/scripts/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="/static/scripts/jquery.alerts.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/toastr/toastr.min.js"></script>
+    <link rel="stylesheet" href="/static/styles/open_item.css">
+</head>
+{% if result %}
+<body class="homebody">
+    <div id = "topbar">
+        <div class="w pos">
+            <div class="bar_left">
+                <h2>清华大学</h2>
+                <span id = "ipconfig"></span>
+                <div id = "weather" class="weather" style="display:block;">
+                    <span class="wt">
+                        <img src="/static/images/ws_7.jpg" alt="">
+                        <em>小雨</em>&nbsp;&nbsp;
+                        <em class="wTemp">17 ~ 5℃</em>
+                    </span>
+                    <span class = "today_lv today_lv_1">重度污染</span>
+                    <div id="weatherbox" class="wb"></div>
+                </div>
+            </div>
+            <div class="bar_right">
+                <div class="return-home"><a href="/">首页</a>&nbsp;&nbsp;|</div>
+                <div id="my_menu" class="">
+                    <a id="to_my_menu" href="" target="_self">我的尚书</a>
+                    <span class="arrow"></span>
+                    <div id="my_menu_box">
+                        <a href="">我的发布</a>
+                        <a href="">我的足迹</a>
+                        <a href="">已买到的宝贝</a>
+                    </div>
+                </div>
+                <div id="login">
+                    <span class="login_name">欢迎{{ result.Username }},</span>
+                    <a href="/loginout/">退出登录</a>
+                </div>
+                <div id="login_success">
+                    <a href="/login/">登录</a>
+                    <span class="gap">|</span>
+                    <a href="/reg/">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id = "header">
+        <div id="headerinside">
+            <form onsubmit="_gaq.push([&quot;pageTracker._trackEvent&quot;, &quot;home&quot;, &quot;search_top_click&quot;, &quot;/bj/index/&quot;]);var r=true;try{b_query(); r=false;}catch(e){};return r;" action="/sou/" target="_self">
+                <div id="searchbar">
+                    <div id="searkey">
+                        <span id="key">
+                            <input type="text" id="keyword" name="key" class="keyword" value="搜索二手书" onblur="win.closeToolTipWindow();if(this.value=='')this.value='搜索二手书',this.className='keyword'" onkeyup="win.GetContentData();" onfocus="if(this.value=='搜索二手书')this.value='',this.className='keyword2'" autocomplete="off">
+                        </span>
+                    </div>
+                    <div class="inputcon">
+                        <input type="submit" name="button" id="searchbtn" class="btnall" value="尚书搜索" onmousemove="this.className='btnal2'" onmouseout="this.className='btnall'">
+                    </div>
+                </div>
+            </form>
+            <a href="http://post.58.com/1/" id="fabu" rel="nofollow"><i></i>发布闲置</a>
+            <a href="http://about.58.com/info/del-menu.html" id="delinfo" rel="nofollow" class="search-no">修改<i>/</i>删除信息</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-body">
+            <div class="body-left">
+            <!-- mainTitle 主标题-->
+                <div class="mainTitle">
+                    <h1>{{result.Title}}</h1>
+                    <div class="mini-menu">
+                        <ul class="mini-menu-left">
+                            <li class="browse">
+                                <h5>宝贝浏览次数</h5>
+                                <span>{{result.ClickCount}}</span>
+                            </li>
+                            <li>
+                                <h5>最近编辑</h5>
+                                <span>{{result.LastEditTime}}</span>
+                            </li>
+                        </ul>
+                        <div class="mini-menu-right">
+                            <li id="freemsg" class="freemsg">
+                                <span id="gaq_phone" class="ml_1" onclick="clickLog('from=ES_detail_sendToPhone');">
+                                    <i class="mtit1"></i>免费发送到手机
+                                </span>
+                            </li>
+                            <li id="collect" class="collect">
+                                <span class="ml_2" ><i class="mtit2"></i>收藏<i class="mtit0"></i>
+                                </span>
+                            </li>
+                            <li id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                                <span id="bds_more" class="bds_more">求鉴定<i class="mtit0"></i>
+                                </span>
+                            </li>
+                            <li id="report" class="report">
+                                <span class="ml_4" ><i class="mtit4"></i>举报<i class="mtit0"></i>
+                                </span>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-imgs">
+                    <div class="item_image" id ="show-img">
+                        <span><img src="{{result.ImageUrls.0}}"></span>
+                    </div>
+                    <div class="item_thumb">
+                        <a href="#" id="img_scrollLeft" class="icon_left"></a>
+                        <a href="#" id="img_scrollRight" class="icon_right"></a>
+                        <div class="thumb_main">
+                            <ul class="imgs_small" id = "small-imgs">
+                                {% for image_each in result.ImageUrls %}
+                                <li><img src="{{image_each}}"></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>      
+                </div>
+                <div class="item-summary">
+                    <ul class="summary">
+                        <li>
+                            <div class="sub_title">出&nbsp;&nbsp;手：</div>
+                            <div class="sub_content"><span class="price">{{result.Price}}</span>元</div>
+                        </li>
+                        <li>
+                            <div class="sub_title">原&nbsp;&nbsp;价：</div>
+                            <div class="sub_content">{{result.OldPrice}}元</div>
+                        </li>
+                        <li >
+                            <div class="sub_title">成&nbsp;&nbsp;色：</div>
+                            <div class="sub_content">{{result.Feature}}</div>
+                        </li>
+                        <li class="new-col">
+                            <div class="sub_title">卖&nbsp;&nbsp;家：</div>
+                            <div class="sub_content seller">{{result.ContactUserName}}</div>
+                        </li>
+                        <li>
+                            <div class="sub_title">联&nbsp;&nbsp;系：</div>
+                            <div class="sub_content seller-phone">{{result.ContactUserPhone}}****
+                                <span class="show_num">查看完整号码</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sub_title">Q&nbsp;&nbsp;Q：</div>
+                            <div class="sub_content">qq</div>
+                        </li>
+                        <li>
+                            <div class="sub_title">咨&nbsp;&nbsp;询：</div>
+                            <span id="talk_btn" onclick="clickLog('from=ES_bangbang_message');">
+                                <img id="img_talk" name="icon_talk" width="82px" height="26px" src="/static/images/online.gif">
+                            </span>
+                        </li>
+                        <li>
+                            <div class="sub_title">其&nbsp;&nbsp;他：</div>
+                            <div class="sub_content">24位用户发布了相似物品</div>
+                        </li>
+                    </ul>
+                    {% if result.IsOwner %}
+                    <div class="edit-item">
+                        修改当前发布
+                    </div>
+                    {% else %}
+                    <div class="post-new-item">
+                        我也要卖
+                    </div>
+                    <div class="buy-item">
+                        加入购物车
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="body-right">
+                <div class="owner-image">
+                    <div class="own-image">
+                        <!-- <i class="cir_img"></i> -->
+                        <img src="/static/images/ssl-icon.ico">
+                        <p>尚书林</p>
+                    </div>              
+                </div>
+                <div class="owner-auth">
+                </div>
+                <div class="owner-post">
+                    <p>发布闲置5条</p>
+                    <p>成功出售3次</p>
+                    <p>评论4条</p>
+                    <p>评分4.8分</p>
+                </div>
+            </div>
+            <div class="body-detail">
+                <div class="detail-title">
+                    <!-- <span id="detail-para" class="active"><a>宝贝参数</a></span> -->
+                    <span id="detail-cont" class="active"><a>宝贝详情</a></span>
+                    <span id="detail-talk"><a>留言(5)</a></span>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        {% endif %}
+    </div>
+</body>
+</html>

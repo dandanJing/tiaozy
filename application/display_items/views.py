@@ -250,3 +250,43 @@ def getBooksWithType(typeStr):
         logger.debug('getBooksWithType: %s' % e)
 
     return result
+
+def openItem(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    itemid = ""
+    result = {}
+    login_user = None
+    is_owner = False
+    try:
+        if request.method == "GET":
+            if request.user.is_authenticated():
+                login_user = request.user
+                result["Username"]=login_user
+            itemid = request.GET.get("id")
+            item = user_items_table.objects.filter(ItemId=itemid)[0]
+            print item
+            if  item:
+                item.ClickCount = item.ClickCount+1
+                item.save()
+                postUser = item.TzyUser
+                is_owner = login_user == postUser.username
+                image_urls = json.loads(item.ItemImageUrls)
+                result["ItemId"]= item.ItemId
+                result["Title"]= item.ItemName
+                result["Price"]= item.ItemPrice
+                result["OldPrice"]=item.ItemOldPrice
+                result["ImageUrls"]=image_urls
+                result["Description"]=item.ItemDescription
+                result["ClickCount"] = item.ClickCount
+                result["PostTime"] = formatTime(item.PostTime,"%Y-%m-%d %H:%M")
+                result["LastEditTime"] = formatTime(item.LastEditTime,"%Y-%m-%d %H:%M")
+                result["Feature"] = item.Feature
+                result["IsOwner"] = is_owner
+                result["ContactUserName"] = item.ContactUserName
+                result["ContactUserPhone"] = item.ContactUserPhone[:7]
+            else:
+                return HttpResponseRedirect("/index.html")
+    except Exception as e:
+        logger.debug('openItem: %s' % e)
+
+    return render_to_response('open_item.html',{"result":result})

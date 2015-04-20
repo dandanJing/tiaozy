@@ -646,7 +646,7 @@ a:hover #fabu{
     height: 12px;
     margin-right: 5px;
     vertical-align: middle;
-    background: url(/static/images/good_items/main_title_bg.png) no-repeat -4px -233px;
+    background: url(/static/images/main_title_bg.png) no-repeat -4px -233px;
 }
 
 .mtit1 {

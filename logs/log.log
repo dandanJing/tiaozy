@@ -338,3 +338,14 @@ DoesNotExist: SecretQuestion matching query does not exist.
 [2015-04-21 06:48:56,323] [application.display_items.views] [DEBUG] postAskInfo: Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x7fb0bd6e3bd0>>": "ask_info_table.TzyUser" must be a "tzy_users" instance.
 [2015-04-21 06:51:36,793] [application.display_items.views] [DEBUG] postAskInfo: NOT NULL constraint failed: display_items_ask_info_table.TzyUser_id
 [2015-04-21 07:00:59,792] [application.display_items.views] [DEBUG] postAskInfo: Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x7f269792bc90>>": "ask_info_table.TzyUser" must be a "tzy_users" instance.
+[2015-04-20 18:08:42,837] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ItemImageUrls'
+[2015-04-20 18:09:29,245] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ItemImageUrls'
+[2015-04-20 18:10:13,126] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ItemImageUrls'
+[2015-04-20 18:11:08,832] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ItemImageUrls'
+[2015-04-20 18:11:59,488] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ItemImageUrls'
+[2015-04-20 18:21:17,821] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ItemImageUrls'
+[2015-04-20 18:26:23,743] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ItemImageUrls'
+[2015-04-20 19:09:06,021] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ClickCount'
+[2015-04-20 19:09:10,313] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ClickCount'
+[2015-04-20 19:10:58,347] [application.display_items.views] [DEBUG] openItem: 'QuerySet' object has no attribute 'ClickCount'
+[2015-04-20 19:12:46,761] [application.display_items.views] [DEBUG] openItem: 'user_items_table' object has no attribute 'exists'

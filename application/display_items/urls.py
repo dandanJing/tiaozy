@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^get-ssl-essence-books','application.display_items.views.getEssenceBooks',name='getEssenceBooks'),
     url(r'^get-ssl-en-books','application.display_items.views.getSSLEnBooks',name='getSSLEnBooks'),
     url(r'^get-ssl-maph-books','application.display_items.views.getSSLMaPhBooks',name='getSSLMaPhBooks'),
+    url(r'^open_item','application.display_items.views.openItem',name='openItem'),
 )
