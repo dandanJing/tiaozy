@@ -129,3 +129,30 @@ em .f1{
     background: url("/static/images/flow_step.png") no-repeat scroll 0px -180px transparent;
 }
 
+.content{
+    width: 1000px;
+    color: #000;
+    font-size: 18px;
+    float: left;
+}
+
+.content ul{
+    list-style: none;
+    display: block;
+    margin-top: 60px;
+}
+
+.content ul li{
+    display: block; 
+    text-align: center;
+    text-decoration: underline;
+    padding: 0 420px;
+}
+
+.return-home{
+    color: #000;
+    text-decoration: underline;
+    display: block;
+    margin-top: 15px;
+    padding-right: 10px;
+}

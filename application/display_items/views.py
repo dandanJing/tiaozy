@@ -55,12 +55,13 @@ def postItem(request):
             SessionId = os.urandom(10)
             for fileEach in files:
                 result = uploadImage(fileEach,SessionId)
+                print "imageurl : %s" % result['ImageUrl']
                 if result['status'] == 200:
                     imageUrls.append(result['ImageUrl'])
                 else:
                     return render_to_response('pub_1.html')
             itemid = user_items_table.createUniqueItemId()
-            itemObject = user_items_table.objects.create(ItemId=itemid,ItemName=title,ItemOldPrice=oldPrice,ItemPrice=price,ItemImageUrls=imageUrls,ItemType=styleIndex,TzyUser=user)
+            itemObject = user_items_table.objects.create(ItemId=itemid,ItemName=title,ItemOldPrice=oldPrice,ItemPrice=price,ItemImageUrls=json.dumps(imageUrls),ItemType=styleIndex,TzyUser=user)
             itemObject.PostTime = createdTime
             itemObject.LastEditTime = createdTime
             itemObject.ItemDescription = description
@@ -70,7 +71,7 @@ def postItem(request):
             return render_to_response('pub_2.html')
 
     except Exception as e:
-        logger.debug('upload-image: %s' % e)
+        logger.debug('postItem: %s' % e)
         return render_to_response('pub_1.html')
     return render_to_response('index.html')
 
@@ -99,7 +100,6 @@ def postAskInfo(request):
     print 'request info: %s %s' % (request.method, request.path)
     try:
         result = {}
-        errors=[]
         title = None
         postUsername = None
         mobile = None
@@ -121,6 +121,29 @@ def postAskInfo(request):
             return render_to_response('index.html')
 
     except Exception as e:
-        logger.debug('upload-image: %s' % e)
+        logger.debug('postAskInfo: %s' % e)
         return render_to_response('ask_item.html')
     return render_to_response('ask_item.html')
+
+def getOnSelling(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    try:
+        result = []
+        items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:2]
+        if items_sets.exists():
+            for item in items_sets.iterator():
+                image_urls = json.loads(item.ItemImageUrls)
+                result.append({
+                    "ItemId":item.ItemId,
+                    "Title":item.ItemName,
+                    "Price":item.ItemPrice,
+                    "OldPrice":item.ItemOldPrice,
+                    "ImageUrl":image_urls[0],
+                    "Description":item.ItemDescription,
+                })
+
+    except Exception as e:
+        logger.debug('getOnSelling: %s' % e)
+
+    print result
+    return handle_response(result)

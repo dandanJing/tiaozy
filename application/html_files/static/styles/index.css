@@ -753,14 +753,14 @@ a:hover #fabu{
 }
 
 .extend{
-    height: 70px;
+    height: 65px;
     background-color: #fff;
 }
 
 .idle-start .extend .mod{
     float: left;
     width: 144px;
-    height: 70px;
+    height: 65px;
     margin-left: 10px;
 }
 
@@ -801,10 +801,10 @@ a:hover #fabu{
 .on-selling h3 {
     text-align: left;
     display: block;
-    font-size: 15px;
+    font-size: 14px;
     height: 30px;
     line-height: 30px;
-    font-weight: 500;
+    font-weight: 600;
     padding-left: 8px;
     margin: 0;
     -webkit-margin-before: 1em;
@@ -818,21 +818,19 @@ a:hover #fabu{
     padding-bottom: 6px;
     height: 75px;
     position: relative;
+    border-top: 1px #ccc solid;
 }
 
 .on-selling .item-pic{
     width: 75px;
     height: 75px;
     float: left;
-}
-
-.sh-pic{
     display: table;
     text-align: center;
     table-layout: fixed;
 }
 
-.sh-pic a{
+.on-selling .item-pic a{
     display: table-cell;
     vertical-align: middle;
 }
@@ -844,7 +842,8 @@ a:hover #fabu{
 
 .on-selling .info{
     float: left;
-    margin-left: 12px;
+    margin-left: 10px;
+    color: #333;
 }
 
 h5{
@@ -858,6 +857,7 @@ h5{
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
     font-size: 100%;
+    padding-top: 4px;
 }
 
 .on-selling .desc{
@@ -866,14 +866,18 @@ h5{
     overflow: hidden;
     margin:0;
     padding: 0;
+    margin-top: 12px;
     display: block;
     text-align: left;
+    font-size: 12px;
 }
 
 .on-selling .desc a{
-    color: #333;
+    color: #555;
     text-decoration:none;
     cursor: auto;
+    height: 33px;
+    overflow: hidden;
 }
 
 .price-block {
@@ -881,8 +885,8 @@ h5{
     font-size: 12px;
     text-align: right;
     float: right;
-    display: block;
-    padding-top: 5px;
+    display: inline-block;
+    padding-bottom: 2px;
     padding-right: 14px;
 }
 

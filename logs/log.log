@@ -302,3 +302,6 @@ DoesNotExist: SecretQuestion matching query does not exist.
 [2015-04-20 04:26:05,483] [application.display_items.views] [DEBUG] upload-image: no such table: display_items_ask_info_table
 [2015-04-20 04:27:28,290] [application.display_items.views] [DEBUG] upload-image: 'Title' is an invalid keyword argument for this function
 [2015-04-20 04:28:31,289] [application.display_items.views] [DEBUG] upload-image: 'ItemTitle' is an invalid keyword argument for this function
+[2015-04-20 07:48:36,063] [application.display_items.views] [DEBUG] getOnSelling: global name 'ItemImageUrls' is not defined
+[2015-04-20 07:49:01,265] [application.display_items.views] [DEBUG] getOnSelling: global name 'ItemImageUrls' is not defined
+[2015-04-20 07:49:16,327] [application.display_items.views] [DEBUG] getOnSelling: No JSON object could be decoded
