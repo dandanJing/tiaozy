@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/styles/publish.css">
     <script language="javascript"  src="/static/scripts/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/static/scripts/validate.js"></script>
+    <script type="text/javascript" src="/static/scripts/publish.js"></script>
 </head>
 <body>
     <div class="header">
@@ -40,35 +41,24 @@
         </ol>
     </div>
     <div class="type-box">
+        <span>选择大类</span>
         <ul class="type-ul">
-            <li>
-                <a href="pub/?type=1" index_tag = "1">书籍／笔记</a>
-            </li>
-            <li>
-                <a href="pub/?type=2" index_tag = "2">化妆品</a>
-            </li>
-            <li>
-                <a href="pub/?type=3" index_tag = "3">数码</a>
-            </li>
-            <li>
-                <a href="pub/?type=4" index_tag = "4">单车／电动车</a>
-            </li>
-            <li>
-                <a href="pub/?type=5" index_tag = "5">运动装备</a>
-            </li>
-            <li>
-                <a href="pub/?type=6" index_tag = "6">服装</a>
-            </li>
-            <li>
-                <a href="pub/?type=7" index_tag = "7">生活用品</a>
-            </li>
-            <li>
-                <a href="pub/?type=8" index_tag = "8">手工艺品</a>
-            </li>
-            <li>
-                <a href="pub/?type=9" index_tag = "9">其他</a>
-            </li>
+            <li onclick="selectGroup(1,this)" class="active">书籍／笔记</li>
+            <li onclick="selectGroup(2,this)">化妆品</li>    
+            <li onclick="selectGroup(3,this)">数码</li>
+            <li onclick="selectGroup(4,this)">单车／电动车</li>
+            <li onclick="selectGroup(5,this)">运动装备</li>
+            <li onclick="selectGroup(6,this)">服装</li>
+            <li onclick="selectGroup(7,this)">生活用品</li>
+            <li onclick="selectGroup(8,this)">手工艺品</li>
+            <li onclick="selectGroup(9,this)">其他</li>
         </ul>
+    </div>
+    <div class="list-box">
+        <span>选择小类</span>
+        <div id="list-inner">
+            
+        </div>
     </div>
 </body>
 </html>

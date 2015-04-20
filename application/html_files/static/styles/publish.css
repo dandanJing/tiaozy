@@ -117,15 +117,59 @@ a{
     position: relative;
 }
 
+.type-box span, .list-box span{
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+    display: block;
+    padding-left: 20px;
+}
+
 .type-ul{
     font-size: 16px;
     list-style: none;
 }
 
 .type-box li{
-    width: 25%;
+    width: 20%;
     float: left;
-    margin-left: 50px;
-    margin-bottom: 18px;
+    margin-left: 30px;
+    margin-bottom: 10px;
     border: medium none;
+}
+
+.type-box .active{
+    color: #55f;
+    text-decoration: underline;
+}
+
+.list-box {
+    width: 1000px;
+    margin: 0px auto;
+    clear: both;
+    background: none repeat scroll 0% 0% #FFF;
+    clear: both;
+    padding: 0px 0px 15px 15px;
+    position: relative;
+    margin-top: 55px;
+}
+
+#list-inner ul{ 
+    list-style: none;
+    margin-top: 15px;
+}
+
+#list-inner li{
+    width: 10%;
+    float: left;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    border: medium none;
+}
+
+#list-inner li a{
+    font-size: 18px;
+    display: inline-block;
+    float: left;
+    color: #000;
 }
