@@ -219,9 +219,7 @@
                     </div>
                     <div class="good-items-body">
                         <div class="good-item-list item-list" id="ssl-essence">
-                            {%if essence_items %}
                             <ul>
-                                {% for item in essence_items%}
                                 <li class="item">
                                     <div class="item-pic">
                                         <a href="/show_item_detail?id={{item.ItemId}}" target="_blank">
@@ -246,10 +244,7 @@
                                         </p>
                                     </div>
                                 </li>
-                                {% endfor %}
                             </ul>
-                            {% else %}
-                            {% endif %}
                         </div>
                     </div>
                 </div>

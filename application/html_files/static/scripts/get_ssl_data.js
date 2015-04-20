@@ -76,7 +76,7 @@ function showBooks(ths,data){
     for(var i=0; i<data.length; i++){
         var item = data[i];
         htmlInner += "<li class=\"item\"><div class=\"item-pic\">";
-        htmlInner += "<a href=\"/show_item_detail?id="+item['ItemId']+"\" target=\"_blank\">";
+        htmlInner += "<a href=\"/show_item_detail?id="+item['ItemId']+" target=\"_blank\">";
         htmlInner += "<img class=\"J_ItemPic\" src=\""+item['ImageUrl']+"\" title=\""+item['Title']+"\"></a>";
         htmlInner += "<span class=\"pic_action_box\"><a href=\"\"><img src=\"/static/images/buy_car_1.jpg\"></a>";
         htmlInner += "<a href=\"\"><img src=\"/static/images/upload_1.jpg\"></a></span></div>";
@@ -86,4 +86,15 @@ function showBooks(ths,data){
     }
     htmlInner += "</ul>";
     ths.html(htmlInner);
+    $(".item-pic").hover(function(){
+        if($(this).children.length > 1){
+            var temp = $(this).children().eq(1);
+            temp.css({"display":"inline"});
+        }
+    },function(){
+        if($(this).children.length > 1){
+            var temp = $(this).children().eq(1);
+            temp.css({"display":"none"});
+        }
+    });
 }
