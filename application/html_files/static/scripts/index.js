@@ -32,7 +32,7 @@ $(document).ready(function(){
     });
 
     showOnSelling();
-    // var selling_time = setInterval("showOnSelling()", 15000);
+    var selling_time = setInterval("showOnSelling()", 15000);
 });
 
 function showAuto() {
