@@ -147,3 +147,23 @@ def getOnSelling(request):
 
     print result
     return handle_response(result)
+
+def getOnAsking(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    try:
+        result = []
+        items_sets = ask_info_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:2]
+        if items_sets.exists():
+            for item in items_sets.iterator():
+                result.append({
+                    "ItemId":item.ItemId,
+                    "Title":item.ItemTitle,
+                    "Description":item.ItemDescription,
+                    "PostTime":formatTime(item.PostTime,"%Y-%m-%d %H:%M")
+                })
+
+    except Exception as e:
+        logger.debug('getOnAsking: %s' % e)
+
+    print result
+    return handle_response(result)

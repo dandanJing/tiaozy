@@ -33,6 +33,9 @@ $(document).ready(function(){
 
     showOnSelling();
     var selling_time = setInterval("showOnSelling()", 15000);
+
+    showOnAsking()
+    var asking_time = setInterval("showOnAsking()", 15000);
 });
 
 function showAuto() {
@@ -58,6 +61,30 @@ function showOnSelling(){
             }
             htmlInner += "</ul>";
             $("#on-selling-box").html(htmlInner);
+        },
+        error:function (data) {
+            
+        },
+    });
+}
+
+function showOnAsking(){
+    $.ajax({
+        url:"/get-on-asking",
+        type:"get",
+        dataType:"json",
+        contentType:'application/json;charset=UTF-8',
+        success:function (data) {
+            var htmlInner = "<ul>";
+            for(var i=0; i<data.length; i++){
+                var item = data[i];
+                htmlInner += "<li><a href=\"/\">";
+                htmlInner += "<p class=\"asking-title\">"+item['Title']+"</p>";
+                htmlInner += "<p class=\"asking-desc\">"+item['Description']+"</p>";
+                htmlInner += "<p class=\"post-time\">"+item['PostTime']+"</p></a></li>";
+            }
+            htmlInner += "</ul>";
+            $("#on-asking-box").html(htmlInner);
         },
         error:function (data) {
             

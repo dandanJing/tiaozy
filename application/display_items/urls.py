@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^post-item/','application.display_items.views.postItem',name='postItem'),
     url(r'^post-ask-info/','application.display_items.views.postAskInfo',name='postAskInfo'),
     url(r'^get-on-selling','application.display_items.views.getOnSelling',name='getOnSelling'),
+    url(r'^get-on-asking','application.display_items.views.getOnAsking',name='getOnAsking'),
 )

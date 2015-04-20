@@ -51,6 +51,15 @@ def json_loads(string):
 def getCurrentTime():
     return int(time.time())
 
+def formatTime(input_time,time_format):
+    try:
+        timeArray = time.localtime(input_time)
+        formatTime =  time.strftime(time_format,timeArray)
+    except ValueError:
+        return None
+    else:
+        return formatTime
+
 def dict_extend(dict_obj, extend):
     for key in extend:
         dict_obj[key] = extend[key]
