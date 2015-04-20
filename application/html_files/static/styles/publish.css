@@ -117,7 +117,7 @@ a{
     position: relative;
 }
 
-.type-box span, .list-box span{
+.type-title{
     font-size: 18px;
     color: #000;
     font-weight: bold;
@@ -152,6 +152,7 @@ a{
     padding: 0px 0px 15px 15px;
     position: relative;
     margin-top: 55px;
+    list-style: none;
 }
 
 #list-inner ul{ 

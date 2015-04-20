@@ -305,3 +305,32 @@ DoesNotExist: SecretQuestion matching query does not exist.
 [2015-04-20 07:48:36,063] [application.display_items.views] [DEBUG] getOnSelling: global name 'ItemImageUrls' is not defined
 [2015-04-20 07:49:01,265] [application.display_items.views] [DEBUG] getOnSelling: global name 'ItemImageUrls' is not defined
 [2015-04-20 07:49:16,327] [application.display_items.views] [DEBUG] getOnSelling: No JSON object could be decoded
+[2015-04-19 16:29:59,180] [application.display_items.views] [DEBUG] postItem: 'ImageUrl'
+[2015-04-20 16:06:37,504] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:06:52,570] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:07:07,598] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:07:22,603] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:07:37,511] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:07:52,521] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:08:07,553] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:08:22,550] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:08:37,511] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:08:52,899] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:09:07,880] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:09:22,545] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:09:37,592] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:09:52,775] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:10:07,835] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:10:09,117] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:10:24,163] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:10:39,204] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:11:12,268] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:11:27,355] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:11:42,313] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:11:57,320] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:12:04,274] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:12:32,100] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:12:47,338] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:13:02,502] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:13:08,964] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
+[2015-04-20 16:16:18,148] [application.display_items.views] [DEBUG] getOnSelling: list index out of range

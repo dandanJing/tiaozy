@@ -51,6 +51,7 @@ def postItem(request):
                 styleIndex = request.POST.get('type')
                 print 'style %s' % styleIndex
             files = request.FILES.getlist('upfile[]')
+            print files
             print 'title: %s name: %s description: %s' %(title, postUsername,description)
             SessionId = os.urandom(10)
             for fileEach in files:
@@ -145,7 +146,6 @@ def getOnSelling(request):
     except Exception as e:
         logger.debug('getOnSelling: %s' % e)
 
-    print result
     return handle_response(result)
 
 def getOnAsking(request):
@@ -165,5 +165,4 @@ def getOnAsking(request):
     except Exception as e:
         logger.debug('getOnAsking: %s' % e)
 
-    print result
     return handle_response(result)

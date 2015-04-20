@@ -57,7 +57,7 @@
                     </label>
                     <div class="controls">
                         <div class="input-wrap">
-                            <input id="title" class="input title" type="text" value="dada" name="title">
+                            <input id="title" class="input title" type="text" value="" name="title">
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     </label>
                     <div class="controls">
                         <div class="input-wrap">
-                            <input id="price" class="input J_PriceCheck" type="text" value="1" name="price"></input>
+                            <input id="price" class="input J_PriceCheck" type="text" value="" name="price"></input>
                             <span>元
                             </span>
                         </div>
@@ -93,7 +93,7 @@
                     </label>
                     <div class="controls">
                         <div class="input-wrap">
-                            <input id="original-price" class="input J_PriceCheck" type="text" value="10" name="original-price"></input>
+                            <input id="original-price" class="input J_PriceCheck" type="text" value="" name="original-price"></input>
                             <span>元
                             </span>
                         </div>
@@ -107,7 +107,11 @@
                         <div class="input-prepend">
                             <label class="add-on" for="name">手机号：
                             </label>
-                            <input id="mobile" class="input" type="text" value="1520151" name="mobile"></input>
+                            {% if mobile %}
+                            <input id="mobile" class="input" type="text" value="{{mobile}}" name="mobile"></input>
+                            {% else %}
+                            <input id="mobile" class="input" type="text" value="" name="mobile"></input>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -116,7 +120,11 @@
                         <div class="input-prepend">
                             <label class="add-on" for="name">姓名：
                             </label>
-                            <input id="name" class="input" type="text" value="刘先生/女士" name="name"></input>
+                             {% if username %}
+                            <input id="name" class="input" type="text" value="{{username}}" name="name"></input>
+                            {% else %}
+                            <input id="name" class="input" type="text" value="" name="name"></input>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -149,7 +157,7 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <input id="btn-publish" class="btn-publish" type="button" style="width:110px;height:34px;" checked="checked" value="立刻发布" onclick="submit_form()"></input>
+                    <input id="btn-publish" class="btn-publish" type="button" style="width:110px;height:34px;" checked="checked" value="立刻发布" onclick="submit_form();"></input>
                 </div>
             </div>
         </form>

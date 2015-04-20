@@ -8,6 +8,8 @@ $(document).ready(function(){
             $("#feature").val($(this).val());
         }
     });
+    $(".upload-inner").hover(function(){
+    });
 });
 
 function checkImgType(ths){  
@@ -54,30 +56,29 @@ function selectfile(ths){
         divObj.appendChild(imgObject);
         var _newfile   = ths.cloneNode();
         _newfile.name  = "upfile[]";
-        $(_newfile).css({"display":"none"});
+        $(_newfile).css({"width":"1px","height":"1px"}),
+        // _newfile.css({"display":"none"});
+        // _newfile.disabled = true;
         divObj.appendChild(_newfile);
-        
-        // if ($('#upload-file').val() != '') {
-
-            // $.ajaxFileUpload({
-            //     url: '/upload-image',
-            //     secureuri: false,
-            //     fileElementId: 'upload-file',
-            //     dataType: 'text',
-            //     success: function(data,status) {
-            //          alert(data);
-            //          var url = data.match(/http:[^"]*/g)[0];
-            //          var newImg = document.createElement("<img src=''>");
-            //          newImg.src = url;
-            //          $("#J_UploadPic").appendChild(newImg);
-            //     },
-            //     error: function(data,status,e) {
-            //         alert(data['Message']);
-            //         toastr.error('图片上传失败！');
-            //     }
-            // });
-        // } 
-        // alert($('#upload-file').get(0).files.length);
+        var delObj = document.createElement('img');
+        delObj.src = "/static/images/delete.jpg";
+        $(delObj).css({"width":"20px","height":"20px","top":"0px","margin-left":"-20px","position":"absolute","z-index":"3"});
+        divObj.appendChild(delObj);
+        $(delObj).click(function(){
+            var chObjs = $(this).parent().children();
+            var index = $(".upload img").index(this);
+            if(index == -1){
+                return;
+            }
+            var rmIndex = 3*(index/2);
+            var len = chObjs.length;
+            if(rmIndex < len){
+                for(var i=0;i<3;i++){
+                    chObjs.eq(rmIndex).remove();
+                    rmIndex = rmIndex-1;
+                }
+            }   
+        });
      }
 }
 
