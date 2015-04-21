@@ -213,21 +213,7 @@
                                     <p class="asking-desc">需要一辆女式山地车</p>
                                     <p class="post-time">2015-4-20 18:30</p>
                                 </a>
-                            </li>
-                            <li>
-                                 <a href="/">
-                                    <p class="asking-title">求购单车</p>
-                                    <p class="asking-desc">需要一辆女式山地车</p>
-                                    <p class="post-time">2015-4-20 18:30</p>
-                                </a>
-                            </li> 
-                            <li>
-                                 <a href="/">
-                                    <p class="asking-title">求购单车</p>
-                                    <p class="asking-desc">需要一辆女式山地车</p>
-                                    <p class="post-time">2015-4-20 18:30</p>
-                                </a>
-                            </li>              
+                            </li>            
                         </ul>
                     </div>
                 </div>
@@ -240,13 +226,13 @@
                     </div>
                     <div class="good-items-body">
                         <div class="good-item-list item-list">
-                            {%if good_book_list %}
+                            {%if essence_items %}
                             <ul>
-                                {% for item in good_book_list%}
+                                {% for item in essence_items%}
                                 <li class="item">
                                     <div class="item-pic">
-                                        <a href="/show_item_detail?id={{item.itemid}}" target="_blank">
-                                            <img class="J_ItemPic" src="http://shangshulin.oss-cn-beijing.aliyuncs.com/ssl-items/{{item.itemType}}/{{item.itemimageurl}}" title={{item.itemname}}>
+                                        <a href="/show_item_detail?id={{item.ItemId}}" target="_blank">
+                                            <img class="J_ItemPic" src="{{item.ImageUrl}}" title="{{item.Title}}">
                                         </a>
                                         <span class="pic_action_box">
                                             <a href=""><img src="/static/images/buy_car_1.jpg"></a>
@@ -254,16 +240,16 @@
                                         </span>
                                     </div>
                                     <p class="item-title">
-                                        <a href="">{{item.itemname}}</a>
+                                        <a href="">{{item.Title}}</a>
                                     </p>
                                     <div class="price-block">
                                         <p class="price">
                                             <b>¥</b>
-                                            <em>{{item.itemprice}}</em>
+                                            <em>{{item.Price}}</em>
                                         </p>
                                         <p class="old_price">
                                             <b>原价&nbsp;&nbsp;¥</b>
-                                            <em>{{item.itemcostprice}}</em>
+                                            <em>{{item.OldPrice}}</em>
                                         </p>
                                     </div>
                                 </li>
@@ -294,13 +280,13 @@
                             </div>
                         </div>
                         <div class="bd-middle-mod item-list">
-                            {% if ssl_en_list %}
+                            {% if en_items %}
                             <ul>
-                                {% for item in ssl_en_list %}
+                                {% for item in en_items %}
                                 <li class="item">
                                         <div class="item-pic">
                                             <a href="" target="_blank">
-                                                <img class="J_ItemPic" src="http://shangshulin.oss-cn-beijing.aliyuncs.com/ssl-items/{{item.itemType}}/{{item.itemimageurl}}" title={{item.itemname}}>
+                                                <img class="J_ItemPic" src="{{item.ImageUrl}}" title="{{item.Title}}">
                                             </a>
                                             <span class="pic_action_box">
                                                 <a href=""><img src="/static/images/buy_car_1.jpg"></a>
@@ -308,16 +294,16 @@
                                             </span>
                                         </div>
                                         <p class="item-title">
-                                            <a href="">{{item.itemname}}</a>
+                                            <a href="">{{item.Title}}</a>
                                         </p>
                                         <div class="price-block">
                                             <p class="price">
                                                 <b>¥</b>
-                                                <em>{{item.itemprice}}</em>
+                                                <em>{{item.Price}}</em>
                                             </p>
                                             <p class="old_price">
                                                 <b>原价&nbsp;&nbsp;¥</b>
-                                                <em>{{item.itemcostprice}}</em>
+                                                <em>{{item.OldPrice}}</em>
                                             </p>
                                         </div>
                                     </li>

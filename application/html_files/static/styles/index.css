@@ -1100,10 +1100,10 @@ h5{
     height: 260px;
     float: left;
     padding: 12px 5px 8px 5px;
-    margin-left: 15px;
-    margin-right: 10px;
     border-top: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
+    margin-left: 10px;
+    overflow: hidden;
 }
 
 .good-items-body .good-item-list{
@@ -1125,11 +1125,11 @@ h5{
 
 .good-item-list ul{
     height: 150px;
-    width: 980px;
+    width: 1000px;
 }
 
 .item-list li{
-    margin-right: 10px;
+    margin-right: 6px;
     width: 156px;
     float: left;
     position: relative;

@@ -4,14 +4,47 @@ from django.shortcuts import render_to_response
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from application.ssl_users.models import tzy_users
+from application.ssl_users.models import user_items_table
 import logging
+import json
 logger = logging.getLogger(__name__)
 from application.config.globals import *
 
 # Create your views here.
 def index(request):
     if request.user.is_authenticated():
-        return render_to_response('index.html',{'login_user':request.user})
+        user_ssl = tzy_users.objects.filter(username="尚书林")
+
+        # essence items
+        hot_result = []
+        hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[:6]
+        if  hot_sets.exists():
+            for item in  hot_sets.iterator():
+                image_urls = json.loads(item.ItemImageUrls)
+                hot_result.append({
+                    "ItemId":item.ItemId,
+                    "Title":item.ItemName,
+                    "Price":item.ItemPrice,
+                    "OldPrice":item.ItemOldPrice,
+                    "ImageUrl":image_urls[0],
+                    "Description":item.ItemDescription,
+                })
+
+        # en items
+        en_result = []
+        en_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType="100").order_by('-ClickCount','-PostTime')[:6]
+        if  en_sets.exists():
+            for item in  en_sets.iterator():
+                image_urls = json.loads(item.ItemImageUrls)
+                en_result.append({
+                    "ItemId":item.ItemId,
+                    "Title":item.ItemName,
+                    "Price":item.ItemPrice,
+                    "OldPrice":item.ItemOldPrice,
+                    "ImageUrl":image_urls[0],
+                    "Description":item.ItemDescription,
+                })
+        return render_to_response('index.html',{'login_user':request.user,"essence_items":hot_result,'en_items':en_result})
     else:
         auth.logout(request)
         return render_to_response('index.html')

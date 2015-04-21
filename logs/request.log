@@ -1166,3 +1166,71 @@ Traceback (most recent call last):
     ["箱包","其他"] ];
                         ^
 SyntaxError: invalid syntax
+[2015-04-21 03:39:49,226] [django.request] [ERROR] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_server/tiaozy/application/html_files/views.py", line 15, in index
+    hot_sets = user_items_table.objects.filter(username="尚书林").order_by('-ClickCount','-PostTime')[:4]
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/manager.py", line 92, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 691, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 709, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1331, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1358, in _add_q
+    current_negated=current_negated, connector=connector)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1182, in build_filter
+    lookups, parts, reffed_aggregate = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1120, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1427, in names_to_path
+    self.raise_field_error(opts, name)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1433, in raise_field_error
+    "Choices are: %s" % (name, ", ".join(available)))
+FieldError: Cannot resolve keyword 'username' into field. Choices are: ClickCount, ContactUserName, ContactUserPhone, Feature, IsBlock, ItemDescription, ItemId, ItemImageUrls, ItemName, ItemOldPrice, ItemPrice, ItemType, ItemsNum, LastEditTime, LikeCount, LikeList, PostTime, ReportList, ReportReason, TzyUser, TzyUser_id, id
+[2015-04-21 03:44:50,126] [django.request] [ERROR] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_server/tiaozy/application/html_files/views.py", line 20, in index
+    image_urls = json.loads(item.ItemImageUrls)
+NameError: global name 'json' is not defined
+[2015-04-21 03:57:39,723] [django.request] [ERROR] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 98, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 345, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 224, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 231, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/jing/python_server/tiaozy/application/html_files/views.py", line 35
+    en_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType>='100',ItemType<"200").order_by('-ClickCount','-PostTime')[:6]
+SyntaxError: non-keyword arg after keyword arg
+[2015-04-21 04:15:02,189] [django.request] [ERROR] Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_server/tiaozy/application/html_files/views.py", line 35, in index
+    en_sets = user_items_table.objects.filter(TzyUser=user_ssl).filter(is_en_books).order_by('-ClickCount','-PostTime')[:6]
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 691, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 709, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1331, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1358, in _add_q
+    current_negated=current_negated, connector=connector)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1179, in build_filter
+    arg, value = filter_expr
+TypeError: 'function' object is not iterable
