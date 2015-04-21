@@ -12,7 +12,7 @@ class ask_info_table(models.Model):
     ContactUserName = models.CharField(max_length=100, default="")
     ContactUserPhone = models.CharField(max_length=20,default="")
     ItemType        = models.CharField(max_length=20,default="")
-    TzyUser        = models.ForeignKey(tzy_users)
+    TzyUser        = models.ForeignKey(tzy_users,null=True)
     LikeList        = models.TextField(default='[]')
     LikeCount       = models.IntegerField(default=0)
     ReportList      = models.TextField(default='[]')

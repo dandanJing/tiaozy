@@ -18,6 +18,14 @@
                  toastr.error('请输入标题'); 
                  return;
             }
+            if($("#mobile").val().length <= 0){
+                 toastr.error('联系方式'); 
+                 return;
+            }
+            if($("#name").val().length <= 0){
+                 toastr.error('请输入姓名'); 
+                 return;
+            }
             $("#askForm").submit();
         }
     </script>
@@ -41,7 +49,7 @@
                     </label>
                     <div class="controls">
                         <div class="input-wrap">
-                            <input id="title" class="input title" type="text" value="dada" name="title">
+                            <input id="title" class="input title" type="text" value="" name="title">
                         </div>
                     </div>
                 </div>
@@ -53,7 +61,11 @@
                         <div class="input-prepend">
                             <label class="add-on" for="name">手机号：
                             </label>
-                            <input id="mobile" class="input" type="text" value="1520151" name="mobile"></input>
+                            {% if mobile %}
+                            <input id="mobile" class="input" type="text" value="{{mobile}}" name="mobile"></input>
+                            {% else %}
+                            <input id="mobile" class="input" type="text" value="" name="mobile"></input>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -62,7 +74,11 @@
                         <div class="input-prepend">
                             <label class="add-on" for="name">姓名：
                             </label>
-                            <input id="name" class="input" type="text" value="刘先生/女士" name="name"></input>
+                            {% if username %}
+                            <input id="name" class="input" type="text" value="{{username}}" name="name"></input>
+                            {% else %}
+                            <input id="name" class="input" type="text" value="" name="name"></input>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

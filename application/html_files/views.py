@@ -12,11 +12,17 @@ from application.config.globals import *
 
 # Create your views here.
 def index(request):
-    if request.user.is_authenticated():
+    hot_result = []
+    en_result = []
+    login_user = None
+    try:
+        if not request.user.is_authenticated():
+            auth.logout(request)
+        else:
+            login_user = request.user
         user_ssl = tzy_users.objects.filter(username="尚书林")
 
         # essence items
-        hot_result = []
         hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[:6]
         if  hot_sets.exists():
             for item in  hot_sets.iterator():
@@ -31,7 +37,6 @@ def index(request):
                 })
 
         # en items
-        en_result = []
         en_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType="100").order_by('-ClickCount','-PostTime')[:6]
         if  en_sets.exists():
             for item in  en_sets.iterator():
@@ -44,10 +49,11 @@ def index(request):
                     "ImageUrl":image_urls[0],
                     "Description":item.ItemDescription,
                 })
-        return render_to_response('index.html',{'login_user':request.user,"essence_items":hot_result,'en_items':en_result})
-    else:
-        auth.logout(request)
-        return render_to_response('index.html')
+    except Exception as e:
+        logger.debug('pub_1: %s' % e)
+    
+    return render_to_response('index.html',{'login_user':login_user,"essence_items":hot_result,'en_items':en_result})
+    
 
 def publish(request):
     if request.user.is_authenticated():
@@ -75,4 +81,12 @@ def pub_1(request):
     return render_to_response('pub_1.html',{'typeIndex':typeIndex,'username':username,'mobile':mobile,"typeStr":typeStr})
 
 def askItem(request):
-    return render_to_response('ask_item.html')
+    username = None
+    mobile = None
+    try:
+        if request.user.is_authenticated():
+            username =  request.user.username
+            mobile = request.user.Mobilephone
+    except Exception as e:
+        logger.debug('askItem: %s' % e)
+    return render_to_response('ask_item.html',{'username':username,'mobile':mobile})

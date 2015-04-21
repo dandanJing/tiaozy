@@ -9,6 +9,7 @@ from django.shortcuts import render_to_response
 from application.ssl_users.models import user_items_table
 from application.ssl_users.models import tzy_users
 from application.display_items.models import ask_info_table
+from django.http import HttpResponseRedirect
 import logging
 import base64
 import os
@@ -73,8 +74,8 @@ def postItem(request):
 
     except Exception as e:
         logger.debug('postItem: %s' % e)
-        return render_to_response('pub_1.html')
-    return render_to_response('index.html')
+        
+    return render_to_response('pub_1.html')
 
 def uploadImage(image_file,SessionId):
     try:
@@ -104,7 +105,6 @@ def postAskInfo(request):
         title = None
         postUsername = None
         mobile = None
-        user = request.user
         createdTime = getCurrentTime()
         description = ""
         if request.method == "POST":
@@ -113,18 +113,20 @@ def postAskInfo(request):
             mobile = request.POST.get('mobile')
             description = request.POST.get('description')
             itemid = ask_info_table.createUniqueItemId()
-            itemObject = ask_info_table.objects.create(ItemId=itemid,ItemTitle=title,TzyUser=user)
+            itemObject = ask_info_table.objects.create(ItemId=itemid,ItemTitle=title)
+            if request.user.is_authenticated():
+                itemObject.TzyUser = request.user
             itemObject.PostTime = createdTime
             itemObject.ItemDescription = description
             itemObject.ContactUsername = contactUsername
             itemObject.ContactUserPhone = mobile
             itemObject.save() 
-            return render_to_response('index.html')
+            return HttpResponseRedirect("/index.html")
 
     except Exception as e:
         logger.debug('postAskInfo: %s' % e)
-        return render_to_response('ask_item.html')
-    return render_to_response('ask_item.html')
+        
+    return HttpResponseRedirect("/ask_item.html")
 
 def getOnSelling(request):
     print 'request info: %s %s' % (request.method, request.path)
@@ -152,7 +154,7 @@ def getOnAsking(request):
     print 'request info: %s %s' % (request.method, request.path)
     try:
         result = []
-        items_sets = ask_info_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:2]
+        items_sets = ask_info_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:3]
         if items_sets.exists():
             for item in items_sets.iterator():
                 result.append({

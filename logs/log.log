@@ -335,3 +335,6 @@ DoesNotExist: SecretQuestion matching query does not exist.
 [2015-04-20 16:13:08,964] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
 [2015-04-20 16:16:18,148] [application.display_items.views] [DEBUG] getOnSelling: list index out of range
 [2015-04-21 02:19:41,222] [application.html_files.views] [DEBUG] pub_1: '100'
+[2015-04-21 06:48:56,323] [application.display_items.views] [DEBUG] postAskInfo: Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x7fb0bd6e3bd0>>": "ask_info_table.TzyUser" must be a "tzy_users" instance.
+[2015-04-21 06:51:36,793] [application.display_items.views] [DEBUG] postAskInfo: NOT NULL constraint failed: display_items_ask_info_table.TzyUser_id
+[2015-04-21 07:00:59,792] [application.display_items.views] [DEBUG] postAskInfo: Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x7f269792bc90>>": "ask_info_table.TzyUser" must be a "tzy_users" instance.
