@@ -29,7 +29,11 @@
         <ol>
             <li class="step1">
                 <i>1</i>
-                <a href="/publish-item/"><strong>选择类别</strong></a>
+                {% if typeStr %}
+                <a href="/publish/">重选类别</a>&nbsp;({{typeStr}})
+                {% else %}
+                <a href="/publish/"><strong>选择类别</strong></a>
+                {% endif %}
                 <span></span>
                 <em class="f1"></em>
             </li>

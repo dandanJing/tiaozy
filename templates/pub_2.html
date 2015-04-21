@@ -45,8 +45,11 @@
     </div>
     <div class="content">
         <ul>
+            {% if type %}
+            <li><div class="return-pub-type"><p><a href="/publish/pub/?type={{type}}">再次发布同类物品</a></p></div></li>
+            {% endif %}
             <li><div class="return-pub"><p><a href="/publish/">再次发布</a></p></div></li>
-            <li><div class="return-home"><p><a href="/">回到首页</a></p></div></li>
+            <li><div class="turn-home"><p><a href="/">回到首页</a></p></div></li>
          </ul>
     </div>
 </body>

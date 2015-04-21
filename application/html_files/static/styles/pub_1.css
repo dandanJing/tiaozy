@@ -100,8 +100,8 @@ button::-moz-focus-inner{
 
 .step1 a{
     color: #000;
-   /* outline:none;
-    text-decoration: underline;*/
+    font-size: 14px;
+    text-decoration: underline;
 }
 
 .follow-steps .step1 span,.follow-steps .step2 span{

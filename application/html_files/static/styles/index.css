@@ -772,11 +772,13 @@ a:hover #fabu{
     margin-top: 6px;
     text-align: center;
     background-color: #fff;
+    text-decoration: none;
 }
 
-.idle-start .extend .mod a:hover{
-    text-decoration: underline #888;
-}
+/*.idle-start .extend .mod a:hover{
+    text-decoration: underline;
+    color: #777;
+}*/
 
 .idle-start .extend .mod a .main-title{
     display: inline-block;

@@ -30,7 +30,7 @@ def postItem(request):
         oldPrice = None
         postUsername = None
         mobile = None
-        styleIndex = 1
+        typeIndex = 1
         imageUrls = []
         user = request.user
         createdTime = getCurrentTime()
@@ -48,10 +48,10 @@ def postItem(request):
             mobile = request.POST.get('mobile')
             description = request.POST.get('description')
             if request.POST.get('type'):
-                styleIndex = request.POST.get('type')
-                print 'style %s' % styleIndex
+                typeIndex = request.POST.get('type')
+                # print 'select type %s' % typeIndex
             files = request.FILES.getlist('upfile[]')
-            print files
+            # print files
             print 'title: %s name: %s description: %s' %(title, postUsername,description)
             SessionId = os.urandom(10)
             for fileEach in files:
@@ -62,14 +62,14 @@ def postItem(request):
                 else:
                     return render_to_response('pub_1.html')
             itemid = user_items_table.createUniqueItemId()
-            itemObject = user_items_table.objects.create(ItemId=itemid,ItemName=title,ItemOldPrice=oldPrice,ItemPrice=price,ItemImageUrls=json.dumps(imageUrls),ItemType=styleIndex,TzyUser=user)
+            itemObject = user_items_table.objects.create(ItemId=itemid,ItemName=title,ItemOldPrice=oldPrice,ItemPrice=price,ItemImageUrls=json.dumps(imageUrls),ItemType=typeIndex,TzyUser=user)
             itemObject.PostTime = createdTime
             itemObject.LastEditTime = createdTime
             itemObject.ItemDescription = description
             itemObject.ContactUsername = contactUsername
             itemObject.ContactUserPhone = mobile
             itemObject.save() 
-            return render_to_response('pub_2.html')
+            return render_to_response('pub_2.html',{"type":typeIndex})
 
     except Exception as e:
         logger.debug('postItem: %s' % e)

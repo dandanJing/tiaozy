@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from application.ssl_users.models import tzy_users
 import logging
 logger = logging.getLogger(__name__)
+from application.config.globals import *
 
 # Create your views here.
 def index(request):
@@ -22,7 +23,8 @@ def publish(request):
         return render_to_response("login.html")
 
 def pub_1(request):
-    typeIndex = 1
+    typeIndex = 101
+    typeStr = ""
     username = None
     mobile = None
     if not request.user.is_authenticated():
@@ -30,12 +32,14 @@ def pub_1(request):
     try:
         if request.method == "GET":
             typeIndex = request.GET.get('type')
+            typeStr = TYPEDIC[str(typeIndex)]
+            print "select typeStr:  %s" % typeStr
         username =  request.user.username
         mobile = request.user.Mobilephone
     except Exception as e:
         logger.debug('pub_1: %s' % e)
-    print 'type: %s'%(typeIndex)
-    return render_to_response('pub_1.html',{'typeIndex':typeIndex,'username':username,'mobile':mobile})
+    # print 'type: %s'%(typeIndex)
+    return render_to_response('pub_1.html',{'typeIndex':typeIndex,'username':username,'mobile':mobile,"typeStr":typeStr})
 
 def askItem(request):
     return render_to_response('ask_item.html')
