@@ -10,4 +10,7 @@ urlpatterns = patterns('',
     url(r'^post-ask-info/','application.display_items.views.postAskInfo',name='postAskInfo'),
     url(r'^get-on-selling','application.display_items.views.getOnSelling',name='getOnSelling'),
     url(r'^get-on-asking','application.display_items.views.getOnAsking',name='getOnAsking'),
+    url(r'^get-ssl-essence-books','application.display_items.views.getEssenceBooks',name='getEssenceBooks'),
+    url(r'^get-ssl-en-books','application.display_items.views.getSSLEnBooks',name='getSSLEnBooks'),
+    url(r'^get-ssl-maph-books','application.display_items.views.getSSLMaPhBooks',name='getSSLMaPhBooks'),
 )

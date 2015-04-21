@@ -168,3 +168,72 @@ def getOnAsking(request):
         logger.debug('getOnAsking: %s' % e)
 
     return handle_response(result)
+
+def getEssenceBooks(request):
+    result = {}
+    essence_list = []
+    try:
+        user_ssl = tzy_users.objects.filter(username="尚书林")
+
+        # essence items
+        hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[:6]
+        if  hot_sets.exists():
+            for item in  hot_sets.iterator():
+                image_urls = json.loads(item.ItemImageUrls)
+                essence_list.append({
+                    "ItemId":item.ItemId,
+                    "Title":item.ItemName,
+                    "Price":item.ItemPrice,
+                    "OldPrice":item.ItemOldPrice,
+                    "ImageUrl":image_urls[0],
+                    "Description":item.ItemDescription,
+                })
+
+    except Exception as e:
+        logger.debug('getEssenceBooks: %s' % e)
+
+    result["book_list"] = essence_list
+    return handle_response(result)
+
+def getSSLEnBooks(request):
+    en_result = []
+    try:    
+        # en items ,ItemType="100"
+        en_result = getBooksWithType("")
+    except Exception as e:
+        logger.debug('getSSLEnBooks: %s' % e)
+    
+    return handle_response(en_result)
+
+def getSSLMaPhBooks(request):
+    maph_result = []
+    try:    
+        maph_result = getBooksWithType("")
+    except Exception as e:
+        logger.debug('getSSLMaPhBooks: %s' % e)
+
+    return handle_response(maph_result)
+
+def getBooksWithType(typeStr):
+    try:
+        result = [];
+        user_ssl = tzy_users.objects.filter(username="尚书林")
+        if typeStr == "":
+            book_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[:12]
+        else:
+            book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).order_by('-ClickCount','-PostTime')[:12]
+        if  book_sets.exists():
+            for item in  book_sets.iterator():
+                image_urls = json.loads(item.ItemImageUrls)
+                result.append({
+                    "ItemId":item.ItemId,
+                    "Title":item.ItemName,
+                    "Price":item.ItemPrice,
+                    "OldPrice":item.ItemOldPrice,
+                    "ImageUrl":image_urls[0],
+                    "Description":item.ItemDescription,
+                })
+    except Exception as e:
+        logger.debug('getBooksWithType: %s' % e)
+
+    return result

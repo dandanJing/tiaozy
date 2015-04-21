@@ -7,10 +7,13 @@
     <meta http-equiv="Content-Language" content="zh-cn"/>
     <title>尚书林</title>
     <link rel="shortcut icon" href="/static/images/ssl-icon.ico" type="image/x-icon">
+     <link rel="stylesheet" href="/static/toastr/toastr.min.css">
     <link rel="stylesheet" href="/static/styles/index.css">
     <script language="javascript"  src="/static/scripts/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script src="/static/scripts/jquery.alerts.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/toastr/toastr.min.js"></script>
     <script type="text/javascript" src="/static/scripts/index.js"></script>
+    <script type="text/javascript" src="/static/scripts/get_ssl_data.js"></script>
     <script type="text/javascript" src="/static/scripts/my_menu.js"></script>
 </head>
 <body class = "homebody">
@@ -216,7 +219,7 @@
                         </div>
                     </div>
                     <div class="good-items-body">
-                        <div class="good-item-list item-list">
+                        <div class="good-item-list item-list" id="ssl-essence">
                             {%if essence_items %}
                             <ul>
                                 {% for item in essence_items%}
@@ -258,19 +261,22 @@
                         <h2>外语天地</h2>
                     </div>
                     <div class="items_body">
-                        <div class="bd-left-mod">
+                        <div class="bd-left">
                             <div class="tag">
-                                <a href="">biaoqian</a>
-                                <a href="">biaoqian</a>
-                                <a href="">biaoqian</a>
+                                <a href="">GRE</a>
+                                <a href="">TOEFL</a>
+                                <a href="">阅读</a>
+                                <a href="">作文</a>
+                                <a href="">听力</a>
+                                <a href="">口语</a>
                             </div>
                             <div class="banner">
-                                <a href="http://s.2.taobao.com/list/list.htm?spm=2007.1000337.0.0.gGLybz&catid=50100402&st_trust=1&q=%D7%E9%D7%B0&ist=0">
+                                <a href="/">
                                     <img src="http://img02.taobaocdn.com/tps/i2/T1qEOpFg0fXXaf97Qy-190-177.png">
                                 </a>
                             </div>
                         </div>
-                        <div class="bd-middle-mod item-list">
+                        <div class="bd-left-mod item-list" id="ssl-en">
                             {% if en_items %}
                             <ul>
                                 {% for item in en_items %}
@@ -306,11 +312,28 @@
                     </div>
                     <!-- <img src="http://shangshulin.oss-cn-beijing.aliyuncs.com/ssl-items/en/en1.png"> -->
                 </div>
-                 <div class="item_group_phy ssl-items" id="items-phy">
+                <div class="item_group_phy ssl-items" id="items-phy">
                     <div class="items_head">
-                    <h2>数物基科</h2>
+                        <h2>数物基科</h2>
                     </div>
                     <div class="items_body">
+                         <div class="bd-right-mod item-list" id="ssl-maph">
+                        </div>
+                        <div class="bd-left">
+                            <div class="tag">
+                                    <a href="">GRE</a>
+                                    <a href="">TOEFL</a>
+                                    <a href="">阅读</a>
+                                    <a href="">作文</a>
+                                    <a href="">听力</a>
+                                    <a href="">口语</a>
+                                </div>
+                                <div class="banner">
+                                    <a href="/">
+                                        <img src="http://img02.taobaocdn.com/tps/i2/T1qEOpFg0fXXaf97Qy-190-177.png">
+                                    </a>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
