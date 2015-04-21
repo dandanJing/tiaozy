@@ -1112,17 +1112,6 @@ h5{
     position: relative;
 }
 
-.items_head .change{
-    float: right;
-    color: #84878c;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.items_head .change a{
-    color: #000;
-}
-
 .good-item-list ul{
     height: 150px;
     width: 1000px;
@@ -1210,6 +1199,17 @@ h5{
     font-weight: 500;
     border-left: 3px solid #A8D200;
     text-align: left;
+    width: 200px;
+}
+
+.items_head .change{
+    float: right;
+    cursor: pointer;
+    font-size: 14px;
+    color: #44474c;
+    font-weight: 540;
+    display: inline;
+    margin-top: -10px;
 }
 
 .items_body{

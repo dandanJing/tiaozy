@@ -172,11 +172,22 @@ def getOnAsking(request):
 def getEssenceBooks(request):
     result = {}
     essence_list = []
+    pagenum = 1
+    continuationToken = False
     try:
         user_ssl = tzy_users.objects.filter(username="尚书林")
 
+        #pagenum
+        req = json.loads(request.body)
+        if req.has_key('pagenum'):
+            pagenum = req['pagenum']
+            if pagenum <= 0:
+                pagenum = 1
+
         # essence items
-        hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[:6]
+        start_index = (pagenum-1)*6
+        end_index = pagenum*6
+        hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:end_index]
         if  hot_sets.exists():
             for item in  hot_sets.iterator():
                 image_urls = json.loads(item.ItemImageUrls)
@@ -188,11 +199,13 @@ def getEssenceBooks(request):
                     "ImageUrl":image_urls[0],
                     "Description":item.ItemDescription,
                 })
-
+        if len(essence_list) == 6:
+            continuationToken = True
     except Exception as e:
         logger.debug('getEssenceBooks: %s' % e)
 
     result["book_list"] = essence_list
+    result["continuationToken"] = continuationToken
     return handle_response(result)
 
 def getSSLEnBooks(request):
