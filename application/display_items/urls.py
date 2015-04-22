@@ -15,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^get-ssl-maph-books','application.display_items.views.getSSLMaPhBooks',name='getSSLMaPhBooks'),
     url(r'^open_item','application.display_items.views.openItem',name='openItem'),
     url(r'^get-user-all-posts','application.display_items.views.getAllPostsForUser',name='getAllPostsForUser'),
+    url(r'^post-item-message','application.display_items.views.postItemMessage',name='postItemMessage'),
 )

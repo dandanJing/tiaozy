@@ -10,6 +10,7 @@ from application.ssl_users.models import user_items_table
 from application.ssl_users.models import tzy_users
 from application.display_items.models import ask_info_table
 from application.display_items.models import comments_table
+from application.display_items.models import item_messages_table
 from django.http import HttpResponseRedirect
 import logging
 import base64
@@ -291,6 +292,7 @@ def openItem(request):
                 result["UserPostCount"] = len(user_post_sets)
                 result["ReceiveCommentCount"] = len(comments_table.objects.filter(ItemPostUsername=postUser.username))
                 result["SuccessDeal"] = len(user_post_sets.filter(IsTradeSuccess=True))
+                result["MessageCount"] = len(item_messages_table.objects.filter(Item=item))
                 return render_to_response('open_item.html',{"result":result})
 
     except Exception as e:
@@ -327,5 +329,34 @@ def getAllPostsForUser(request):
 
     except Exception as e:
         logger.debug('getAllPostsForUser: %s' % e)
+
+    return handle_response(result)
+
+def postItemMessage(request):
+    print 'request info: %s %s user %s' % (request.method, request.path, request.user)
+    result = {}
+    result["result"] = False
+    itemid = None
+    message = ""
+    try:
+        req = json.loads(request.body)
+        if req.has_key('itemid'):
+            itemid = req["itemid"]
+        if req.has_key('message'):
+            message = req["message"]
+        item_sets =  user_items_table.objects.filter(ItemId=itemid)
+        if  item_sets.exists():
+            item = item_sets[0]
+            messageId = item_messages_table.createUniqueMessageId()
+            msgObject = item_messages_table.objects.create(MessageId=messageId,Message=message,Item=item)
+            msgObject.PostTime = getCurrentTime()
+            if request.user.is_authenticated():
+                msgObject.TzyUser = request.user
+            msgObject.save()
+            result["result"] = True
+        print "post message %s" % message
+
+    except Exception as e:
+        logger.debug('postItemMessage: %s' % e)
 
     return handle_response(result)

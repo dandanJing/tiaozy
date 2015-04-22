@@ -10,3 +10,7 @@
 [2015-04-22 08:41:59,606] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'
 [2015-04-22 08:42:12,192] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'
 [2015-04-22 08:46:24,915] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'
+[2015-04-22 14:48:08,287] [application.display_items.views] [DEBUG] openItem: Could not parse the remainder: '(result.MessageCount' from '(result.MessageCount'
+[2015-04-22 14:48:16,151] [application.display_items.views] [DEBUG] openItem: Could not parse the remainder: '(result.MessageCount' from '(result.MessageCount'
+[2015-04-22 15:55:21,377] [application.display_items.views] [DEBUG] postItemMessage: global name 'createdTime' is not defined
+[2015-04-22 15:55:37,604] [application.display_items.views] [DEBUG] postItemMessage: global name 'createdTime' is not defined

@@ -1078,3 +1078,71 @@ a:hover #fabu{
     font-size: 14px;
     color: #f40;
 }
+
+.message-box{
+    /*display: none;*/
+}
+
+.message-input{
+    margin-top: 10px;
+}
+
+.message-input img{
+    width: 60px;
+    height: 60px;
+    margin: 12px;
+    float: left;
+}
+
+.message-input textarea {
+    overflow: auto;
+    word-wrap: break-word;
+    width: 650px;
+    height: 72px;
+    margin-top: 8px;
+    margin-left: 8px;
+    line-height: 18px;
+    outline: 0px none;
+    float: left;
+    font-size: 13px;
+}
+
+.send-box{
+    padding: 5px 20px 0px;
+    margin-top: 8px;
+}
+
+.send-span {
+    float: right;
+    color: #747474;
+    padding-top: 4px;
+}
+
+.send-textnum {
+    padding-right: 5px;
+    font-size: 12px;
+}
+
+.send-btn {
+    display: inline-block;
+    width: 43px;
+    height: 24px;
+    line-height: 20px;
+    text-decoration: none;
+    color: #000;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0px;
+    text-align: center;
+    border: 1px solid #ABABAB;
+    background: none repeat scroll 0% 0% #CCC;
+}
+
+.divide-bar{
+    background: url("/static/images/bar.png") repeat-x scroll 0 -119px transparent;
+    height: 16px;
+    width: 100%;
+    float: left;
+    position: relative;
+    margin-top: 4px;
+}

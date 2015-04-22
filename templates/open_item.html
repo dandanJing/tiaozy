@@ -239,11 +239,26 @@
             <div class="body-detail">
                 <div class="detail-title">
                     <!-- <span id="detail-para" class="active"><a>宝贝参数</a></span> -->
-                    <span id="detail-cont" class="active"><a>宝贝详情</a></span>
-                    <span id="detail-talk"><a>留言(5)</a></span>
+                    <span id="detail-cont" class="active" onclick="clickDetailBottom(0,this)"><a>宝贝详情</a></span>
+                    <span id="detail-talk" onclick="clickDetailBottom(1,this)"><a>留言({{result.MessageCount}})</a></span>
                 </div>
-                <div class="detail-content">
+                <!-- <div class="detail-content">
                     {{result.Description}}
+                </div> -->
+                <div class="message-box">
+                    <div id="itemid" style="display:none">{{result.ItemId}}</div>
+                    <div class="message-input">
+                        <img src="/static/images/avatar.png">
+                        <textarea placeholder="我也来留个言" id="message-text" onkeyup="textDidChange()"></textarea>
+                    </div>
+                    <div class="send-box">
+                        <span class="send-span">
+                            <em class="send-textnum">0/200</em>
+                            <button class="send-btn" onclick="sendMessage()">评论</button>
+                        </span>
+                    </div>
+                    <div class="divide-bar"></div>
+                    <div id="messages-display"></div>
                 </div>
             </div>
         </div>

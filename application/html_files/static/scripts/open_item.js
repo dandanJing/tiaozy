@@ -39,3 +39,50 @@ function showBooks(data){
     htmlInner += "</ul>";
     $("#to-display").html(htmlInner);
 }
+
+function clickDetailBottom(index,ths){
+    $(ths).siblings().removeClass("active");
+    $(ths).toggleClass("active");
+    if(index==0){
+        $(".detail-content").css({"display":"block"});
+        $("#message-box").css({"display":"none"});
+    }else{
+        $(".detail-content").css({"display":"none"});
+        $("#message-box").css({"display":"block"});
+    }
+};
+
+function textDidChange(){
+    var remain = 200-$("#message-text").val().length;
+    if(remain < 0){
+        $(".send-textnum").html(remain+'/200');
+    }else{
+       $(".send-textnum").html(remain+'/200'); 
+    }
+};
+
+function sendMessage(){
+    var text = $("#message-text").val();
+    if(text.length <=0){
+        toastr.error("留言不能为空");
+    }else if(text.length > 200){
+        toastr.error("留言长度不能多于200个字");
+    }else{
+        $.ajax({
+            url:"/post-item-message",
+            type:"post",
+            data:JSON.stringify({
+                "message":text,
+                "itemid":$("#itemid").html()
+            }),
+            dataType:"json",
+            contentType:'application/json;charset=UTF-8',
+            success:function (data) {
+                $("#message-text").val("");
+            },
+            error:function (data) {
+               toastr.error("留言失败,请重试");
+            },
+        });
+    }
+}; 
