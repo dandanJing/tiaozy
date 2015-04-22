@@ -33,10 +33,10 @@ $(document).ready(function(){
     });
 
     showOnSelling();
-    var selling_time = setInterval("showOnSelling()", 15000);
+   // var selling_time = setInterval("showOnSelling()", 15000);
 
     showOnAsking()
-    var asking_time = setInterval("showOnAsking()", 15000);
+   //var asking_time = setInterval("showOnAsking()", 15000);
 });
 
 function showAuto() {
@@ -54,10 +54,10 @@ function showOnSelling(){
             var htmlInner = "<ul>";
             for(var i=0; i<data.length; i++){
                 var item = data[i];
-                htmlInner += "<li class=\"item\"><div class=\"item-pic\"><a href=\"/\" target=\"_blank\">";
+                htmlInner += "<li class=\"item\"><div class=\"item-pic\"><a target=\"_blank\" href=\"/open_item?id="+item['ItemId']+"\">";
                 htmlInner += "<img src=\""+item['ImageUrl']+"\" title=\""+item['Title']+"\"></a></div>";
                 htmlInner += "<div class=\"info\"><h5>"+item['Title']+"</h5>";
-                htmlInner += "<p class=\"desc\">"+"<a href=\"/\">"+item['Description']+"</a></p>"
+                htmlInner += "<p class=\"desc\">"+"<a target=\"_blank\" href=\"/open_item?id="+item['ItemId']+"\">"+item['Description']+"</a></p>"
                 htmlInner += "<div class=\"price-block\"><p class=\"price\"><b>¥</b><em>"+item['Price']+"</em></p></div></li>";
             }
             htmlInner += "</ul>";

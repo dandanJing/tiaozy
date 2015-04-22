@@ -263,9 +263,10 @@ def openItem(request):
                 login_user = request.user
                 result["Username"]=login_user
             itemid = request.GET.get("id")
-            item = user_items_table.objects.filter(ItemId=itemid)[0]
-            print item.ContactUserName
-            if  item:
+            item_sets = user_items_table.objects.filter(ItemId=itemid)
+            if  item_sets.exists():
+                item = item_sets[0]
+                print item
                 item.ClickCount = item.ClickCount+1
                 item.save()
                 postUser = item.TzyUser
@@ -287,9 +288,9 @@ def openItem(request):
                 result["ContactUserPhone"] = item.ContactUserPhone
                 result["QQ"] = postUser.QQ
                 result["PostUserName"] = postUser.username
-            else:
-                return HttpResponseRedirect("/index.html")
+                return render_to_response('open_item.html',{"result":result})
+
     except Exception as e:
         logger.debug('openItem: %s' % e)
 
-    return render_to_response('open_item.html',{"result":result})
+    return HttpResponseRedirect("/index.html")
