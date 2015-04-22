@@ -912,16 +912,52 @@ a:hover #fabu{
     padding-bottom: 5px;
 }
 
+.edit-item,.trade-success{
+    width:120px;
+    font-weight:700;
+    padding: 2px 15px;
+    height:32px;
+    line-height:32px;
+    border:1px solid #ffb38c;
+    font-size:14px;
+    color:#e50;
+    text-align:center;
+    float: left;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+.post-new-item,.buy-item{
+    width:120px;
+    font-weight:700;
+    padding: 2px 15px;
+    height:32px;
+    line-height:32px;
+    border:1px solid #ffb38c;
+    font-size:14px;
+    color:#e50;
+    text-align:center;
+    float: left;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
 .body-detail{
-    width: 770px;
+    width: 1000px;
     height: 500px;
     float: left;
     border-left: 1px solid #e0e0e0;
     padding-top: 5px;
 }
 
+.detail-content{
+    padding: 10px;
+    color: #333;
+    font-size: 15px;
+}
+
 .detail-title{
-    width: 720px;
+    width: 980px;
     border-bottom: 2px solid #CDCFD1;
     height: 37px;
     font-size: 14px;
@@ -952,33 +988,4 @@ a:hover #fabu{
     background: none repeat scroll 0% 0% #fff;
     color: #000;
     border-bottom: 3px solid #f22;
-}
-
-.edit-item{
-    width:150px;
-    font-weight:700;
-    padding: 2px 15px;
-    height:32px;
-    line-height:32px;
-    border:1px solid #ffb38c;
-    font-size:14px;
-    color:#e50;
-    text-align:center;
-    float: left;
-    margin-top: 10px;
-}
-
-.post-new-item,.buy-item{
-    width:120px;
-    font-weight:700;
-    padding: 2px 15px;
-    height:32px;
-    line-height:32px;
-    border:1px solid #ffb38c;
-    font-size:14px;
-    color:#e50;
-    text-align:center;
-    float: left;
-    margin-right: 15px;
-    margin-top: 15px;
 }

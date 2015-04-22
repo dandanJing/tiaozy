@@ -267,8 +267,7 @@ def openItem(request):
             if  item_sets.exists():
                 item = item_sets[0]
                 print item
-                item.ClickCount = item.ClickCount+1
-                item.save()
+                item.clickAction()
                 postUser = item.TzyUser
                 is_owner = login_user == postUser
                 image_urls = json.loads(item.ItemImageUrls)

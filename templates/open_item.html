@@ -177,6 +177,9 @@
                     <div class="edit-item">
                         修改当前发布
                     </div>
+                    <div class="trade-success">
+                        交易已完成
+                    </div>
                     {% else %}
                     <div class="post-new-item">
                         我也要卖
@@ -206,8 +209,11 @@
             <div class="body-detail">
                 <div class="detail-title">
                     <!-- <span id="detail-para" class="active"><a>宝贝参数</a></span> -->
-                    <span id="detail-cont" class="active"><a>宝贝详情</a>{{result.Description}}</span>
+                    <span id="detail-cont" class="active"><a>宝贝详情</a></span>
                     <span id="detail-talk"><a>留言(5)</a></span>
+                </div>
+                <div class="detail-content">
+                    {{result.Description}}
                 </div>
             </div>
         </div>

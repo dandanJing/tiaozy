@@ -15,26 +15,27 @@ class tzy_users(AbstractUser):
         return "username:%s\tphone:%s\temail:%s\t"%(self.username,self.mobilephone,self.email)
 
 class user_items_table(models.Model):
-    ItemId          = models.CharField(max_length=100, unique=True)
-    ItemName        = models.CharField(max_length=100)
-    ItemOldPrice    = models.IntegerField(default = 0)
-    ItemPrice       = models.IntegerField(default = 0)
-    ItemsNum        = models.IntegerField(default = 1)
-    ItemImageUrls    = models.TextField(default='[]')
-    ContactUserName = models.CharField(max_length=100, default="")
-    ContactUserPhone = models.CharField(max_length=20,default="")
-    ClickCount       = models.IntegerField(default = 0)
-    PostTime        = models.IntegerField(default=0)
-    LastEditTime    = models.IntegerField(default=0)
-    IsBlock         = models.BooleanField( default=False)
-    Feature         = models.CharField(max_length=100,default="全新")
-    ItemType        = models.CharField(max_length=20,default="")
-    TzyUser        = models.ForeignKey(tzy_users)
-    LikeList        = models.TextField(default='[]')
-    LikeCount       = models.IntegerField(default=0)
-    ReportList      = models.TextField(default='[]')
-    ReportReason    = models.TextField(default='')
-    ItemDescription = models.TextField(default='')
+    ItemId              = models.CharField(max_length=100, unique=True)
+    ItemName            = models.CharField(max_length=100)
+    ItemOldPrice        = models.IntegerField(default = 0)
+    ItemPrice           = models.IntegerField(default = 0)
+    ItemsNum            = models.IntegerField(default = 1)
+    ItemImageUrls       = models.TextField(default='[]')
+    ContactUserName     = models.CharField(max_length=100, default="")
+    ContactUserPhone    = models.CharField(max_length=20,default="")
+    ClickCount          = models.IntegerField(default = 0)
+    PostTime            = models.IntegerField(default=0)
+    LastEditTime        = models.IntegerField(default=0)
+    IsBlock             = models.BooleanField( default=False)
+    Feature             = models.CharField(max_length=100,default="全新")
+    ItemType            = models.CharField(max_length=20,default="")
+    TzyUser             = models.ForeignKey(tzy_users)
+    LikeList            = models.TextField(default='[]')
+    LikeCount           = models.IntegerField(default=0)
+    ReportList          = models.TextField(default='[]')
+    ReportReason        = models.TextField(default='')
+    ItemDescription     = models.TextField(default='')
+    IsTradeSuccess      = models.BooleanField(default=False)
 
     @classmethod
     def isItemExist(cls, item_id):
@@ -95,3 +96,4 @@ class user_items_table(models.Model):
     
     def __unicode__(self):
         return self.ItemId
+

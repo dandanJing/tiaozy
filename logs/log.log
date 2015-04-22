@@ -1,0 +1,5 @@
+[2015-04-22 03:04:12,497] [application.display_items.views] [DEBUG] openItem: no such column: ssl_users_user_items_table.IsTradeSuccess
+[2015-04-22 03:04:12,608] [application.display_items.views] [DEBUG] getEssenceBooks: no such column: ssl_users_user_items_table.IsTradeSuccess
+[2015-04-22 03:04:12,681] [application.display_items.views] [DEBUG] getOnSelling: no such column: ssl_users_user_items_table.IsTradeSuccess
+[2015-04-22 03:04:12,692] [application.display_items.views] [DEBUG] getBooksWithType: no such column: ssl_users_user_items_table.IsTradeSuccess
+[2015-04-22 03:04:12,696] [application.display_items.views] [DEBUG] getBooksWithType: no such column: ssl_users_user_items_table.IsTradeSuccess
