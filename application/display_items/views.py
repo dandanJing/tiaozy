@@ -67,7 +67,7 @@ def postItem(request):
             itemObject.PostTime = createdTime
             itemObject.LastEditTime = createdTime
             itemObject.ItemDescription = description
-            itemObject.ContactUsername = contactUsername
+            itemObject.ContactUserName = contactUsername
             itemObject.ContactUserPhone = mobile
             itemObject.save() 
             return render_to_response('pub_2.html',{"type":typeIndex})
@@ -264,12 +264,12 @@ def openItem(request):
                 result["Username"]=login_user
             itemid = request.GET.get("id")
             item = user_items_table.objects.filter(ItemId=itemid)[0]
-            print item
+            print item.ContactUserName
             if  item:
                 item.ClickCount = item.ClickCount+1
                 item.save()
                 postUser = item.TzyUser
-                is_owner = login_user == postUser.username
+                is_owner = login_user == postUser
                 image_urls = json.loads(item.ItemImageUrls)
                 result["ItemId"]= item.ItemId
                 result["Title"]= item.ItemName
@@ -283,7 +283,10 @@ def openItem(request):
                 result["Feature"] = item.Feature
                 result["IsOwner"] = is_owner
                 result["ContactUserName"] = item.ContactUserName
-                result["ContactUserPhone"] = item.ContactUserPhone[:7]
+                result["UserDisplayPhone"] = item.ContactUserPhone[:7]
+                result["ContactUserPhone"] = item.ContactUserPhone
+                result["QQ"] = postUser.QQ
+                result["PostUserName"] = postUser.username
             else:
                 return HttpResponseRedirect("/index.html")
     except Exception as e:

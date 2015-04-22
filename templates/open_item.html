@@ -13,7 +13,6 @@
     <script type="text/javascript" src="/static/toastr/toastr.min.js"></script>
     <link rel="stylesheet" href="/static/styles/open_item.css">
 </head>
-{% if result %}
 <body class="homebody">
     <div id = "topbar">
         <div class="w pos">
@@ -41,15 +40,18 @@
                         <a href="">已买到的宝贝</a>
                     </div>
                 </div>
+                {% if result %}
                 <div id="login">
                     <span class="login_name">欢迎{{ result.Username }},</span>
                     <a href="/loginout/">退出登录</a>
                 </div>
+                {% else %}
                 <div id="login_success">
                     <a href="/login/">登录</a>
                     <span class="gap">|</span>
                     <a href="/reg/">注册</a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -71,6 +73,7 @@
             <a href="http://about.58.com/info/del-menu.html" id="delinfo" rel="nofollow" class="search-no">修改<i>/</i>删除信息</a>
         </div>
     </div>
+    {% if result %}
     <div class="content">
         <div class="content-body">
             <div class="body-left">
@@ -145,13 +148,18 @@
                         </li>
                         <li>
                             <div class="sub_title">联&nbsp;&nbsp;系：</div>
-                            <div class="sub_content seller-phone">{{result.ContactUserPhone}}****
-                                <span class="show_num">查看完整号码</span>
+                            <div class="sub_content seller-phone">{{result.UserDisplayPhone}}****
+                                <span class="show_num" onclick="show_mobile()">查看完整号码</span>
                             </div>
+                            <script type="text/javascript">
+                                function show_mobile(){
+                                    $(".seller-phone").html({{result.ContactUserPhone}});
+                                }
+                            </script>
                         </li>
                         <li>
                             <div class="sub_title">Q&nbsp;&nbsp;Q：</div>
-                            <div class="sub_content">qq</div>
+                            <div class="sub_content">{{result.QQ}}</div>
                         </li>
                         <li>
                             <div class="sub_title">咨&nbsp;&nbsp;询：</div>
@@ -181,9 +189,8 @@
             <div class="body-right">
                 <div class="owner-image">
                     <div class="own-image">
-                        <!-- <i class="cir_img"></i> -->
                         <img src="/static/images/ssl-icon.ico">
-                        <p>尚书林</p>
+                        <p>{{result.PostUserName}}</p>
                     </div>              
                 </div>
                 <div class="owner-auth">
@@ -198,7 +205,7 @@
             <div class="body-detail">
                 <div class="detail-title">
                     <!-- <span id="detail-para" class="active"><a>宝贝参数</a></span> -->
-                    <span id="detail-cont" class="active"><a>宝贝详情</a></span>
+                    <span id="detail-cont" class="active"><a>宝贝详情</a>{{result.Description}}</span>
                     <span id="detail-talk"><a>留言(5)</a></span>
                 </div>
             </div>
