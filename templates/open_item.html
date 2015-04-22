@@ -12,6 +12,7 @@
     <script src="/static/scripts/jquery.alerts.js" type="text/javascript"></script>
     <script type="text/javascript" src="/static/toastr/toastr.min.js"></script>
     <link rel="stylesheet" href="/static/styles/open_item.css">
+    <script type="text/javascript" src="/static/scripts/open_item.js"></script>
 </head>
 <body class="homebody">
     <div id = "topbar">
@@ -70,8 +71,8 @@
                     </div>
                 </div>
             </form>
-            <a href="http://post.58.com/1/" id="fabu" rel="nofollow"><i></i>发布闲置</a>
-            <a href="http://about.58.com/info/del-menu.html" id="delinfo" rel="nofollow" class="search-no">修改<i>/</i>删除信息</a>
+            <a href="/publish/" id="fabu" rel="nofollow"><i></i>发布闲置</a>
+            <a href="/" id="delinfo" rel="nofollow" class="search-no">修改<i>/</i>删除信息</a>
         </div>
     </div>
     {% if result %}
@@ -178,7 +179,7 @@
                         修改当前发布
                     </div>
                     <div class="trade-success">
-                        交易已完成
+                        完成交易
                     </div>
                     {% else %}
                     <div class="post-new-item">
@@ -194,16 +195,45 @@
                 <div class="owner-image">
                     <div class="own-image">
                         <img src="/static/images/ssl-icon.ico">
-                        <p>{{result.PostUserName}}</p>
+                        <p id="username">{{result.PostUserName}}</p>
                     </div>              
                 </div>
-                <div class="owner-auth">
+                <!-- <div class="owner-auth">
+                </div> -->
+                <div class="owner-menu" id="owner-menu-bar">
+                    <ul>
+                        <li class="border-display active" onclick="getAllPost(0,this)">
+                            所有闲置<p>{{result.UserPostCount}}</p>
+                        </li>
+                        <li class="border-display" onclick="getAllPost(1,this)">
+                            成功交易<p>{{result.SuccessDeal}}</p>
+                        </li>
+                        <li class="border-none" onclick="getAllComment()">
+                            收到评论<p>{{result.ReceiveCommentCount}}</p>
+                        </li>
+                    </ul>
                 </div>
-                <div class="owner-post">
-                    <p>发布闲置5条</p>
-                    <p>成功出售3次</p>
-                    <p>评论4条</p>
-                    <p>评分4.8分</p>
+                <div class="owner-post" id="to-display">
+                    <ul>
+                        <li>
+                            <div class="item-pic">
+                                <a href="/show_item_detail?id=" target="_blank">
+                                    <img class="J_ItemPic" src="/static/images/ssl-item1.jpg" title="">
+                                </a>
+                            </div>
+                            <div class="item-info">
+                                <p>
+                                  <a>hahadsafasfdsfafafafdafadfasafafasdfadfafdaf</a>
+                                </p>
+                                <p class="price-block">
+                                    <span class="price">
+                                        <b>¥</b>
+                                        <em>25</em>
+                                    </span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="body-detail">

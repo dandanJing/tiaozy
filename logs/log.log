@@ -3,3 +3,10 @@
 [2015-04-22 03:04:12,681] [application.display_items.views] [DEBUG] getOnSelling: no such column: ssl_users_user_items_table.IsTradeSuccess
 [2015-04-22 03:04:12,692] [application.display_items.views] [DEBUG] getBooksWithType: no such column: ssl_users_user_items_table.IsTradeSuccess
 [2015-04-22 03:04:12,696] [application.display_items.views] [DEBUG] getBooksWithType: no such column: ssl_users_user_items_table.IsTradeSuccess
+[2015-04-22 08:16:23,177] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'
+[2015-04-22 08:19:27,341] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'
+[2015-04-22 08:39:27,779] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'
+[2015-04-22 08:39:41,844] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'
+[2015-04-22 08:41:59,606] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'
+[2015-04-22 08:42:12,192] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'
+[2015-04-22 08:46:24,915] [application.display_items.views] [DEBUG] getAllPostsForUser: 'tzy_users' object has no attribute 'mobilephone'

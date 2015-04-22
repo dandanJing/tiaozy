@@ -12,7 +12,7 @@ class tzy_users(AbstractUser):
     IsStudent   = models.BooleanField(default=True)
 
     def __str__(self):
-        return "username:%s\tphone:%s\temail:%s\t"%(self.username,self.mobilephone,self.email)
+        return "username:%s\tphone:%s\temail:%s\t"%(self.username,self.Mobilephone,self.email)
 
 class user_items_table(models.Model):
     ItemId              = models.CharField(max_length=100, unique=True)

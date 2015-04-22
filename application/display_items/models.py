@@ -102,13 +102,14 @@ class item_messages_table(models.Model):
                 self.save()
 
 class comments_table(models.Model):
-    CommentId       = models.CharField(max_length=100, unique=True)
-    Message         = models.TextField(default='')
-    Item            = models.ForeignKey(user_items_table,null=False)
-    CommentUser     = models.ForeignKey(tzy_users,null=False)
-    PostTime        = models.IntegerField(default=0)
-    Grade           = models.FloatField(default=0.0)
-    IsDelete        = models.BooleanField(default=False)
+    CommentId           = models.CharField(max_length=100, unique=True)
+    Message             = models.TextField(default='')
+    Item                = models.ForeignKey(user_items_table,null=False)
+    ItemPostUsername    = models.CharField(max_length=100,default="")
+    CommentUser         = models.ForeignKey(tzy_users,null=False)
+    PostTime            = models.IntegerField(default=0)
+    Grade               = models.FloatField(default=0.0)
+    IsDelete            = models.BooleanField(default=False)
 
     @classmethod
     def isCommentExist(cls, comment_id):

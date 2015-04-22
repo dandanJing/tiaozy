@@ -9,6 +9,7 @@ from django.shortcuts import render_to_response
 from application.ssl_users.models import user_items_table
 from application.ssl_users.models import tzy_users
 from application.display_items.models import ask_info_table
+from application.display_items.models import comments_table
 from django.http import HttpResponseRedirect
 import logging
 import base64
@@ -266,7 +267,6 @@ def openItem(request):
             item_sets = user_items_table.objects.filter(ItemId=itemid)
             if  item_sets.exists():
                 item = item_sets[0]
-                print item
                 item.clickAction()
                 postUser = item.TzyUser
                 is_owner = login_user == postUser
@@ -287,9 +287,45 @@ def openItem(request):
                 result["ContactUserPhone"] = item.ContactUserPhone
                 result["QQ"] = postUser.QQ
                 result["PostUserName"] = postUser.username
+                user_post_sets = user_items_table.objects.filter(TzyUser=postUser)
+                result["UserPostCount"] = len(user_post_sets)
+                result["ReceiveCommentCount"] = len(comments_table.objects.filter(ItemPostUsername=postUser.username))
+                result["SuccessDeal"] = len(user_post_sets.filter(IsTradeSuccess=True))
                 return render_to_response('open_item.html',{"result":result})
 
     except Exception as e:
         logger.debug('openItem: %s' % e)
 
     return HttpResponseRedirect("/index.html")
+
+def getAllPostsForUser(request):
+    result = []
+    username = ""
+    postUser = None
+    try:
+        req = json.loads(request.body)
+        if req.has_key('username'):
+            username = req['username']
+            postUser_set = tzy_users.objects.filter(username=username)
+            if postUser_set.exists():
+                postUser = postUser_set[0]
+                if req.has_key('is_trade_success'):
+                    item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True).order_by('-ClickCount','-PostTime')[:5]
+                else:
+                    item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')[:5]
+                if  item_sets.exists():
+                    for item in  item_sets.iterator():
+                        image_urls = json.loads(item.ItemImageUrls)
+                        result.append({
+                            "ItemId":item.ItemId,
+                            "Title":item.ItemName,
+                            "Price":item.ItemPrice,
+                            "OldPrice":item.ItemOldPrice,
+                            "ImageUrl":image_urls[0],
+                            "Description":item.ItemDescription,
+                        })
+
+    except Exception as e:
+        logger.debug('getAllPostsForUser: %s' % e)
+
+    return handle_response(result)

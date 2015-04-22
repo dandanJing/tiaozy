@@ -560,7 +560,7 @@ a:hover #fabu{
     width: 227px;
     border:1px solid #e0e0e0;
     border-top: 2px solid #b8b8b8;
-    height: 470px;
+    height: 800px;
     margin: 0;
     /*background-color: #0f0;*/
 }
@@ -866,7 +866,6 @@ a:hover #fabu{
     text-align: center;
     position: relative;
     margin-top: 45px; 
-    border-bottom: 1px dotted #e0e0e0;
     padding-bottom: 4px;
 }
 
@@ -902,14 +901,36 @@ a:hover #fabu{
     border-bottom: 1px dotted #e0e0e0;
 }
 
-.owner-post{
+.owner-menu ul{
+    margin-top: 8px;
+    height: 40px;
+    border-top: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
-    text-align: center;
-    padding: 15px 15px;
 }
 
-.owner-post p{
-    padding-bottom: 5px;
+.owner-menu .border-none, .owner-menu .border-display{   
+    color: #000;
+    width: 50px;
+    display: inline;
+    padding: 0 12px;
+    line-height: 20px;
+    float: left;
+}
+
+.owner-menu .border-display{
+    border-right: 1px solid #e0e0e0;
+}
+
+.owner-menu .active{
+    border-top: 2px solid #f40;
+    color: #f40;
+}
+
+.border-display p, .border-none p{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #f40;
 }
 
 .edit-item,.trade-success{
@@ -943,11 +964,12 @@ a:hover #fabu{
 }
 
 .body-detail{
-    width: 1000px;
+    width: 760px;
     height: 500px;
     float: left;
     border-left: 1px solid #e0e0e0;
     padding-top: 5px;
+    overflow: hidden;
 }
 
 .detail-content{
@@ -957,7 +979,7 @@ a:hover #fabu{
 }
 
 .detail-title{
-    width: 980px;
+    width: 760px;
     border-bottom: 2px solid #CDCFD1;
     height: 37px;
     font-size: 14px;
@@ -988,4 +1010,71 @@ a:hover #fabu{
     background: none repeat scroll 0% 0% #fff;
     color: #000;
     border-bottom: 3px solid #f22;
+}
+
+.owner-post{
+    width: 100%;
+    overflow: hidden;
+}
+
+#to-display li{
+    
+}
+
+.item-pic{
+    width: 75px;
+    height: 95px;
+    padding: 5px;
+    float: left;
+    border-bottom: 1px #e0e0e0 dashed;
+}
+
+.item-pic img{
+    margin: 0 auto;
+    max-height: 80px;
+    max-width: 75px;
+    float: left;
+    padding-left: 15px;
+    padding-top: 8px;
+}
+
+.item-info{
+    width: 127px;
+    height: 95px;
+    float: left;
+    padding: 5px;
+    overflow: hidden;
+    border-bottom: 1px #e0e0e0 dashed;
+}
+
+.item-info a{
+    outline: 0px none;
+}
+
+.item-info p{
+    width: 117px;
+    height: 30px;
+    overflow: hidden;
+    line-height: 15px;
+    padding-top: 15px;
+}
+
+.price-block {
+    width: 60px;
+    font-family: Verdana;
+    font-size: 12px;
+    float: left;
+    text-align: left;
+}
+
+.price-block b{
+    font-weight: 400;
+    font-family: Arial,Verdana;
+    color: #555;
+}
+
+.price-block .price em {
+    font-weight: 700;
+    font-size: 14px;
+    color: #f40;
 }
