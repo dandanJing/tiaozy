@@ -100,3 +100,35 @@ class item_messages_table(models.Model):
                 report_list.append(reporter)
                 self.ReportList = json_dumps(report_list)
                 self.save()
+
+class comments_table(models.Model):
+    CommentId       = models.CharField(max_length=100, unique=True)
+    Message         = models.TextField(default='')
+    Item            = models.ForeignKey(user_items_table,null=False)
+    CommentUser     = models.ForeignKey(tzy_users,null=False)
+    PostTime        = models.IntegerField(default=0)
+    Grade           = models.FloatField(default=0.0)
+    IsDelete        = models.BooleanField(default=False)
+
+    @classmethod
+    def isCommentExist(cls, comment_id):
+        try:
+            cls.objects.get(CommentId=comment_id)
+        except cls.DoesNotExist:
+            return False
+        else:
+            return True
+
+    @classmethod
+    def getObject(cls, comment_id):
+        try:
+            return cls.objects.get(CommentId=comment_id)
+        except cls.DoesNotExist:
+            return None
+
+    @classmethod
+    def createUniqueCommentId(cls):
+        comment_id = md5HashEncodeWithTime(getRandomString())
+        while cls.isCommentExist(comment_id):
+            comment_id = md5HashEncodeWithTime(getRandomString())
+        return comment_id
