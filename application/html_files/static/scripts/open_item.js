@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	getAllPost();
+	loadMessages();
 });
 
 function getAllPost(data,ths){
@@ -25,6 +26,24 @@ function getAllPost(data,ths){
     });
 };
 
+function loadMessages(){
+	$.ajax({
+        url:"/get-item-messages",
+        type:"post",
+        data:JSON.stringify({
+        	'itemid':$("#itemid").html()
+        }),
+        dataType:"json",
+        contentType:'application/json;charset=UTF-8',
+        success:function (data) {
+        	showMessages(data);
+        },
+        error:function (data) {
+           toastr.error("获取留言失败");
+        },
+    });
+}
+
 function showBooks(data){
     var htmlInner = "<ul>";
     
@@ -40,15 +59,37 @@ function showBooks(data){
     $("#to-display").html(htmlInner);
 }
 
+function showMessages(data){
+    var htmlInner = "<ul>";
+    
+    for(var i=0; i<data.length; i++){
+        var item = data[i];
+        htmlInner += "<li><img src=\"/static/images/avatar.png\"> <div class=\"message-cont\">";
+        htmlInner += item['Message']+"</div><div class=\"message-time\">"+item['PostTime']+"</div></li>";                       
+    }
+    htmlInner += "</ul>";
+    $("#messages-display").html(htmlInner);
+}
+
+function appendMessage(data){
+    var htmlInner = $("#messages-display").html();
+    for(var i=0; i<data.length; i++){
+        var item = data[i];
+        htmlInner += "<li><img src=\"/static/images/avatar.png\"> <div class=\"message-cont\">";
+        htmlInner += item['Message']+"</div><div class=\"message-time\">"+item['PostTime']+"</div></li>";                       
+    }
+    $("#messages-display").html(htmlInner);
+}
+
 function clickDetailBottom(index,ths){
     $(ths).siblings().removeClass("active");
     $(ths).toggleClass("active");
     if(index==0){
         $(".detail-content").css({"display":"block"});
-        $("#message-box").css({"display":"none"});
+        $(".message-box").css({"display":"none"});
     }else{
         $(".detail-content").css({"display":"none"});
-        $("#message-box").css({"display":"block"});
+        $(".message-box").css({"display":"block"});
     }
 };
 
@@ -79,6 +120,7 @@ function sendMessage(){
             contentType:'application/json;charset=UTF-8',
             success:function (data) {
                 $("#message-text").val("");
+                appendMessage(data);
             },
             error:function (data) {
                toastr.error("留言失败,请重试");

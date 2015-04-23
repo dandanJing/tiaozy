@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 # Globals Config
 
+# 每页留言数
+MESSAGES_PER_PAGE 	=  8
+
 # OSS API
 OSS_HOST            =  'oss-cn-beijing.aliyuncs.com'
 ACCESS_KEY_ID       =  'AiEAsvpEfF0N7X7p'

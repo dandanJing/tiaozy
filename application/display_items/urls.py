@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^open_item','application.display_items.views.openItem',name='openItem'),
     url(r'^get-user-all-posts','application.display_items.views.getAllPostsForUser',name='getAllPostsForUser'),
     url(r'^post-item-message','application.display_items.views.postItemMessage',name='postItemMessage'),
+    url(r'^get-item-messages','application.display_items.views.getItemMessages',name='getItemMessages'),
 )

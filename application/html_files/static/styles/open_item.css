@@ -928,8 +928,8 @@ a:hover #fabu{
 
 .border-display p, .border-none p{
     text-align: center;
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 500;
     color: #f40;
 }
 
@@ -965,7 +965,7 @@ a:hover #fabu{
 
 .body-detail{
     width: 760px;
-    height: 500px;
+    height: 800px;
     float: left;
     border-left: 1px solid #e0e0e0;
     padding-top: 5px;
@@ -1080,7 +1080,7 @@ a:hover #fabu{
 }
 
 .message-box{
-    /*display: none;*/
+    display: none;
 }
 
 .message-input{
@@ -1145,4 +1145,68 @@ a:hover #fabu{
     float: left;
     position: relative;
     margin-top: 4px;
+}
+
+#messages-display{
+    width: 100%;
+    float: left;
+}
+
+#messages-display li{
+    width: 100%;
+    float: left;
+    border-bottom: 1px dashed #d5d5d5;
+    padding-left: 10px;
+}
+
+#messages-display img{
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    float: left;
+    margin-right: 20px;
+}
+
+.message-cont{
+    line-height: 18px;
+    font-size: 13px;
+    color: #444;
+    padding-top: 10px;
+}
+
+.message-time{
+    color: #8c8c8c;
+    font-size: 12px;
+    padding-top: 5px;
+    line-height: 18px;
+    height: 18px;
+}
+
+.msg-page{
+    width: 100%;
+    float: left;
+    text-align: right;
+    padding-top: 15px;
+}
+
+.msg-page li{
+    display: inline;
+}
+
+.page-act{
+    font-size: 12px;
+    line-height: 23px;
+    padding: 5px 10px;
+    height: 23px;
+    border: 0;
+    background-color: #D7F0D1;
+    color: #4B9808;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.msg-page .active{
+    background-color: #4B9808;
+    color: #FFF;
 }

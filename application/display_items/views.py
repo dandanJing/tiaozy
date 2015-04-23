@@ -16,6 +16,7 @@ import logging
 import base64
 import os
 import json
+import math
 logger = logging.getLogger(__name__)
 
 # Create your views here.
@@ -293,6 +294,9 @@ def openItem(request):
                 result["ReceiveCommentCount"] = len(comments_table.objects.filter(ItemPostUsername=postUser.username))
                 result["SuccessDeal"] = len(user_post_sets.filter(IsTradeSuccess=True))
                 result["MessageCount"] = len(item_messages_table.objects.filter(Item=item))
+                pagenum = int(math.ceil(float(result["MessageCount"])/MESSAGES_PER_PAGE))
+                print pagenum
+                result["MessagePageIndexs"] = range(1,pagenum+1)
                 return render_to_response('open_item.html',{"result":result})
 
     except Exception as e:
@@ -334,8 +338,7 @@ def getAllPostsForUser(request):
 
 def postItemMessage(request):
     print 'request info: %s %s user %s' % (request.method, request.path, request.user)
-    result = {}
-    result["result"] = False
+    result = []
     itemid = None
     message = ""
     try:
@@ -350,13 +353,51 @@ def postItemMessage(request):
             messageId = item_messages_table.createUniqueMessageId()
             msgObject = item_messages_table.objects.create(MessageId=messageId,Message=message,Item=item)
             msgObject.PostTime = getCurrentTime()
+            message_str = message
             if request.user.is_authenticated():
                 msgObject.TzyUser = request.user
+                message_str = request.user.username+" : "+message
             msgObject.save()
-            result["result"] = True
-        print "post message %s" % message
+            result.append({
+                "MessageId":msgObject.MessageId,
+                "Message":message_str,
+                "PostTime":formatTime(msgObject.PostTime,"%Y-%m-%d %H:%M")
+            })
 
     except Exception as e:
         logger.debug('postItemMessage: %s' % e)
+
+    return handle_response(result)
+
+def getItemMessages(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    result = []
+    itemid = ""
+    pagenum = 1
+    try:
+        req = json.loads(request.body)
+        if req.has_key('pagenum'):
+            pagenum = req["pagenum"]
+        if req.has_key('itemid'):
+            itemid = req["itemid"]
+            item_sets =  user_items_table.objects.filter(ItemId=itemid)
+            if  item_sets.exists():
+                item = item_sets[0]
+                start_index = MESSAGES_PER_PAGE*(pagenum-1)
+                end_index = MESSAGES_PER_PAGE*(pagenum)
+                message_sets = item_messages_table.objects.filter(Item=item)[start_index:end_index]
+                if message_sets.exists():
+                    for message in  message_sets.iterator():
+                        message_str = message.Message
+                        if message.TzyUser:
+                            message_str = message.TzyUser.username+" : "+message.Message
+                        result.append({
+                            "MessageId":message.MessageId,
+                            "Message":message_str,
+                            "PostTime":formatTime(message.PostTime,"%Y-%m-%d %H:%M")
+                        })
+
+    except Exception as e:
+        logger.debug('getItemMessages: %s' % e)
 
     return handle_response(result)

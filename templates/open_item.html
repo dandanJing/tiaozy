@@ -41,7 +41,7 @@
                         <a href="">已买到的宝贝</a>
                     </div>
                 </div>
-                {% if result %}
+                {% if result.Username %}
                 <div id="login">
                     <span class="login_name">欢迎{{ result.Username }},</span>
                     <a href="/loginout/">退出登录</a>
@@ -242,9 +242,9 @@
                     <span id="detail-cont" class="active" onclick="clickDetailBottom(0,this)"><a>宝贝详情</a></span>
                     <span id="detail-talk" onclick="clickDetailBottom(1,this)"><a>留言({{result.MessageCount}})</a></span>
                 </div>
-                <!-- <div class="detail-content">
+                <div class="detail-content">
                     {{result.Description}}
-                </div> -->
+                </div>
                 <div class="message-box">
                     <div id="itemid" style="display:none">{{result.ItemId}}</div>
                     <div class="message-input">
@@ -258,7 +258,25 @@
                         </span>
                     </div>
                     <div class="divide-bar"></div>
-                    <div id="messages-display"></div>
+                    <div id="messages-display">
+                        <ul>
+                            <li>
+                                <img src="/static/images/avatar.png">
+                                <div class="message-cont"> fasfasfafafdafd
+                                </div>
+                                <div class="message-time">2015-4-21 16:40</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="msg-page">
+                        <ul>
+                            <li><span class="page-act">上一页</span></li>
+                            {% for page in result.MessagePageIndexs %}
+                                <li><span class="page-act">{{page}}</span></li>
+                            {% endfor %}
+                            <li><span class="page-act">下一页</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

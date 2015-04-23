@@ -14,3 +14,9 @@
 [2015-04-22 14:48:16,151] [application.display_items.views] [DEBUG] openItem: Could not parse the remainder: '(result.MessageCount' from '(result.MessageCount'
 [2015-04-22 15:55:21,377] [application.display_items.views] [DEBUG] postItemMessage: global name 'createdTime' is not defined
 [2015-04-22 15:55:37,604] [application.display_items.views] [DEBUG] postItemMessage: global name 'createdTime' is not defined
+[2015-04-23 03:53:39,817] [application.display_items.views] [DEBUG] openItem: Invalid block tag: 'assign', expected 'elif', 'else' or 'endif'
+[2015-04-23 03:53:42,997] [application.display_items.views] [DEBUG] openItem: Invalid block tag: 'assign', expected 'elif', 'else' or 'endif'
+[2015-04-23 03:56:05,050] [application.display_items.views] [DEBUG] openItem: Invalid block tag: 'for(pageIndex=1;pageIndex', expected 'elif', 'else' or 'endif'
+[2015-04-23 04:00:07,501] [application.display_items.views] [DEBUG] openItem: range() integer end argument expected, got float.
+[2015-04-23 04:02:01,917] [application.display_items.views] [DEBUG] openItem: range() integer end argument expected, got float.
+[2015-04-23 04:02:47,438] [application.display_items.views] [DEBUG] openItem: range() integer end argument expected, got float.
