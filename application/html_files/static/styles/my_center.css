@@ -308,6 +308,12 @@ a:hover{
     float: left;
 }
 
+.left-menu .active{
+    background-color: #fff;
+    border:1px solid #f45e30;
+    border-right: 2px solid #fff;
+}
+
 .my-info{    
     background:url("/static/images/use-icon-2.gif") no-repeat 0 -512px;
 }
@@ -405,7 +411,6 @@ a:hover{
     padding: 25px 10px;
 }
 
-
 .btns{
     padding: 6px 20px 7px;
     display: block;
@@ -416,6 +421,19 @@ a:hover{
     font-weight: bold;
     cursor: pointer;
     margin-top: 25px;
-    margin-left: 85px;
+    margin-left: 165px;
     float: left;
+}
+
+.status-radio{
+    float: left;
+}
+
+.span-title {
+    margin-right: 15px;
+    display: inline;
+    float: left;
+    line-height: 25px;
+    padding-left: 10px;
+    margin-top: 5px;
 }

@@ -2,12 +2,14 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from application.ssl_users.models import tzy_users
+from application.display_items.views import uploadImage
 from utils.utils import *
 from django.http import HttpResponse
 import json
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 import logging
+import os
 logger = logging.getLogger(__name__)
 
 # Create your views here.
@@ -185,14 +187,82 @@ def openMyCenter(request):
     return render_to_response('my_center.html',{"login_user":login_user})
 
 def getMyPersonalInfo(request):
-    result = {}
     print 'request info: %s %s' % (request.method, request.path)
+    result = {}
     if not request.user.is_authenticated():
         return handle_response(result)
     else:
         try:
             result['Username'] = request.user.username
+            result['Mobilephone'] = request.user.Mobilephone
+            result['Email'] = request.user.email
+            result['QQ'] = request.user.QQ
+            result['IsStudent'] =request.user.IsStudent
+            result['RealName'] = request.user.RealName
+            result['AvatarUrl'] = request.user.AvatarUrl
         except Exception as e:
             logger.debug('getMyPersonalInfo: %s' % e)
+
+    return handle_response(result)
+
+def changeMyPersonalInfo(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    result = {}
+    phone = ""
+    email = ""
+    qq = ""
+    realname = ""
+    need_save = False
+    is_student = False
+    errors = []
+    if not request.user.is_authenticated():
+        return handle_response(result)
+    else:
+        try:
+            if request.method == "POST":
+                if request.POST.get('phone'):
+                    phone = request.POST.get('phone')
+                    if len(phone) != 11:
+                        errors.append("手机号码输入有误")
+                    elif phone != (request.user.Mobilephone):
+                        request.user.Mobilephone = phone
+                        need_save = True
+                if request.POST.get('email'):
+                    email = request.POST.get('email')
+                    if not validateEmail(email):
+                        errors.append("邮箱输入格式有误")
+                    elif email != (request.user.email):
+                        request.user.email = email
+                        need_save = True
+                if request.POST.get('qq'):
+                    qq = request.POST.get('qq')
+                    if qq != (request.user.QQ):
+                        request.user.QQ = qq
+                        need_save = True
+                if request.POST.get('realname'):
+                    realname = request.POST.get('realname')
+                    if realname != (request.user.RealName):
+                        request.user.RealName = realname
+                        need_save = True
+                if request.POST.get('is-student'):
+                    is_student = int(request.POST.get('is-student'))
+                    if is_student != request.user.IsStudent:
+                        request.user.IsStudent = is_student
+                        need_save = True
+                    print "is_student : %s %d" % (request.POST.get('is-student'),is_student)
+                if len(errors) > 0:
+                    result["errors"] = errors
+                elif need_save:
+                    print "change-my-info"
+                    request.user.save()
+                result['Username'] = request.user.username
+                result['Mobilephone'] = request.user.Mobilephone
+                result['Email'] = request.user.email
+                result['QQ'] = request.user.QQ
+                result['IsStudent'] =request.user.IsStudent
+                result['RealName'] = request.user.RealName
+                result['AvatarUrl'] = request.user.AvatarUrl
+        except Exception as e:
+            logger.debug('changeMyPersonalInfo: %s' % e)
 
     return handle_response(result)

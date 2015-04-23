@@ -10,6 +10,8 @@ class tzy_users(AbstractUser):
     QQ          = models.IntegerField(default=0)
     Nickname    = models.CharField(max_length=20)
     IsStudent   = models.BooleanField(default=True)
+    RealName    = models.CharField(max_length=50, default="")
+    AvatarUrl  = models.CharField(max_length=100, default="")
 
     def __str__(self):
         return "username:%s\tphone:%s\temail:%s\t"%(self.username,self.Mobilephone,self.email)

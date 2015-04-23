@@ -11,7 +11,7 @@ import sys
 import math
 from .colors import *
 from django.http import HttpResponse
-
+import re
 
 def md5HashEncode(string):
     string = string.encode("utf-8")
@@ -102,3 +102,10 @@ def handle_response(content, response_msg='', logger=None, status_code=200, exce
     if logger:
         logger.error(red('%s%s'), response_msg, ': [%d] %s' % (sys.exc_info()[2].tb_lineno, exception) if exception else '')
     return response
+
+def validateEmail(email):
+
+    if len(email) > 7:
+        if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", email) != None:
+            return True
+    return False
