@@ -6,6 +6,10 @@ $(document).ready(function(){
     getEssence(essence_pagenum);
     getEnBooks();
     getMaPhBooks();
+    getSocBooks();
+    getEecpBooks();
+    getEcBooks();
+    getArtBooks();
     $("#change-essence").click(function(){
         if (essence_change_enable) {
             getEssence(essence_pagenum);
@@ -70,6 +74,65 @@ function getMaPhBooks(){
     });
 };
 
+function getEecpBooks(){
+    $.ajax({
+        url:"/get-ssl-eecp-books",
+        type:"get",
+        dataType:"json",
+        contentType:'application/json;charset=UTF-8',
+        success:function (data) {
+            showBooks($("#ssl-eecp"),data);
+        },
+        error:function (data) {
+           toastr.error("获取数据失败");
+        },
+    });
+}
+
+function getSocBooks(){
+    $.ajax({
+        url:"/get-ssl-soc-books",
+        type:"get",
+        dataType:"json",
+        contentType:'application/json;charset=UTF-8',
+        success:function (data) {
+            showBooks($("#ssl-soc"),data);
+        },
+        error:function (data) {
+           toastr.error("获取数据失败");
+        },
+    });
+}
+
+function getEcBooks(){
+    $.ajax({
+        url:"/get-ssl-ec-books",
+        type:"get",
+        dataType:"json",
+        contentType:'application/json;charset=UTF-8',
+        success:function (data) {
+            showBooks($("#ssl-ec"),data);
+        },
+        error:function (data) {
+           toastr.error("获取数据失败");
+        },
+    });
+}
+
+function getArtBooks(){
+    $.ajax({
+        url:"/get-ssl-art-books",
+        type:"get",
+        dataType:"json",
+        contentType:'application/json;charset=UTF-8',
+        success:function (data) {
+            showBooks($("#ssl-art"),data);
+        },
+        error:function (data) {
+           toastr.error("获取数据失败");
+        },
+    });
+}
 function showBooks(ths,data){
     var htmlInner = "<ul>";
     

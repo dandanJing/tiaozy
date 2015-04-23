@@ -230,6 +230,42 @@ def getSSLMaPhBooks(request):
 
     return handle_response(maph_result)
 
+def getSSLEecpBooks(request):
+    eecp_result = []
+    try:    
+        eecp_result = getBooksWithType("102")
+    except Exception as e:
+        logger.debug('getSSLEecpBooks: %s' % e)
+
+    return handle_response(eecp_result)
+
+def getSSLSocBooks(request):
+    soc_result = []
+    try:    
+        soc_result = getBooksWithType("103")
+    except Exception as e:
+        logger.debug('getSSLSocBooks: %s' % e)
+
+    return handle_response(soc_result)
+
+def getSSLEcBooks(request):
+    ec_result = []
+    try:    
+        ec_result = getBooksWithType("104")
+    except Exception as e:
+        logger.debug('getSSLEcBooks: %s' % e)
+
+    return handle_response(ec_result)
+
+def getSSLArtBooks(request):
+    art_result = []
+    try:    
+        art_result = getBooksWithType("105")
+    except Exception as e:
+        logger.debug('getSSLArtBooks: %s' % e)
+
+    return handle_response(art_result)
+
 def getBooksWithType(typeStr):
     try:
         result = [];
