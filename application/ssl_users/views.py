@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from application.ssl_users.models import tzy_users
+from utils.utils import *
 from django.http import HttpResponse
 import json
 from django.contrib import auth
@@ -18,7 +19,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect("/index.html")
+    return HttpResponseRedirect("/")
 
 def regUsername(request):
     errors=[]
@@ -94,13 +95,13 @@ def regUserInfo(request):
     try:
         if request.method == 'POST':
             phone = request.POST.get('phone')
-            qq = request.POST.get('qq')
             is_student = request.POST.get('is-student')
             
             if request.user.is_authenticated():
                 print request.user
                 request.user.Mobilephone = phone
-                request.user.QQ = qq
+                if request.POST.get('qq'):
+                    request.user.QQ = qq
                 request.user.IsStudent = is_student
                 request.user.save() 
                 return render_to_response('reg.html',{'is_success':True})
@@ -174,7 +175,7 @@ def checkUser(request):
 def openMyCenter(request):
     print 'request info: %s %s' % (request.method, request.path)
     if not request.user.is_authenticated():
-        return HttpResponseRedirect("/index.html")
+        return HttpResponseRedirect("/login/")
     try:
         temp = 1
         login_user = request.user.username
@@ -182,3 +183,16 @@ def openMyCenter(request):
         logger.debug('openMyCenter: %s' % e)
 
     return render_to_response('my_center.html',{"login_user":login_user})
+
+def getMyPersonalInfo(request):
+    result = {}
+    print 'request info: %s %s' % (request.method, request.path)
+    if not request.user.is_authenticated():
+        return handle_response(result)
+    else:
+        try:
+            result['Username'] = request.user.username
+        except Exception as e:
+            logger.debug('getMyPersonalInfo: %s' % e)
+
+    return handle_response(result)
