@@ -28,3 +28,5 @@
 [2015-04-23 16:12:26,487] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
 [2015-04-23 16:12:27,511] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
 [2015-04-23 16:14:05,201] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
+[2015-04-23 19:16:02,525] [application.display_items.views] [DEBUG] upload-image: [Errno -2] Name or service not known
+[2015-04-23 19:16:02,526] [application.display_items.views] [DEBUG] postItem: 'ImageUrl'
