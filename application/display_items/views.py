@@ -372,6 +372,37 @@ def getAllPostsForUser(request):
 
     return handle_response(result)
 
+def getMyPosts(request):
+    result = []
+    username = ""
+    postUser = None
+    try:
+        req = json.loads(request.body)
+        if request.user.is_authenticated():
+            username = request.user.username
+            postUser_set = tzy_users.objects.filter(username=username)
+            if postUser_set.exists():
+                postUser = postUser_set[0]
+                item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')[:8]
+                if  item_sets.exists():
+                    for item in  item_sets.iterator():
+                        image_urls = json.loads(item.ItemImageUrls)
+                        result.append({
+                            "ItemId":item.ItemId,
+                            "Title":item.ItemName,
+                            "Price":item.ItemPrice,
+                            "OldPrice":item.ItemOldPrice,
+                            "ImageUrl":image_urls[0],
+                            "Description":item.ItemDescription,
+                        })
+        else:
+            HttpResponseRedirect('login.html')
+
+    except Exception as e:
+        logger.debug('getMyPosts: %s' % e)
+
+    return handle_response(result)
+
 def postItemMessage(request):
     print 'request info: %s %s user %s' % (request.method, request.path, request.user)
     result = []

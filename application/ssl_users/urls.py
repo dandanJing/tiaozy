@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^loginAction/','application.ssl_users.views.loginAction',name='loginAction'),
     url(r'^loginout/','application.ssl_users.views.logout',name='logout'),
     url(r'^check-user','application.ssl_users.views.checkUser',name='checkUser'),
+    url(r'^open-my-center/','application.ssl_users.views.openMyCenter',name='openMyCenter'),
 )

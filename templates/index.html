@@ -35,13 +35,13 @@
             </div>
             <div class="bar_right">
                 <div id="my_menu" class="">
-                    <a id="to_my_menu" href="" target="_self">我的尚书</a>
+                    <a id="to_my_menu" href="/open-my-center/">用户中心</a>
                     <span class="arrow"></span>
                     <div id="my_menu_box">
-                        <a href="">我的资料</a>
-                        <a href="">我的发布</a>
-                        <a href="">我的足迹</a>
-                        <a href="">已买到的宝贝</a>
+                        <a href="/open-my-center/?type=1">我的资料</a>
+                        <a href="/open-my-center/?type=2">我的发布</a>
+                        <a href="/open-my-center/?type=3">我的求购</a>
+                        <a href="/open-my-center/?type=4">已买到的宝贝</a>
                     </div>
                 </div>
                 {% if login_user %}
@@ -70,7 +70,7 @@
                             <span id="key"><input type="text" id="keyword" name="key" class="keyword" value="搜索二手书" onblur="win.closeToolTipWindow();if(this.value=='')this.value='搜索二手书',this.className='keyword'" onkeyup="win.GetContentData();" onfocus="if(this.value=='搜索二手书')this.value='',this.className='keyword2'" autocomplete="off">
                             </span>
                         </div>
-                        <div class="inputcon"><input type="submit" name="button" id="searchbtn" class="btnall" value="尚书搜索" onmousemove="this.className='btnal2'" onmouseout="this.className='btnall'">
+                        <div class="inputcon"><input type="submit" name="button" id="searchbtn" class="btnall" value="跳蚤搜索" onmousemove="this.className='btnal2'" onmouseout="this.className='btnall'">
                         </div>
                         <div class="clear"></div>
                     </div>

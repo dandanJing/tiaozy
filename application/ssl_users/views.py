@@ -6,6 +6,8 @@ from django.http import HttpResponse
 import json
 from django.contrib import auth
 from django.http import HttpResponseRedirect
+import logging
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 def reg(request):
@@ -25,58 +27,60 @@ def regUsername(request):
     email = None
     password = None
     cpassword = None
+    try:
+        if request.method == 'POST':
+            if not request.POST.get('username'):
+                errors.append('用户名无效')
+            else:
+                username = request.POST.get('username')
 
-    if request.method == 'POST':
-        if not request.POST.get('username'):
-            errors.append('用户名无效')
-        else:
-            username = request.POST.get('username')
+            if not request.POST.get('phone') and not request.POST.get('email'):
+                errors.append('手机号码或邮箱有误')
+            elif request.POST.get('phone'):
+                phone = request.POST.get('phone')
+            else:
+                email = request.POST.get('email')
 
-        if not request.POST.get('phone') and not request.POST.get('email'):
-            errors.append('手机号码或邮箱有误')
-        elif request.POST.get('phone'):
-            phone = request.POST.get('phone')
-        else:
-            email = request.POST.get('email')
+            if not request.POST.get('password'):
+                errors.append('密码有误')
+            else:
+                password = request.POST.get('password')
 
-        if not request.POST.get('password'):
-            errors.append('密码有误')
-        else:
-            password = request.POST.get('password')
+            if not request.POST.get('cpassword'):
+                errors.append('确认密码输入有误')
+            else:
+                cpassword = request.POST.get('cpassword')
 
-        if not request.POST.get('cpassword'):
-            errors.append('确认密码输入有误')
-        else:
-            cpassword = request.POST.get('cpassword')
+            if username is not None and (email is not None or phone is not None)and password is not None and len(errors) == 0:
+                filterResults = tzy_users.objects.filter(username=username)
+                if len(filterResults)>0:
+                    errors.append('用户名已存在')
+                    print errors
+                    return render_to_response('reg.html',{'errors':errors})
+                
+                filterResults = tzy_users.objects.filter(email=email)
+                if len(filterResults)>0:
+                    errors.append('该邮箱已注册')
+                    print errors
+                    return render_to_response('reg.html',{'errors':errors})
 
-        if username is not None and (email is not None or phone is not None)and password is not None and len(errors) == 0:
-            filterResults = tzy_users.objects.filter(username=username)
-            if len(filterResults)>0:
-                errors.append('用户名已存在')
-                print errors
-                return render_to_response('reg.html',{'errors':errors})
-            
-            filterResults = tzy_users.objects.filter(email=email)
-            if len(filterResults)>0:
-                errors.append('该邮箱已注册')
-                print errors
-                return render_to_response('reg.html',{'errors':errors})
+                filterResults = tzy_users.objects.filter(Mobilephone=phone)
+                if len(filterResults)>0:
+                    errors.append('该手机号已注册')
+                    print errors
+                    return render_to_response('reg.html',{'errors':errors})
 
-            filterResults = tzy_users.objects.filter(Mobilephone=phone)
-            if len(filterResults)>0:
-                errors.append('该手机号已注册')
-                print errors
-                return render_to_response('reg.html',{'errors':errors})
-
-            # user input verify
-            user = tzy_users.objects.create_user(username=username,password=password,email=email,Nickname=username)
-            if phone is not None:
-                user.Mobilephone = phone
-            user.is_active = True
-            user.save()
-            auth_user = auth.authenticate(username=username,password=password)
-            auth.login(request, auth_user)
-            return render_to_response('reg.html',{'user':user})
+                # user input verify
+                user = tzy_users.objects.create_user(username=username,password=password,email=email,Nickname=username)
+                if phone is not None:
+                    user.Mobilephone = phone
+                user.is_active = True
+                user.save()
+                auth_user = auth.authenticate(username=username,password=password)
+                auth.login(request, auth_user)
+                return render_to_response('reg.html',{'user':user})
+    except Exception as e:
+        logger.debug('regUsername: %s' % e)
 
     print errors
     return render_to_response('reg.html',{'errors':errors})
@@ -87,18 +91,21 @@ def regUserInfo(request):
     is_student = None
     errors=[]
 
-    if request.method == 'POST':
-        phone = request.POST.get('phone')
-        qq = request.POST.get('qq')
-        is_student = request.POST.get('is-student')
-        
-        if request.user.is_authenticated():
-            print request.user
-            request.user.Mobilephone = phone
-            request.user.QQ = qq
-            request.user.IsStudent = is_student
-            request.user.save() 
-            return render_to_response('reg.html',{'is_success':True})
+    try:
+        if request.method == 'POST':
+            phone = request.POST.get('phone')
+            qq = request.POST.get('qq')
+            is_student = request.POST.get('is-student')
+            
+            if request.user.is_authenticated():
+                print request.user
+                request.user.Mobilephone = phone
+                request.user.QQ = qq
+                request.user.IsStudent = is_student
+                request.user.save() 
+                return render_to_response('reg.html',{'is_success':True})
+    except Exception as e:
+        logger.debug('regUserInfo: %s' % e)
 
     return render_to_response('reg.html')
 
@@ -107,51 +114,71 @@ def loginAction(request):
     user = None
     result = False
 
-    if request.method=='POST':
-        username=request.POST.get('username','')
-        password=request.POST.get('password','')
-        print "login-username:"+username
-        user = auth.authenticate(username=username,password=password)
-        if user is not None and user.is_active:
-            auth.login(request, user)
-            result = True
-        elif user is None:
-            filterResults = tzy_users.objects.filter(Mobilephone=username)
-            if len(filterResults) == 0:
-                filterResults = tzy_users.objects.filter(email=username)
-            
-            if len(filterResults) > 0:  
-                user = filterResults[0]       
-            if user is not None and user.check_password(password) and user.is_active:
-                print user
-                user = auth.authenticate(username=user.username,password=password)
+    try:
+        if request.method=='POST':
+            username=request.POST.get('username','')
+            password=request.POST.get('password','')
+            print "login-username:"+username
+            user = auth.authenticate(username=username,password=password)
+            if user is not None and user.is_active:
                 auth.login(request, user)
                 result = True
-        if result:
-            return HttpResponseRedirect("/index.html")
-    errors.append('用户名或密码错误')
+            elif user is None:
+                filterResults = tzy_users.objects.filter(Mobilephone=username)
+                if len(filterResults) == 0:
+                    filterResults = tzy_users.objects.filter(email=username)
+                
+                if len(filterResults) > 0:  
+                    user = filterResults[0]       
+                if user is not None and user.check_password(password) and user.is_active:
+                    print user
+                    user = auth.authenticate(username=user.username,password=password)
+                    auth.login(request, user)
+                    result = True
+            if result:
+                return HttpResponseRedirect("/index.html")
+        errors.append('用户名或密码错误')
+    except Exception as e:
+        logger.debug('loginAction: %s' % e)
+
     return render_to_response('login.html',{"errors":errors})
 
 def checkUser(request):
-    req = json.loads(request.body)
-
+    json_data = None
     filterResults = []
-    if req.has_key('username'):
-        username = req['username']
-        filterResults = tzy_users.objects.filter(username=username)
-    elif req.has_key('phone'):
-        phone = req['phone']
-        filterResults = tzy_users.objects.filter(Mobilephone=phone)
-    elif req.has_key('email'):
-        email = req['email']
-        filterResults = tzy_users.objects.filter(email=email)
+    try:
+        req = json.loads(request.body)
+        if req.has_key('username'):
+            username = req['username']
+            filterResults = tzy_users.objects.filter(username=username)
+        elif req.has_key('phone'):
+            phone = req['phone']
+            filterResults = tzy_users.objects.filter(Mobilephone=phone)
+        elif req.has_key('email'):
+            email = req['email']
+            filterResults = tzy_users.objects.filter(email=email)
 
-    dict1 = {}
-    if len(filterResults)>0:
-        dict1['code']= 200
-        dict1['msg'] = False
-    else:
-        dict1['code']= 200
-        dict1['msg'] = True
-    json_data = json.dumps(dict1)
+        dict1 = {}
+        if len(filterResults)>0:
+            dict1['code']= 200
+            dict1['msg'] = False
+        else:
+            dict1['code']= 200
+            dict1['msg'] = True
+        json_data = json.dumps(dict1)
+    except Exception as e:
+        logger.debug('checkUser: %s' % e)
+
     return HttpResponse(json_data,content_type="application/json")
+
+def openMyCenter(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/index.html")
+    try:
+        temp = 1
+        login_user = request.user.username
+    except Exception as e:
+        logger.debug('openMyCenter: %s' % e)
+
+    return render_to_response('my_center.html',{"login_user":login_user})
