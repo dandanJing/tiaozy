@@ -1189,18 +1189,15 @@ a:hover #fabu{
     padding-top: 15px;
 }
 
-.msg-page li{
-    display: inline;
-}
-
 .page-act{
+    background-color: #D7F0D1;
+    color: #4B9808;
+    display: inline;
     font-size: 12px;
     line-height: 23px;
     padding: 5px 10px;
     height: 23px;
     border: 0;
-    background-color: #D7F0D1;
-    color: #4B9808;
     text-decoration: none;
     cursor: pointer;
     margin-left: 5px;
@@ -1209,4 +1206,5 @@ a:hover #fabu{
 .msg-page .active{
     background-color: #4B9808;
     color: #FFF;
+    display: inline;
 }

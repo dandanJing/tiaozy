@@ -258,7 +258,7 @@
                         </span>
                     </div>
                     <div class="divide-bar"></div>
-                    <div id="messages-display">
+                    <div id="messages-display" class="messages-display">
                         <ul>
                             <li>
                                 <img src="/static/images/avatar.png">
@@ -271,15 +271,15 @@
                     <div class="msg-page">
                         <ul>
                         {% if result.MessagePageIndexs%}
-                            <li><span class="page-act">上一页</span></li>
+                            <li onclick="changePage(-1,this)" class="page-act"><span>上一页</span></li>
                             {% for page in result.MessagePageIndexs %}
-                               {% if page == 1%}
-                                    <li><span class="page-act active">{{page}}</span></li>
+                               {% if forloop.first %}
+                                    <li class="page-act active" onclick="tapPage(this)">{{page}}</li>
                                {% else %}
-                                    <li><span class="page-act">{{page}}</span></li>
+                                    <li class="page-act" onclick="tapPage(this)">{{page}}</li>
                                {% endif %}
                             {% endfor %}
-                            <li><span class="page-act">下一页</span></li>
+                            <li onclick="changePage(1,this)" class="page-act"><span>下一页</span></li>
                         {% endif %}
                         </ul>
                     </div>

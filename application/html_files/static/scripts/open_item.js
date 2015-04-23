@@ -1,6 +1,8 @@
+var msgPageNum;
 $(document).ready(function(){
 	getAllPost();
-	loadMessages();
+    msgPageNum = 1;
+	loadMessages(msgPageNum);
 });
 
 function getAllPost(data,ths){
@@ -26,12 +28,13 @@ function getAllPost(data,ths){
     });
 };
 
-function loadMessages(){
+function loadMessages(pagenum){
 	$.ajax({
         url:"/get-item-messages",
         type:"post",
         data:JSON.stringify({
-        	'itemid':$("#itemid").html()
+        	'itemid':$("#itemid").html(),
+            "pagenum":pagenum
         }),
         dataType:"json",
         contentType:'application/json;charset=UTF-8',
@@ -120,7 +123,9 @@ function sendMessage(){
             contentType:'application/json;charset=UTF-8',
             success:function (data) {
                 $("#message-text").val("");
-                appendMessage(data);
+                if($(".messages-display ul").children().length<8){
+                    appendMessage(data);
+                }      
             },
             error:function (data) {
                toastr.error("留言失败,请重试");
@@ -128,3 +133,33 @@ function sendMessage(){
         });
     }
 }; 
+
+function changePage(data,ths){
+    var totalPage = $(ths).siblings().length-1;
+    if(data==-1 && msgPageNum > 1){
+        var rmstr = "#msg-page"+msgPageNum;
+        msgPageNum -=1;
+        loadMessages(msgPageNum);
+        $(ths).siblings().removeClass("active");
+        $(ths).siblings().eq(msgPageNum-1).toggleClass("active");
+    }else if(data==1 && msgPageNum< totalPage){
+        msgPageNum +=1;
+        loadMessages(msgPageNum);
+        $(ths).siblings().removeClass("active");
+        $(ths).siblings().eq(msgPageNum).toggleClass("active");
+    }
+};
+
+function tapPage(ths){
+    if($(ths).hasClass("active")){
+        return;
+    }
+    var totalPage = $(ths).siblings().length-1;
+    var changePage = parseInt($(ths).html());
+    if(changePage <= totalPage && changePage > 0){
+        msgPageNum = changePage;
+        loadMessages(msgPageNum);
+        $(ths).siblings().removeClass("active");
+        $(ths).toggleClass("active");
+    }
+}

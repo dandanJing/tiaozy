@@ -20,3 +20,11 @@
 [2015-04-23 04:00:07,501] [application.display_items.views] [DEBUG] openItem: range() integer end argument expected, got float.
 [2015-04-23 04:02:01,917] [application.display_items.views] [DEBUG] openItem: range() integer end argument expected, got float.
 [2015-04-23 04:02:47,438] [application.display_items.views] [DEBUG] openItem: range() integer end argument expected, got float.
+[2015-04-23 15:40:10,524] [application.display_items.views] [DEBUG] openItem: Invalid block tag: 'result.MessagePageIndexs.length', expected 'elif', 'else' or 'endif'
+[2015-04-23 15:40:59,279] [application.display_items.views] [DEBUG] openItem: Could not parse the remainder: '(result.MessagePageIndexs)' from 'length(result.MessagePageIndexs)'
+[2015-04-23 15:41:02,583] [application.display_items.views] [DEBUG] openItem: Could not parse the remainder: '(result.MessagePageIndexs)' from 'length(result.MessagePageIndexs)'
+[2015-04-23 15:42:37,552] [application.display_items.views] [DEBUG] openItem: Could not parse the remainder: '(result.MessagePageIndexs)' from 'length(result.MessagePageIndexs)'
+[2015-04-23 16:12:24,815] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
+[2015-04-23 16:12:26,487] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
+[2015-04-23 16:12:27,511] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
+[2015-04-23 16:14:05,201] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
