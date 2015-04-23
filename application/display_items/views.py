@@ -295,8 +295,8 @@ def openItem(request):
                 result["SuccessDeal"] = len(user_post_sets.filter(IsTradeSuccess=True))
                 result["MessageCount"] = len(item_messages_table.objects.filter(Item=item))
                 pagenum = int(math.ceil(float(result["MessageCount"])/MESSAGES_PER_PAGE))
-                print pagenum
-                result["MessagePageIndexs"] = range(1,pagenum+1)
+                if pagenum > 1:
+                    result["MessagePageIndexs"] = range(1,pagenum+1)
                 return render_to_response('open_item.html',{"result":result})
 
     except Exception as e:
