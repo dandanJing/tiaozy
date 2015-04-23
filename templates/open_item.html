@@ -272,7 +272,11 @@
                         <ul>
                             <li><span class="page-act">上一页</span></li>
                             {% for page in result.MessagePageIndexs %}
-                                <li><span class="page-act">{{page}}</span></li>
+                               {% if page == 1%}
+                                    <li><span class="page-act active">{{page}}</span></li>
+                               {% else %}
+                                    <li><span class="page-act">{{page}}</span></li>
+                               {% endif %}
                             {% endfor %}
                             <li><span class="page-act">下一页</span></li>
                         </ul>
