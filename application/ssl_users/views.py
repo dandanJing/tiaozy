@@ -181,10 +181,13 @@ def openMyCenter(request):
     try:
         temp = 1
         login_user = request.user.username
+        if request.GET.get('type'):
+            temp = request.GET.get('type')
+        print temp
     except Exception as e:
         logger.debug('openMyCenter: %s' % e)
 
-    return render_to_response('my_center.html',{"login_user":login_user})
+    return render_to_response('my_center.html',{"login_user":login_user,"selectType":temp})
 
 def getMyPersonalInfo(request):
     print 'request info: %s %s' % (request.method, request.path)

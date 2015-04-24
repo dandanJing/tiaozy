@@ -56,6 +56,9 @@
                     <a href="/reg/">注册</a>
                 </div>
                 {% endif %}
+                {% if selectType %}
+                <div id="selctType" style="display:none">{{selectType}}</div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -80,14 +83,52 @@
             </div>
             <div class="right-body" id="right-body-cont">
                 <div class="mypost-title">
-                    <div class="title-nav">
+                    <div class="post-title-nav">
                         <ul>
-                            <li>所有发布</li>
-                            <li>最新发布</li>
-                            <li>最热发布</li>
-                            <li>成功交易</li>
+                            <li class="active" onclick="selectMyPost(1,this)">所有发布</li>
+                            <li onclick="selectMyPost(2,this)">按时间排序</li>
+                            <li onclick="selectMyPost(3,this)">按热度排序</li>
+                            <li onclick="selectMyPost(4,this)">成功交易</li>
                         </ul>
-                    </div>          
+                    </div> 
+                    <div class="nav-detail">
+                        <ul><li>上一页</li><li>1</li><li>2</li><li>下一页</li></ul>
+                    </div>         
+                </div>
+                <div class="post-content" id="post-content">
+
+                    <ul>
+                        <li>
+                            <div class="item-time">发布时间: 2015-04-21 18:40
+                            </div>
+                            <div class="item-pic">
+                                <a href="/show_item_detail?id=" target="_blank">
+                                    <img class="J_ItemPic" src="/static/images/ssl-item1.jpg" title="">
+                                </a>
+                            </div>
+                            <div class="item-info">
+                                <p><a>hahadsafasfdsfafafadadfdafadfasafafasdfadfafdaf</a></p>  
+                                <div class="price-block">
+                                    <span class="price">
+                                        <b>¥</b>
+                                        <em>25</em>
+                                    </span>
+                                    <span class="old-price">
+                                        原价:¥45
+                                    </span>
+                                </div>
+                                <div class="bottom-info">
+                                    <span class="item-click">浏览:20</span> 
+                                    <span class="item-messages">留言:10</span>
+                                </div>         
+                            </div>
+                            <div class="item-btn">
+                                <span>删除</span>
+                                <span>修改</span>
+                                <span>交易成功</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

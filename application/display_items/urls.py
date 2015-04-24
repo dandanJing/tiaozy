@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     url(r'^get-ssl-art-books','application.display_items.views.getSSLArtBooks',name='getSSLArtBooks'),
     url(r'^open_item','application.display_items.views.openItem',name='openItem'),
     url(r'^get-user-all-posts','application.display_items.views.getAllPostsForUser',name='getAllPostsForUser'),
-    url(r'^get-my-posts','application.display_items.views.getMyPosts',name='getMyPosts'),
+    url(r'^get-my-posts-by-type','application.display_items.views.getMyPostsByType',name='getMyPostsByType'),
     url(r'^post-item-message','application.display_items.views.postItemMessage',name='postItemMessage'),
     url(r'^get-item-messages','application.display_items.views.getItemMessages',name='getItemMessages'),
 )

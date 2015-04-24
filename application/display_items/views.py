@@ -372,7 +372,7 @@ def getAllPostsForUser(request):
 
     return handle_response(result)
 
-def getMyPosts(request):
+def getMyPostsByType(request):
     result = []
     username = ""
     postUser = None
@@ -383,9 +383,23 @@ def getMyPosts(request):
             postUser_set = tzy_users.objects.filter(username=username)
             if postUser_set.exists():
                 postUser = postUser_set[0]
-                item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')[:8]
+                typeStr = "all"
+                if req.has_key('type'):
+                    typeStr = req['type']
+                    print typeStr
+                    if typeStr == "time":
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-PostTime')[:12]
+                    elif typeStr == "click":
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount')[:12]
+                    elif typeStr == "success":
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True)[:12]
+                    else:
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser)[:12]
+                else:
+                    item_sets =  user_items_table.objects.filter(TzyUser=postUser)[:12]
                 if  item_sets.exists():
                     for item in  item_sets.iterator():
+                        message_count = len(item_messages_table.objects.filter(Item=item))
                         image_urls = json.loads(item.ItemImageUrls)
                         result.append({
                             "ItemId":item.ItemId,
@@ -394,12 +408,14 @@ def getMyPosts(request):
                             "OldPrice":item.ItemOldPrice,
                             "ImageUrl":image_urls[0],
                             "Description":item.ItemDescription,
+                            "PostTime":formatTime(item.PostTime,"%Y-%m-%d %H:%M"),
+                            "IsTradeSuccess":item.IsTradeSuccess,
+                            "ClickCount":item.ClickCount,
+                            "MessageCount":message_count,
                         })
-        else:
-            HttpResponseRedirect('login.html')
 
     except Exception as e:
-        logger.debug('getMyPosts: %s' % e)
+        logger.debug('getMyPostsByType: %s' % e)
 
     return handle_response(result)
 

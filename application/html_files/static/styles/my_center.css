@@ -311,7 +311,7 @@ a:hover{
 .left-menu .active{
     background-color: #fff;
     border:1px solid #f45e30;
-    border-right: 2px solid #fff;
+    border-right: 2px solid #f45e30;
 }
 
 .my-info{    
@@ -436,4 +436,158 @@ a:hover{
     line-height: 25px;
     padding-left: 10px;
     margin-top: 5px;
+}
+
+.post-title-nav{
+    width: 100%;
+    padding:0px 10px;
+    list-style: none;
+    float: left;
+    border-bottom:1px solid #e0e0e0;
+}
+
+.post-title-nav li{
+    display: inline;
+    width: 100px;
+    padding: 4px 15px;
+    color: #44f;
+    margin-right: 15px;
+    text-align: center;
+    border: 1px solid #d7d7d7;
+    float: left;
+}
+
+.nav-detail ul{
+    float: left;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.nav-detail li{
+    display: inline;
+    color: #222;
+    margin-right: 5px;
+    line-height: 18px;
+}
+
+.post-title-nav .active{
+    color: #000;
+    font-weight: 550;
+    border-top: 2px solid #ffa0a0;
+}
+
+.post-content{
+    width: 100%;
+    float: left;
+    height: 600px;
+    padding-top: 10px;
+}
+
+.post-content li{
+    width: 220px;
+    height: 170px;
+    float: left;
+    padding-top: 5px;
+    border: 1px solid #e0e0e0;
+    margin: 6px;
+}
+
+.item-time{
+    width: 100%;
+    color: #333;
+    font-size: 13px;
+    padding-left: 15px;
+    float: left;
+}
+
+.item-pic{
+    width: 75px;
+    height: 95px;
+    padding: 5px;
+    float: left;
+}
+
+.item-pic img{
+    margin: 0 auto;
+    max-height: 80px;
+    max-width: 75px;
+    float: left;
+    padding-left: 15px;
+    padding-top: 8px;
+}
+
+.item-info{
+    width: 117px;
+    height: 95px;
+    float: left;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.item-info a{
+    outline: 0px none;
+}
+
+.item-info p{
+    width: 117px;
+    height: 30px;
+    overflow: hidden;
+    line-height: 15px;
+}
+
+.price-block {
+    width: 60px;
+    font-family: Verdana;
+    font-size: 12px;
+    float: left;
+    text-align: left;
+}
+
+.price{
+    float: left;
+    display: block;
+}
+.price-block b{
+    font-weight: 400;
+    font-family: Arial,Verdana;
+    color: #555;
+}
+
+.price-block .price em {
+    font-weight: 700;
+    font-size: 14px;
+    color: #f40;
+}
+
+.old-price{
+    display: block;
+    float: left;
+}
+
+.bottom-info{
+    display: block;
+    float: left;
+    margin-top: 10px;
+}
+.item-click,.item-messages{
+    float: left;
+    font-size: 12px;
+    display: inline;
+    padding-right: 15px;
+    color: #404040;
+}
+
+.item-btn{
+    display: block;
+    float: left;
+    padding-left: 25px;
+    margin-top: 10px;
+}
+
+.item-btn span{
+    color: #333;
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #e05f70;
+    margin-right: 4px;
 }

@@ -1,4 +1,7 @@
-
+$(document).ready(function(){
+    var style = $("#selctType").html();
+    tapLeftMenu(style,$(".left-menu ul").children().eq(style-1));
+});
 
 function tapLeftMenu(data,ths){
     if($(ths).hasClass("active")){
@@ -22,26 +25,39 @@ function tapLeftMenu(data,ths){
             },
         });
     }else if(data==2){
-        $.ajax({
-            url:"/get-my-posts",
-            type:"post",
-            data:JSON.stringify({
-                'pagenum':1
-            }),
-            dataType:"json",
-            contentType:'application/json;charset=UTF-8',
-            success:function (data) {
-                showMyPosts(data);
-            },
-            error:function (data) {
-               toastr.error("获取数据失败");
-            },
-        });
+        var htmlInner="<div class=\"mypost-title\"><div class=\"post-title-nav\">";
+        htmlInner += "<ul><li class=\"active\" onclick=\"selectMyPost(1,this)\">所有发布</li>";
+        htmlInner += "<li onclick=\"selectMyPost(2,this)\">按时间排序</li>";
+        htmlInner += "<li onclick=\"selectMyPost(3,this)\">按热度排序</li>";            
+        htmlInner += "<li onclick=\"selectMyPost(4,this)\">成功交易</li>";                
+        htmlInner += "</ul></div><div class=\"nav-detail\">";                    
+        htmlInner += "<ul><li>上一页</li><li>1</li><li>2</li><li>下一页</li></ul></div></div>";                    
+        htmlInner += "<div class=\"post-content\" id=\"post-content\">";                    
+        $("#right-body-cont").html(htmlInner);
+        selectMyPost(1,"")
     }
 }
 
 function showMyPosts(data){
-    $("#right-body-cont").html(data.length);
+    var htmlInner="<ul>";
+    for(var i=0; i< data.length;i++){
+        var item = data[i];
+        htmlInner +="<li><div class=\"item-time\">"+item["PostTime"]+"</div>";
+        htmlInner +="<div class=\"item-pic\"><a target=\"_blank\" href=\"/show_item_detail?id=\""+item["ItemId"]+"\">";
+        htmlInner +="<img class=\"J_ItemPic\" src=\""+item["ImageUrl"]+"\"></a></div>";
+        htmlInner +="<div class=\"item-info\"><p><a>"+item['Title']+"</a></p>";
+        htmlInner +="<div class=\"price-block\"><span class=\"price\"><b>¥</b><em>"+item["Price"]+"</em></span>";
+        htmlInner +="<span class=\"old-price\">原价:"+item["OldPrice"]+"</span></div>";
+        htmlInner +="<div class=\"bottom-info\"><span class=\"item-click\">浏览:"+item['ClickCount']+"</span>";
+        htmlInner +="<span class=\"item-messages\">留言:"+item['MessageCount']+"</span></div></div>";
+        if(item['IsTradeSuccess']){
+            htmlInner +="<div class=\"item-btn\"><span>删除</span></div></li>";
+        }else{
+            htmlInner +="<div class=\"item-btn\"><span>删除</span><span>修改</span><span>交易成功</span></div></li>";  
+        }  
+    }
+    htmlInner += "</ul>";
+    $("#post-content").html(htmlInner);
 }
 
 function showMyPersonalInfo(data){
@@ -104,7 +120,7 @@ function submitForm(){
     });
     $.ajax({
     　　url : '/change-my-info',
-    　　data : $('#my-info-form').serialize()+"&fileInput="+$("input[name='file']").val(),
+    　　data : $('#my-info-form').serialize(),
     　　type : "POST",
     　　success : function(data) {
     　　　　if(data['errors']){
@@ -120,6 +136,38 @@ function submitForm(){
     　　},
         error:function (data) {
             toastr.error("修改数据失败");
+        },
+    });
+}
+
+function selectMyPost(data,ths){
+    if($(ths).hasClass("active")){
+        return;
+    }
+    $(ths).siblings().removeClass("active");
+    $(ths).toggleClass("active");
+    var typeStr = "all";
+    switch(data){
+        case 1:typeStr = "all";break;
+        case 2:typeStr = "time";break;
+        case 3:typeStr = "click";break;
+        case 4:typeStr = "success";break;
+        default:
+        typeStr = "all";
+    }
+    $.ajax({
+    　　url : '/get-my-posts-by-type',
+    　　data : JSON.stringify({
+        "type":typeStr,
+        }),
+       dataType:"json",
+    　　type : "POST",
+       contentType:'application/json;charset=UTF-8',
+    　　success : function(data) {
+    　　　　showMyPosts(data);
+    　　},
+        error:function (data) {
+            toastr.error("获取数据失败");
         },
     });
 }
