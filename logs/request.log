@@ -447,3 +447,47 @@ Traceback (most recent call last):
     if request.POST.get('qq')
                             ^
 SyntaxError: invalid syntax
+[2015-04-24 10:24:16,381] [django.request] [ERROR] Internal Server Error: /get-my-personal-info
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_server/tiaozy/application/ssl_users/views.py", line 198, in getMyPersonalInfo
+    return handle_response(result)
+NameError: global name 'handle_response' is not defined
+[2015-04-24 10:24:17,032] [django.request] [ERROR] Internal Server Error: /get-my-personal-info
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_server/tiaozy/application/ssl_users/views.py", line 198, in getMyPersonalInfo
+    return handle_response(result)
+NameError: global name 'handle_response' is not defined
+[2015-04-24 10:29:28,791] [django.request] [ERROR] Internal Server Error: /get-my-personal-info
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_server/tiaozy/application/ssl_users/views.py", line 198, in getMyPersonalInfo
+    return render(request,'/my_personal_info.html',{'result':result})
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 50, in render
+    return HttpResponse(loader.render_to_string(*args, **kwargs),
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 170, in render_to_string
+    t = get_template(template_name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 144, in get_template
+    template, origin = find_template(template_name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 136, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: /my_personal_info.html
+[2015-04-24 10:29:29,582] [django.request] [ERROR] Internal Server Error: /get-my-personal-info
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jing/python_server/tiaozy/application/ssl_users/views.py", line 198, in getMyPersonalInfo
+    return render(request,'/my_personal_info.html',{'result':result})
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 50, in render
+    return HttpResponse(loader.render_to_string(*args, **kwargs),
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 170, in render_to_string
+    t = get_template(template_name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 144, in get_template
+    template, origin = find_template(template_name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 136, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: /my_personal_info.html

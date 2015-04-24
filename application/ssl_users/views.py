@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from application.ssl_users.models import tzy_users
+from utils.utils import *
 from django.http import HttpResponse
 import json
 from django.contrib import auth
@@ -182,3 +183,16 @@ def openMyCenter(request):
         logger.debug('openMyCenter: %s' % e)
 
     return render_to_response('my_center.html',{"login_user":login_user})
+
+def getMyPersonalInfo(request):
+    result = {}
+    print 'request info: %s %s' % (request.method, request.path)
+    if not request.user.is_authenticated():
+        return handle_response(result)
+    else:
+        try:
+            result['Username'] = request.user.username
+        except Exception as e:
+            logger.debug('getMyPersonalInfo: %s' % e)
+
+    return handle_response(result)

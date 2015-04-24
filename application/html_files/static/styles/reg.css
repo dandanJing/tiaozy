@@ -213,7 +213,7 @@ a{
 .btns{
 	padding: 6px 20px 7px;
 	display: block;
-	background: url('https://passport.58.com/pic2/ui6/my/images/reg-btn.gif') no-repeat scroll 0% 0% transparent;
+	background: url('/static/images/reg-btn.gif') no-repeat scroll 0% 0% transparent;
 	border: medium none;
 	color: #FFF;
 	font-size: 14px;
