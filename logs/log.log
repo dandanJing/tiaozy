@@ -28,3 +28,4 @@
 [2015-04-23 16:12:26,487] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
 [2015-04-23 16:12:27,511] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
 [2015-04-23 16:14:05,201] [application.display_items.views] [DEBUG] getItemMessages: %d format: a number is required, not unicode
+[2015-04-24 08:21:21,261] [application.ssl_users.views] [DEBUG] regUserInfo: invalid literal for int() with base 10: ''
