@@ -90,6 +90,18 @@ function selectAvatar(ths){
 }
 
 function submitForm(){
+    $.ajaxFileUpload({
+        url:'/upload-my-avatar',
+        secureuri:false,
+        fileElementId:"avatar-input",
+        dataType:"text",
+        success:function(data) {
+            alert(data);
+        },
+        error:function (data) {
+            toastr.error("上传图片失败");
+        },
+    });
     $.ajax({
     　　url : '/change-my-info',
     　　data : $('#my-info-form').serialize()+"&fileInput="+$("input[name='file']").val(),

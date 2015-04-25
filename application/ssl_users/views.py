@@ -266,3 +266,30 @@ def changeMyPersonalInfo(request):
             logger.debug('changeMyPersonalInfo: %s' % e)
 
     return handle_response(result)
+
+def uploadMyAvatar(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    result = {'Status':False}
+    if not request.user.is_authenticated():
+        return handle_response(result)
+    else:
+        try:
+            if request.method == "POST":
+                fileObj = request.FILES.get('file')
+                if fileObj:
+                    SessionId = os.urandom(10)
+                    result = uploadImage(fileObj,SessionId)
+                    imageurl = result['ImageUrl']
+                    request.user.AvatarUrl = imageurl
+                    request.user.save()
+                    print "imageurl : %s status %s" % (imageurl,result['status'])
+                    if result['status'] == 200:
+                        result['Status'] = True
+                        result['AvatarUrl'] = imageurl
+                else:
+                    result['Status'] = True
+        except Exception as e:
+            logger.debug('uploadMyAvatar: %s' % e)
+
+    print result
+    return handle_response(result)

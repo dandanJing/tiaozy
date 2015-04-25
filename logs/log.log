@@ -41,3 +41,5 @@
 [2015-04-23 22:46:28,615] [application.ssl_users.views] [DEBUG] changeMyPersonalInfo: global name 'os' is not defined
 [2015-04-23 22:46:50,003] [application.display_items.views] [DEBUG] upload-image: 'unicode' object has no attribute 'read'
 [2015-04-23 22:46:50,004] [application.ssl_users.views] [DEBUG] changeMyPersonalInfo: 'ImageUrl'
+[2015-04-25 05:30:42,303] [application.display_items.views] [DEBUG] upload-image: 'NoneType' object has no attribute 'read'
+[2015-04-25 05:30:42,304] [application.ssl_users.views] [DEBUG] changeMyPersonalInfo: 'ImageUrl'

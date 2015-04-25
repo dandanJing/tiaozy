@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^open-my-center/','application.ssl_users.views.openMyCenter',name='openMyCenter'),
     url(r'^get-my-personal-info','application.ssl_users.views.getMyPersonalInfo',name='getMyPersonalInfo'),
     url(r'^change-my-info','application.ssl_users.views.changeMyPersonalInfo',name='changeMyPersonalInfo'),
+    url(r'^upload-my-avatar','application.ssl_users.views.uploadMyAvatar',name='uploadMyAvatar'),
 )
