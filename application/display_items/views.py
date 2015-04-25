@@ -376,6 +376,7 @@ def getMyPostsByType(request):
     result = []
     username = ""
     postUser = None
+    getpage = 1
     try:
         req = json.loads(request.body)
         if request.user.is_authenticated():
@@ -384,19 +385,26 @@ def getMyPostsByType(request):
             if postUser_set.exists():
                 postUser = postUser_set[0]
                 typeStr = "all"
+                num = len(user_items_table.objects.filter(TzyUser=postUser))
+                pagenum = int(math.ceil(float(num)/ITEMS_PER_PAGE_FOR_MYCENTER))
+                if req.has_key('getPage'):
+                    getpage = int(req['getPage'])
+                start_index = ITEMS_PER_PAGE_FOR_MYCENTER*(getpage-1)
+                end_index = ITEMS_PER_PAGE_FOR_MYCENTER*getpage
                 if req.has_key('type'):
                     typeStr = req['type']
-                    print typeStr
                     if typeStr == "time":
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-PostTime')[:12]
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-PostTime')[start_index:end_index]
                     elif typeStr == "click":
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount')[:12]
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount')[start_index:end_index]
                     elif typeStr == "success":
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True)[:12]
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True)[start_index:end_index]
+                        num = len(user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True))
+                        pagenum = int(math.ceil(float(num)/ITEMS_PER_PAGE_FOR_MYCENTER))
                     else:
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser)[:12]
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser)[start_index:end_index]
                 else:
-                    item_sets =  user_items_table.objects.filter(TzyUser=postUser)[:12]
+                    item_sets =  user_items_table.objects.filter(TzyUser=postUser)[start_index:end_index]
                 if  item_sets.exists():
                     for item in  item_sets.iterator():
                         message_count = len(item_messages_table.objects.filter(Item=item))
@@ -417,7 +425,8 @@ def getMyPostsByType(request):
     except Exception as e:
         logger.debug('getMyPostsByType: %s' % e)
 
-    return handle_response(result)
+    for_result = {"result":result,"Pagenum":range(1,pagenum+1),}
+    return handle_response(for_result)
 
 def postItemMessage(request):
     print 'request info: %s %s user %s' % (request.method, request.path, request.user)

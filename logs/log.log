@@ -46,3 +46,12 @@
 [2015-04-24 00:26:43,883] [application.display_items.views] [DEBUG] getMyPostsByType: formatTime() takes exactly 2 arguments (1 given)
 [2015-04-24 00:27:34,819] [application.display_items.views] [DEBUG] getMyPostsByType: formatTime() takes exactly 2 arguments (1 given)
 [2015-04-24 00:27:36,369] [application.display_items.views] [DEBUG] getMyPostsByType: formatTime() takes exactly 2 arguments (1 given)
+[2015-04-25 16:07:16,794] [application.display_items.views] [DEBUG] getMyPostsByType: 'getpage'
+[2015-04-25 16:07:38,102] [application.display_items.views] [DEBUG] getMyPostsByType: 'getpage'
+[2015-04-25 16:07:39,028] [application.display_items.views] [DEBUG] getMyPostsByType: 'getpage'
+[2015-04-25 16:12:21,289] [application.display_items.views] [DEBUG] getMyPostsByType: Negative indexing is not supported.
+[2015-04-25 16:12:23,873] [application.display_items.views] [DEBUG] getMyPostsByType: Negative indexing is not supported.
+[2015-04-25 16:12:25,119] [application.display_items.views] [DEBUG] getMyPostsByType: Negative indexing is not supported.
+[2015-04-25 16:12:25,889] [application.display_items.views] [DEBUG] getMyPostsByType: Negative indexing is not supported.
+[2015-04-25 16:12:52,613] [application.display_items.views] [DEBUG] getMyPostsByType: Negative indexing is not supported.
+[2015-04-25 16:13:26,492] [application.display_items.views] [DEBUG] getMyPostsByType: Negative indexing is not supported.

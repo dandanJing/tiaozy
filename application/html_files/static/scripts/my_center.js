@@ -1,3 +1,5 @@
+var myPostPage = 1;
+var myPostType = 1;
 $(document).ready(function(){
     var style = $("#selctType").html();
     tapLeftMenu(style,$(".left-menu ul").children().eq(style-1));
@@ -29,19 +31,51 @@ function tapLeftMenu(data,ths){
         htmlInner += "<ul><li class=\"active\" onclick=\"selectMyPost(1,this)\">所有发布</li>";
         htmlInner += "<li onclick=\"selectMyPost(2,this)\">按时间排序</li>";
         htmlInner += "<li onclick=\"selectMyPost(3,this)\">按热度排序</li>";            
-        htmlInner += "<li onclick=\"selectMyPost(4,this)\">成功交易</li>";                
-        htmlInner += "</ul></div><div class=\"nav-detail\">";                    
-        htmlInner += "<ul><li>上一页</li><li>1</li><li>2</li><li>下一页</li></ul></div></div>";                    
-        htmlInner += "<div class=\"post-content\" id=\"post-content\">";                    
+        htmlInner += "<li onclick=\"selectMyPost(4,this)\">成功交易</li></ul></div></div>";                                 
+        htmlInner += "<div class=\"post-content\" id=\"post-content\"></div>";                    
         $("#right-body-cont").html(htmlInner);
-        selectMyPost(1,"")
+        myPostPage = 1;
+        selectMyPost(1,"");
     }
 }
 
+function changePostPage(data,ths){
+    if($(ths).hasClass("active")){
+        return;
+    }
+
+    var pagesnum = $(ths).siblings().length-1;
+    if(data==-2 && myPostPage>1){
+        myPostPage-=1;
+    }else if(data==-1 && myPostPage < pagesnum){
+        myPostPage+=1;
+    }else if(data>=1){
+        myPostPage = data;
+    }else{
+        return;
+    }
+    selectMyPost(myPostType,"");
+}
+
 function showMyPosts(data){
-    var htmlInner="<ul>";
-    for(var i=0; i< data.length;i++){
-        var item = data[i];
+    var result = data['result'];
+    var pages = data['Pagenum'];
+    var htmlInner = "";
+    if(pages.length > 1){
+        htmlInner += "<div class=\"nav-detail\"><ul><li onclick=\"changePostPage(-2,this)\">上一页</li>";
+        for(var i =0; i <pages.length; i++){
+            if(myPostPage == pages[i]){
+                htmlInner += "<li class=\"active\" onclick=\"changePostPage("+pages[i]+",this)\">"+pages[i]+"</li>";
+            }else{
+                htmlInner += "<li onclick=\"changePostPage("+pages[i]+",this)\">"+pages[i]+"</li>";
+            }    
+        }     
+        htmlInner +="<li onclick=\"changePostPage(-1,this)\">下一页</li></ul></div>";
+    }
+    //
+    htmlInner +="<ul class=\"posts-ul\">";
+    for(var i=0; i< result.length;i++){
+        var item = result[i];
         htmlInner +="<li><div class=\"item-time\">"+item["PostTime"]+"</div>";
         htmlInner +="<div class=\"item-pic\"><a target=\"_blank\" href=\"/show_item_detail?id=\""+item["ItemId"]+"\">";
         htmlInner +="<img class=\"J_ItemPic\" src=\""+item["ImageUrl"]+"\"></a></div>";
@@ -144,9 +178,13 @@ function selectMyPost(data,ths){
     if($(ths).hasClass("active")){
         return;
     }
+    if(ths!=""){
+        myPostPage = 1;
+    }
     $(ths).siblings().removeClass("active");
     $(ths).toggleClass("active");
     var typeStr = "all";
+    myPostType = data;
     switch(data){
         case 1:typeStr = "all";break;
         case 2:typeStr = "time";break;
@@ -159,6 +197,7 @@ function selectMyPost(data,ths){
     　　url : '/get-my-posts-by-type',
     　　data : JSON.stringify({
         "type":typeStr,
+        "getPage":myPostPage,
         }),
        dataType:"json",
     　　type : "POST",

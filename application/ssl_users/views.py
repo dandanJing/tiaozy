@@ -183,7 +183,6 @@ def openMyCenter(request):
         login_user = request.user.username
         if request.GET.get('type'):
             temp = request.GET.get('type')
-        print temp
     except Exception as e:
         logger.debug('openMyCenter: %s' % e)
 

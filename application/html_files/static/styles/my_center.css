@@ -457,19 +457,6 @@ a:hover{
     float: left;
 }
 
-.nav-detail ul{
-    float: left;
-    padding-top: 15px;
-    padding-left: 15px;
-}
-
-.nav-detail li{
-    display: inline;
-    color: #222;
-    margin-right: 5px;
-    line-height: 18px;
-}
-
 .post-title-nav .active{
     color: #000;
     font-weight: 550;
@@ -483,7 +470,7 @@ a:hover{
     padding-top: 10px;
 }
 
-.post-content li{
+.posts-ul li{
     width: 220px;
     height: 170px;
     float: left;
@@ -517,7 +504,7 @@ a:hover{
 }
 
 .item-info{
-    width: 117px;
+    width: 128px;
     height: 95px;
     float: left;
     margin-top: 12px;
@@ -573,7 +560,7 @@ a:hover{
     float: left;
     font-size: 12px;
     display: inline;
-    padding-right: 15px;
+    padding-right: 6px;
     color: #404040;
 }
 
@@ -590,4 +577,29 @@ a:hover{
     padding: 5px;
     border: 1px solid #e05f70;
     margin-right: 4px;
+}
+
+.nav-detail{
+    width: 100%;
+    float: left;
+    padding: 5px 10px;
+}
+
+.nav-detail ul{
+    float: left;
+    padding-left: 15px;
+}
+
+.nav-detail li{
+    display: inline;
+    color: #222;
+    padding: 0 5px;
+    margin-right: 5px;
+    line-height: 18px;
+    border: 1px solid #eee;
+}
+
+.nav-detail .active{
+   border: 1px solid #e04060;
+   color: #e04060; 
 }

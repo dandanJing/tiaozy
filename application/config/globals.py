@@ -4,6 +4,9 @@
 # 每页留言数
 MESSAGES_PER_PAGE 	=  8
 
+#我的发布每页物品数
+ITEMS_PER_PAGE_FOR_MYCENTER = 12
+
 # OSS API
 OSS_HOST            =  'oss-cn-beijing.aliyuncs.com'
 ACCESS_KEY_ID       =  'AiEAsvpEfF0N7X7p'
