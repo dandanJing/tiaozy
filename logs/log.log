@@ -59,3 +59,4 @@
 [2015-04-25 16:27:58,383] [application.display_items.views] [DEBUG] postItem: 'ImageUrl'
 [2015-04-25 17:15:33,161] [application.display_items.views] [DEBUG] postItem: 'ImageUrl'
 [2015-04-26 07:58:12,269] [application.ssl_users.views] [DEBUG] regUserInfo: ssl_users_tzy_users.QQ may not be NULL
+[2015-04-26 08:16:32,989] [application.display_items.views] [DEBUG] openItem: tzy_users matching query does not exist.
