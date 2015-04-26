@@ -103,6 +103,7 @@ def regUserInfo(request):
                 print request.user
                 request.user.Mobilephone = phone
                 if request.POST.get('qq'):
+                    qq = request.POST.get('qq')
                     request.user.QQ = qq
                 request.user.IsStudent = is_student
                 request.user.save() 

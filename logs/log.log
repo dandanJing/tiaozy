@@ -55,3 +55,7 @@
 [2015-04-25 16:12:25,889] [application.display_items.views] [DEBUG] getMyPostsByType: Negative indexing is not supported.
 [2015-04-25 16:12:52,613] [application.display_items.views] [DEBUG] getMyPostsByType: Negative indexing is not supported.
 [2015-04-25 16:13:26,492] [application.display_items.views] [DEBUG] getMyPostsByType: Negative indexing is not supported.
+[2015-04-25 16:26:41,343] [application.ssl_users.views] [DEBUG] regUserInfo: ssl_users_tzy_users.QQ may not be NULL
+[2015-04-25 16:27:58,383] [application.display_items.views] [DEBUG] postItem: 'ImageUrl'
+[2015-04-25 17:15:33,161] [application.display_items.views] [DEBUG] postItem: 'ImageUrl'
+[2015-04-26 07:58:12,269] [application.ssl_users.views] [DEBUG] regUserInfo: ssl_users_tzy_users.QQ may not be NULL
