@@ -23,11 +23,15 @@ sys.setdefaultencoding('utf-8')
 SECRET_KEY = 'j$)nl@*5zb722^_dh6bxg=3m#hv+weo-5-7#rj#gzdx8#6ka6l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+import socket
+if socket.gethostname() == 'jing-virtual-machine':
+    DEBUG = True
+    TEMPLATE_DEBUG = True
+    ALLOWED_HOSTS = []
+else:
+    DEBUG = False
+    TEMPLATE_DEBUG = False
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '123.57.212.180', 'tiaozy.cn','123.57.212.180', 'shangshulin.cn']
 
 DEFAULT_CHARSET = 'utf8'
 
@@ -77,7 +81,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
