@@ -1,3 +1,6 @@
-settings.py
-settings.pyc
+tiaozy/settings.py
 *.log
+*.pyc
+db.sqlite3
+/logs/
+migrations/
