@@ -31,7 +31,7 @@ if socket.gethostname() == 'jing-virtual-machine':
 else:
     DEBUG = False
     TEMPLATE_DEBUG = False
-    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '123.57.212.180', 'tiaozy.cn','123.57.212.180', 'shangshulin.cn']
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '203.88.164.194', 'tiaozy.cn','123.57.212.180', 'shangshulin.cn']
 
 DEFAULT_CHARSET = 'utf8'
 
@@ -71,8 +71,13 @@ AUTH_USER_MODEL  = "ssl_users.tzy_users"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'datebase.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "tiaozyserver",
+        'USER': 'root',
+        'PASSWORD': 'zkldzj1993',
+        'HOST': '',
+        'PORT': '',
+        'OPTIONS': {'charset': 'utf8'},
     }
 }
 

@@ -60,3 +60,10 @@
 [2015-04-25 17:15:33,161] [application.display_items.views] [DEBUG] postItem: 'ImageUrl'
 [2015-04-26 07:58:12,269] [application.ssl_users.views] [DEBUG] regUserInfo: ssl_users_tzy_users.QQ may not be NULL
 [2015-04-26 08:16:32,989] [application.display_items.views] [DEBUG] openItem: tzy_users matching query does not exist.
+[2015-04-27 22:15:58,544] [application.display_items.views] [DEBUG] getEssenceBooks: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
+[2015-04-27 22:15:58,591] [application.display_items.views] [DEBUG] getBooksWithType: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
+[2015-04-27 22:15:58,592] [application.display_items.views] [DEBUG] getBooksWithType: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
+[2015-04-27 22:15:58,629] [application.display_items.views] [DEBUG] getBooksWithType: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
+[2015-04-27 22:15:59,042] [application.display_items.views] [DEBUG] getBooksWithType: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
+[2015-04-27 22:15:59,048] [application.display_items.views] [DEBUG] getBooksWithType: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
+[2015-04-27 22:15:59,080] [application.display_items.views] [DEBUG] getBooksWithType: (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
