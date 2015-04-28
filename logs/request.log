@@ -556,3 +556,38 @@ Traceback (most recent call last):
     if !validateEmail(email):
        ^
 SyntaxError: invalid syntax
+[2015-04-28 15:47:04,809] [django.request] [ERROR] Internal Server Error: /static/toastr/toastr.min.css
+Traceback (most recent call last):
+  File "/root/django/django/core/handlers/base.py", line 222, in get_response
+    response = middleware_method(request, response)
+  File "/root/django/django/contrib/sessions/middleware.py", line 49, in process_response
+    request.session.save()
+  File "/root/django/django/contrib/sessions/backends/db.py", line 64, in save
+    obj.save(force_insert=must_create, using=using)
+  File "/root/django/django/db/models/base.py", line 676, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/root/django/django/db/models/base.py", line 704, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/root/django/django/db/models/base.py", line 788, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/root/django/django/db/models/base.py", line 827, in _do_insert
+    using=using, raw=raw)
+  File "/root/django/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/root/django/django/db/models/query.py", line 1026, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/root/django/django/db/models/sql/compiler.py", line 977, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/django/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/root/django/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/root/django/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/root/django/django/db/backends/mysql/base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib/python2.7/dist-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1213, 'Deadlock found when trying to get lock; try restarting transaction')

@@ -39,8 +39,10 @@ a{
 
 #logo{
 	left: 20px;
-	top: 22px;
+	top: 19px;
 	position: absolute;
+	width: 188px;
+    height: 61px;
 }
 
 .header-title{
