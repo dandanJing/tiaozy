@@ -50,7 +50,7 @@
         </ol>
     </div>
     <div class="input-box">
-        <form id="publishForm" action="/post-item/" method="post" enctype="multipart/form-data">
+        <form id="publishForm" enctype="multipart/form-data" method="POST" action="/post-item/">
             <div id="form-bd">
                 {%  if typeIndex %}
                 <input type="text" value="{{typeIndex}}" name="type" style="opacity:0">

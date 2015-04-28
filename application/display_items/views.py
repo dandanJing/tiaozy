@@ -58,6 +58,7 @@ def postItem(request):
             # print files
             print 'title: %s name: %s' %(title, postUsername)
             SessionId = os.urandom(10)
+            print request.FILES
             for fileEach in files:
                 result = uploadImage(fileEach,SessionId)
                 print result
@@ -396,7 +397,7 @@ def getAllPostsForUser(request):
                     else:
                         item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')
                 if  item_sets.exists():
-                    for item.ItemImageUrls in  item_sets.iterator():
+                    for item in  item_sets.iterator():
                         image_urls = json.loads(item.ItemImageUrls)
                         if len(image_urls):             
                             imageUrl = image_urls[0]
