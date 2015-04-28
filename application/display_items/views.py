@@ -43,9 +43,9 @@ def postItem(request):
             title = request.POST.get('title')
             temp = request.POST.get('feature')
             if temp == '1':
-                feature = "全新"
+                feature = '1'
             else:
-                feature = "非全新"
+                feature = '0'
             oldPrice = request.POST.get('original-price')
             price = request.POST.get('price')
             contactUsername = request.POST.get('name')
@@ -136,7 +136,10 @@ def getOnSelling(request):
     print 'request info: %s %s' % (request.method, request.path)
     try:
         result = []
-        items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:2]
+        if user_items_table.objects.exclude(IsBlock=True).count() > 1:
+            items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:2]
+        else:
+            items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')
         if items_sets.exists():
             for item in items_sets.iterator():
                 image_urls = json.loads(item.ItemImageUrls)
@@ -158,7 +161,10 @@ def getOnAsking(request):
     print 'request info: %s %s' % (request.method, request.path)
     try:
         result = []
-        items_sets = ask_info_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:3]
+        if ask_info_table.objects.exclude(IsBlock=True).count() > 2:
+            items_sets = ask_info_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:3]
+        else:
+            items_sets = ask_info_table.objects.exclude(IsBlock=True).order_by('-PostTime')
         if items_sets.exists():
             for item in items_sets.iterator():
                 result.append({
@@ -191,7 +197,13 @@ def getEssenceBooks(request):
         # essence items
         start_index = (pagenum-1)*6
         end_index = pagenum*6
-        hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:end_index]
+        total_num = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime').count()
+        if  total_num >= end_index:
+            hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:end_index]
+        elif total_num > start_index:
+            hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:]
+        else:
+            hot_sets = []
         if  hot_sets.exists():
             for item in  hot_sets.iterator():
                 image_urls = json.loads(item.ItemImageUrls)
@@ -272,9 +284,15 @@ def getBooksWithType(typeStr):
         result = [];
         user_ssl = tzy_users.objects.filter(username="尚书林")
         if typeStr == "":
-            book_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[:12]
+            if user_items_table.objects.filter(TzyUser=user_ssl).count()>=12:
+                book_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[:12]
+            else:
+                book_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')
         else:
-            book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).order_by('-ClickCount','-PostTime')[:12]
+            if user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).count()>=12:
+                book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).order_by('-ClickCount','-PostTime')[:12]
+            else:
+                book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).order_by('-ClickCount','-PostTime')
         if  book_sets.exists():
             for item in  book_sets.iterator():
                 image_urls = json.loads(item.ItemImageUrls)
@@ -353,9 +371,15 @@ def getAllPostsForUser(request):
             if postUser_set.exists():
                 postUser = postUser_set[0]
                 if req.has_key('is_trade_success'):
-                    item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True).order_by('-ClickCount','-PostTime')[:5]
+                    if user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True).count()>=5:
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True).order_by('-ClickCount','-PostTime')[:5]
+                    else:
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True).order_by('-ClickCount','-PostTime')
                 else:
-                    item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')[:5]
+                    if user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime').count()>=5:
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')[:5]
+                    else:
+                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')
                 if  item_sets.exists():
                     for item in  item_sets.iterator():
                         image_urls = json.loads(item.ItemImageUrls)
