@@ -1,7 +1,7 @@
-
-*.log
 *.pyc
-db.sqlite3
+/static/
+*.sqlite3
+*.sql
 /logs/
+*.log
 migrations/
-settings.py
