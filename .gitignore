@@ -2,6 +2,6 @@
 *.sqlite3
 *.sql
 /logs/
-*.log
+
 migrations/
 tiaozy/settings.py
