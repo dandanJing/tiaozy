@@ -144,8 +144,8 @@ def getOnSelling(request):
         if items_sets.exists():
             for item in items_sets.iterator():
                 print item.ItemImageUrls
-                image_urls = json.loads(item.ItemImageUrls)
-                if image_urls.exists():
+                if item.ItemImageUrls.length > 5:
+                    image_urls = json.loads(item.ItemImageUrls)
                     imageUrl = image_urls[0]
                 else:
                     imageUrl = ""
@@ -209,11 +209,13 @@ def getEssenceBooks(request):
         elif total_num > start_index:
             hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:]
         else:
-            hot_sets = []
+            result["book_list"] = essence_list
+            result["continuationToken"] = continuationToken
+            return handle_response(result)  
         if  hot_sets.exists():
             for item in  hot_sets.iterator():
-                image_urls = json.loads(item.ItemImageUrls)
-                if image_urls.exists():
+                if item.ItemImageUrls.length > 5:
+                    image_urls = json.loads(item.ItemImageUrls)
                     imageUrl = image_urls[0]
                 else:
                     imageUrl = ""
@@ -305,8 +307,8 @@ def getBooksWithType(typeStr):
                 book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).order_by('-ClickCount','-PostTime')
         if  book_sets.exists():
             for item in  book_sets.iterator():
-                image_urls = json.loads(item.ItemImageUrls)
-                if image_urls.exists():
+                if item.ItemImageUrls.length > 5:
+                    image_urls = json.loads(item.ItemImageUrls)
                     imageUrl = image_urls[0]
                 else:
                     imageUrl = ""
@@ -395,9 +397,9 @@ def getAllPostsForUser(request):
                     else:
                         item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')
                 if  item_sets.exists():
-                    for item in  item_sets.iterator():
-                        image_urls = json.loads(item.ItemImageUrls)
-                        if image_urls.exists():
+                    for item.ItemImageUrls in  item_sets.iterator():
+                        if item.ItemImageUrls.length > 5:
+                            image_urls = json.loads(item.ItemImageUrls)
                             imageUrl = image_urls[0]
                         else:
                             imageUrl = ""
@@ -451,8 +453,8 @@ def getMyPostsByType(request):
                 if  item_sets.exists():
                     for item in  item_sets.iterator():
                         message_count = len(item_messages_table.objects.filter(Item=item))
-                        image_urls = json.loads(item.ItemImageUrls)
-                        if image_urls.exists():
+                        if item.ItemImageUrls.length > 5:
+                            image_urls = json.loads(item.ItemImageUrls)
                             imageUrl = image_urls[0]
                         else:
                             imageUrl = ""
