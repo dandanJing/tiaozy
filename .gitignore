@@ -4,4 +4,4 @@
 db.sqlite3
 /logs/
 migrations/
-settings.py
+tiaozy/settings.py

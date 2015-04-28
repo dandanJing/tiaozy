@@ -72,7 +72,7 @@ AUTH_USER_MODEL  = "ssl_users.tzy_users"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "tiaozyserver",
+        'NAME': "tiaozydb",
         'USER': 'root',
         'PASSWORD': 'zkldzj1993',
         'HOST': '',

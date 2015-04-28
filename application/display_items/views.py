@@ -56,11 +56,11 @@ def postItem(request):
                 # print 'select type %s' % typeIndex
             files = request.FILES.getlist('upfile[]')
             # print files
-            print 'title: %s name: %s description: %s' %(title, postUsername,description)
+            print 'title: %s name: %s' %(title, postUsername)
             SessionId = os.urandom(10)
             for fileEach in files:
                 result = uploadImage(fileEach,SessionId)
-                print "imageurl : %s" % result['ImageUrl']
+                print result
                 if result['status'] == 200:
                     imageUrls.append(result['ImageUrl'])
                 else:
@@ -69,7 +69,8 @@ def postItem(request):
             itemObject = user_items_table.objects.create(ItemId=itemid,ItemName=title,ItemOldPrice=oldPrice,ItemPrice=price,ItemImageUrls=json.dumps(imageUrls),ItemType=typeIndex,TzyUser=user)
             itemObject.PostTime = createdTime
             itemObject.LastEditTime = createdTime
-            itemObject.ItemDescription = description
+            if description != None:
+                itemObject.ItemDescription = description
             itemObject.ContactUserName = contactUsername
             itemObject.ContactUserPhone = mobile
             itemObject.save() 
