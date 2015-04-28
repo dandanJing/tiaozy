@@ -140,8 +140,10 @@ def getOnSelling(request):
             items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:2]
         else:
             items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')
+        print items_sets
         if items_sets.exists():
             for item in items_sets.iterator():
+                print item.ItemImageUrls
                 image_urls = json.loads(item.ItemImageUrls)
                 if image_urls.exists():
                     imageUrl = image_urls[0]
