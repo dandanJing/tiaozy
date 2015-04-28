@@ -143,12 +143,16 @@ def getOnSelling(request):
         if items_sets.exists():
             for item in items_sets.iterator():
                 image_urls = json.loads(item.ItemImageUrls)
+                if image_urls.exists():
+                    imageUrl = image_urls[0]
+                else:
+                    imageUrl = ""
                 result.append({
                     "ItemId":item.ItemId,
                     "Title":item.ItemName,
                     "Price":item.ItemPrice,
                     "OldPrice":item.ItemOldPrice,
-                    "ImageUrl":image_urls[0],
+                    "ImageUrl":imageUrl,
                     "Description":item.ItemDescription,
                 })
 
@@ -207,12 +211,16 @@ def getEssenceBooks(request):
         if  hot_sets.exists():
             for item in  hot_sets.iterator():
                 image_urls = json.loads(item.ItemImageUrls)
+                if image_urls.exists():
+                    imageUrl = image_urls[0]
+                else:
+                    imageUrl = ""
                 essence_list.append({
                     "ItemId":item.ItemId,
                     "Title":item.ItemName,
                     "Price":item.ItemPrice,
                     "OldPrice":item.ItemOldPrice,
-                    "ImageUrl":image_urls[0],
+                    "ImageUrl":imageUrl,
                     "Description":item.ItemDescription,
                 })
         if len(essence_list) == 6:
@@ -296,12 +304,16 @@ def getBooksWithType(typeStr):
         if  book_sets.exists():
             for item in  book_sets.iterator():
                 image_urls = json.loads(item.ItemImageUrls)
+                if image_urls.exists():
+                    imageUrl = image_urls[0]
+                else:
+                    imageUrl = ""
                 result.append({
                     "ItemId":item.ItemId,
                     "Title":item.ItemName,
                     "Price":item.ItemPrice,
                     "OldPrice":item.ItemOldPrice,
-                    "ImageUrl":image_urls[0],
+                    "ImageUrl":imageUrl,
                     "Description":item.ItemDescription,
                 })
     except Exception as e:
@@ -383,12 +395,16 @@ def getAllPostsForUser(request):
                 if  item_sets.exists():
                     for item in  item_sets.iterator():
                         image_urls = json.loads(item.ItemImageUrls)
+                        if image_urls.exists():
+                            imageUrl = image_urls[0]
+                        else:
+                            imageUrl = ""
                         result.append({
                             "ItemId":item.ItemId,
                             "Title":item.ItemName,
                             "Price":item.ItemPrice,
                             "OldPrice":item.ItemOldPrice,
-                            "ImageUrl":image_urls[0],
+                            "ImageUrl":imageUrl,
                             "Description":item.ItemDescription,
                         })
 
@@ -434,12 +450,16 @@ def getMyPostsByType(request):
                     for item in  item_sets.iterator():
                         message_count = len(item_messages_table.objects.filter(Item=item))
                         image_urls = json.loads(item.ItemImageUrls)
+                        if image_urls.exists():
+                            imageUrl = image_urls[0]
+                        else:
+                            imageUrl = ""
                         result.append({
                             "ItemId":item.ItemId,
                             "Title":item.ItemName,
                             "Price":item.ItemPrice,
                             "OldPrice":item.ItemOldPrice,
-                            "ImageUrl":image_urls[0],
+                            "ImageUrl":imageUrl,
                             "Description":item.ItemDescription,
                             "PostTime":formatTime(item.PostTime,"%Y-%m-%d %H:%M"),
                             "IsTradeSuccess":item.IsTradeSuccess,
