@@ -1,5 +1,4 @@
 *.pyc
-/static/
 *.sqlite3
 *.sql
 /logs/
