@@ -33,6 +33,8 @@ button::-moz-focus-inner{
     left: 20px;
     top: 17px;
     position: absolute;
+    width: 188px;
+    height: 61px;
 }
 
 .header-title{
