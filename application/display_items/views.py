@@ -137,8 +137,8 @@ def getOnSelling(request):
     print 'request info: %s %s' % (request.method, request.path)
     try:
         result = []
-        if user_items_table.objects.exclude(IsBlock=True).count() > 1:
-            items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:2]
+        if user_items_table.objects.exclude(IsBlock=True).count() > 2:
+            items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:3]
         else:
             items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')
         print items_sets

@@ -354,7 +354,6 @@ a:hover{
 }
 
 #header{
-    background:#fff;
     position:relative;
     width:100%;
     top:5;
@@ -386,7 +385,7 @@ a:hover{
 
 #searchbar{
     position:absolute;
-    left:507px;
+    left:257px;
     top:11px;
     line-height:26px;
     overflow:hidden;
@@ -499,6 +498,45 @@ input.btnal2{
     color:#666;
     float:left
 } 
+
+.extend{
+    width: 360px;
+    height: 70px;
+    position:absolute;
+    right:287px;
+    top:0px;
+}
+
+.extend .mod{
+    margin-top: 4px;
+    float: left;
+    width: 144px;
+    height: 65px;
+    margin-left: 10px;
+}
+
+.extend .mod a{
+    background:url("/static/images/post_btn.jpg") no-repeat;
+    display: block;
+    margin-top: 6px;
+    width: 124px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.extend .mod a .main-title{
+    display: inline-block;
+    padding:5px 15px;
+    font-size: 18px;
+    font-weight: 550;
+    color: #000;
+}
+
+.extend .mod a .subtitle {
+    display: block;
+    color: #444;
+}
 
 #fabu{
     position:absolute;
@@ -755,48 +793,6 @@ a:hover #fabu{
     zoom:1;
 }
 
-.extend{
-    height: 65px;
-    background-color: #fff;
-}
-
-.idle-start .extend .mod{
-    float: left;
-    width: 144px;
-    height: 65px;
-    margin-left: 10px;
-}
-
-.idle-start .extend .mod a{
-    display: block;
-    padding: 5px 0;
-    border:1px solid #f4a38c;
-    margin-left: 9px;
-    margin-top: 6px;
-    text-align: center;
-    background-color: #fff;
-    text-decoration: none;
-}
-
-/*.idle-start .extend .mod a:hover{
-    text-decoration: underline;
-    color: #777;
-}*/
-
-.idle-start .extend .mod a .main-title{
-    display: inline-block;
-    padding:0 15px;
-    margin-bottom: 5px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #444;
-}
-
-.idle-start .extend .mod a .subtitle {
-    display: block;
-    color: #999;
-}
-
 .on-selling{
     width: 278px;
     height: 195px;
@@ -807,15 +803,11 @@ a:hover #fabu{
     text-align: left;
     display: block;
     font-size: 14px;
-    height: 30px;
-    line-height: 30px;
+    height: 25px;
+    line-height: 25px;
     font-weight: 600;
     padding-left: 8px;
     margin: 0;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
 }
 
 .on-selling li {
@@ -831,14 +823,12 @@ a:hover #fabu{
     width: 75px;
     height: 75px;
     float: left;
-    display: table;
     text-align: center;
     table-layout: fixed;
 }
 
 .on-selling .item-pic a{
-    display: table-cell;
-    vertical-align: middle;
+    
 }
 
 .on-selling .item-pic img{
@@ -858,10 +848,6 @@ h5{
     font-weight: bold;
     margin:0px;
     padding: 0px;
-    -webkit-margin-before: 1.67em;
-    -webkit-margin-after: 1.67em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
     font-size: 100%;
     padding-top: 4px;
 }
