@@ -256,7 +256,7 @@ em .f1{
 
 .upload-inner .file-input{
     float: left;
-    margin-left: 2px;
+    margin-left: 15px;
     position: absolute;
     margin-top: 4px;
     height: 90px;
@@ -305,7 +305,7 @@ em .f1{
     float: left;
     overflow: hidden;
     margin-right: 10px;
-    display: none;
+    display: inline;
 }
 
 .image-block .delete-image{
