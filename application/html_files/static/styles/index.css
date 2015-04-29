@@ -354,46 +354,40 @@ a:hover{
 }
 
 #header{
-    position:relative;
-    width:100%;
-    top:5;
+    width:1200px;
     height:65px;
     overflow:hidden;
     z-index: 1;
+    margin: 0 auto;
 }
 
 #headerinside{
-    height:70px;
-    position:relative;
-    margin-top:5px
-}
-
-#footer,#headerinside,.morelink{
-    background:#fff;
-    width:1190px;
-    margin:0 auto;
-    clear:both
+    width: 900px;
+    height:65px;
+    float: left;
+    background-color: #eee;
 }
 
 #logo{
-    position:absolute;
-    left:0;
-    top:6px;
-    width: 188px;
-    height: 61px;
+    float: left;
+    margin-top: 8px;
+    width: 178px;
+    height: 58px;
 }
 
 #searchbar{
-    position:absolute;
-    left:257px;
-    top:11px;
+    float: left;
+    width: 650px;
+    height: 50px;
     line-height:26px;
     overflow:hidden;
-    margin-top: 8px;
+    margin-top: 17px;
+    margin-left: 55px;
 }
 
 #searchbar i{
-    font-style:normal
+    font-style:normal;
+    float:left;
 }
 
 #searkey{
@@ -500,17 +494,15 @@ input.btnal2{
 } 
 
 .extend{
-    width: 360px;
+    width: 280px;
     height: 70px;
-    position:absolute;
-    right:287px;
-    top:0px;
+    float: left;
+    margin-left: 10px;
 }
 
 .extend .mod{
     margin-top: 4px;
     float: left;
-    width: 144px;
     height: 65px;
     margin-left: 10px;
 }
@@ -527,7 +519,7 @@ input.btnal2{
 
 .extend .mod a .main-title{
     display: inline-block;
-    padding:5px 15px;
+    padding:5px 0px;
     font-size: 18px;
     font-weight: 550;
     color: #000;
@@ -820,11 +812,10 @@ a:hover #fabu{
 }
 
 .on-selling .item-pic{
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     float: left;
     text-align: center;
-    table-layout: fixed;
 }
 
 .on-selling .item-pic a{
@@ -832,8 +823,8 @@ a:hover #fabu{
 }
 
 .on-selling .item-pic img{
-    max-height: 75px;
-    max-width: 75px;
+    max-height: 70px;
+    max-width: 70px;
 }
 
 .on-selling .info{
