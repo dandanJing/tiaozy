@@ -237,6 +237,7 @@ em .f1{
 }
 
 .upload {
+    width: 750px;
     height: 110px;
     margin: 0px 5px;
     position: relative;
@@ -253,6 +254,21 @@ em .f1{
     float: left;
 }
 
+.upload-inner .file-input{
+    float: left;
+    margin-left: 2px;
+    position: absolute;
+    margin-top: 4px;
+    height: 90px;
+    width: 90px;
+    display: none;
+}
+
+.upload-inner .active{
+    display: inline;
+    opacity: 0;
+}
+
 .upload-inner img {
     background-position: -69px -20px;
     width: 66px;
@@ -260,6 +276,43 @@ em .f1{
     position: absolute;
     top: 28px;
     left: 21px;
+}
+
+.image-block{
+    float: left;
+    width: 660px;
+    height: 150px;
+    overflow: hidden;
+    margin-left: -20px;
+    margin-top: -10px;
+}
+
+.image-block .display-image{
+    width: 100px;
+    height: 100px;
+    float: left;
+    z-index: 1;
+}
+
+.image-block ul{
+    list-style: none;
+    float: left;
+}
+
+.image-block li{
+    width: 110px;
+    height: 100px;
+    float: left;
+    overflow: hidden;
+    margin-right: 10px;
+    display: none;
+}
+
+.image-block .delete-image{
+    width: 15px;
+    height: 15px;
+    z-index: 3;
+    position: absolute;
 }
 
 #pic-block{
@@ -294,17 +347,6 @@ em .f1{
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     background-color: #F78015;
     display: block;
-}
-
-#upload-file{
-    float: left;
-    margin-left: 12px;
-    position: absolute;
-    display: inline;
-    margin-top: 25px;
-    height: 65px;
-    width: 90px;
-    opacity: 0;
 }
 
 .controls textarea{

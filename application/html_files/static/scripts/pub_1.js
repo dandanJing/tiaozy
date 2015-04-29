@@ -12,47 +12,26 @@ $(document).ready(function(){
     });
 });
 
-function selectfile(ths){
-   
-    if($("#J_UploadPic img").length >= 6){
-        toastr.error('最多上传5张图片'); 
-        return;
-    }
+function selectfile(ths,change_index){
 
     if(checkImgType(ths)){
-
-        var imgobj = $('#upload-file').get(0).files[0];
+        var imgobj = $(ths).get(0).files[0];
         var strsrc = getObjectURL(imgobj);
-        var divObj = document.getElementById("J_UploadPic");
-        var imgObject = document.createElement('img');
-        imgObject.src = strsrc;
-        $(imgObject).css({"width":"100px","height":"100px","top":"0px","margin-left":"10px"});
-        divObj.appendChild(imgObject);
-        var _newfile   = ths.cloneNode();
-        _newfile.name  = "upfile[]";
-        $(_newfile).css({"width":"1px","height":"1px"}),
-        // _newfile.css({"display":"none"});
-        // _newfile.disabled = true;
-        divObj.appendChild(_newfile);
-        var delObj = document.createElement('img');
-        delObj.src = "/static/images/delete.jpg";
-        $(delObj).css({"width":"20px","height":"20px","top":"0px","margin-left":"-20px","position":"absolute","z-index":"3"});
-        divObj.appendChild(delObj);
-        $(delObj).click(function(){
-            var chObjs = $(this).parent().children();
-            var index = $(".upload img").index(this);
-            if(index == -1){
-                return;
-            }
-            var rmIndex = 3*(index/2);
-            var len = chObjs.length;
-            if(rmIndex < len){
-                for(var i=0;i<3;i++){
-                    chObjs.eq(rmIndex).remove();
-                    rmIndex = rmIndex-1;
-                }
-            }   
-        });
+        if(change_index < $("#images-ul").children().length){
+            var liObj = $("#images-ul").children().eq(change_index);
+            var imgObject = document.createElement('img');
+            imgObject.src = strsrc;
+            $(imgObject).val(change_index);
+            liObj.children().eq(0).remove();
+            $(imgObject).toggleClass("display-image");
+            liObj.prepend(imgObject);
+            $(liObj).css({"display":"inline"});
+        }
+        
+        if(change_index+2 <6){
+            $(ths).css({"width":"1px","height":"1px"});
+            $(ths).parent().children().eq(change_index+2).toggleClass("active");
+        }
      }
 }
 

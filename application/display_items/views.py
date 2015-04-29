@@ -190,48 +190,51 @@ def getEssenceBooks(request):
     essence_list = []
     pagenum = 1
     continuationToken = False
+    print "getEssenceBooks"
     try:
-        user_ssl = tzy_users.objects.filter(username="尚书林")
+        user_ssl_sets = tzy_users.objects.filter(username="尚书林")
+        if user_ssl_sets.exists():
+            user_ssl = user_ssl_sets[0]
+            #pagenum
+            req = json.loads(request.body)
+            if req.has_key('pagenum'):
+                pagenum = req['pagenum']
+                if pagenum <= 0:
+                    pagenum = 1
 
-        #pagenum
-        req = json.loads(request.body)
-        if req.has_key('pagenum'):
-            pagenum = req['pagenum']
-            if pagenum <= 0:
-                pagenum = 1
-
-        # essence items
-        start_index = (pagenum-1)*6
-        end_index = pagenum*6
-        total_num = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime').count()
-        if  total_num >= end_index:
-            hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:end_index]
-        elif total_num > start_index:
-            hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:]
-        else:
-            result["book_list"] = essence_list
-            result["continuationToken"] = continuationToken
-            return handle_response(result)  
-        if  hot_sets.exists():
-            for item in  hot_sets.iterator():
-                image_urls = json.loads(item.ItemImageUrls)
-                if len(image_urls):             
-                    imageUrl = image_urls[0]
-                else:
-                    imageUrl = ""
-                essence_list.append({
-                    "ItemId":item.ItemId,
-                    "Title":item.ItemName,
-                    "Price":item.ItemPrice,
-                    "OldPrice":item.ItemOldPrice,
-                    "ImageUrl":imageUrl,
-                    "Description":item.ItemDescription,
-                })
-        if len(essence_list) == 6:
-            continuationToken = True
+            # essence items
+            start_index = (pagenum-1)*6
+            end_index = pagenum*6
+            total_num = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime').count()
+            if  total_num >= end_index:
+                hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:end_index]
+            elif total_num > start_index:
+                hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:]
+            else:
+                result["book_list"] = essence_list
+                result["continuationToken"] = continuationToken
+                return handle_response(result)  
+            if  hot_sets.exists():
+                for item in  hot_sets.iterator():
+                    image_urls = json.loads(item.ItemImageUrls)
+                    if len(image_urls):             
+                        imageUrl = image_urls[0]
+                    else:
+                        imageUrl = ""
+                    essence_list.append({
+                        "ItemId":item.ItemId,
+                        "Title":item.ItemName,
+                        "Price":item.ItemPrice,
+                        "OldPrice":item.ItemOldPrice,
+                        "ImageUrl":imageUrl,
+                        "Description":item.ItemDescription,
+                    })
+            if len(essence_list) == 6:
+                continuationToken = True
     except Exception as e:
         logger.debug('getEssenceBooks: %s' % e)
 
+    print essence_list
     result["book_list"] = essence_list
     result["continuationToken"] = continuationToken
     return handle_response(result)

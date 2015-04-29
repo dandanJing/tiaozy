@@ -62,7 +62,7 @@
                     </label>
                     <div class="controls">
                         <div class="input-wrap">
-                            <input id="title" class="input title" type="text" value="" name="title">
+                            <input id="title" class="input title" type="text" value="dada" name="title">
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                     </label>
                     <div class="controls">
                         <div class="input-wrap">
-                            <input id="price" class="input J_PriceCheck" type="text" value="" name="price"></input>
+                            <input id="price" class="input J_PriceCheck" type="text" value="1" name="price"></input>
                             <span>元
                             </span>
                         </div>
@@ -98,7 +98,7 @@
                     </label>
                     <div class="controls">
                         <div class="input-wrap">
-                            <input id="original-price" class="input J_PriceCheck" type="text" value="" name="original-price"></input>
+                            <input id="original-price" class="input J_PriceCheck" type="text" value="12" name="original-price"></input>
                             <span>元
                             </span>
                         </div>
@@ -115,7 +115,7 @@
                             {% if mobile %}
                             <input id="mobile" class="input" type="text" value="{{mobile}}" name="mobile"></input>
                             {% else %}
-                            <input id="mobile" class="input" type="text" value="" name="mobile"></input>
+                            <input id="mobile" class="input" type="text" value="15201519357" name="mobile"></input>
                             {% endif %}
                         </div>
                     </div>
@@ -143,7 +143,31 @@
                         <div id="J_UploadPic" class="upload">
                             <div class="upload-inner">
                                 <img src="/static/images/add_image.png">
-                                <input type="file" id="upload-file" onchange="selectfile(this)"></input>
+                                <!-- <input type="file" id="upload-file" onchange="selectfile(this)"></input> -->
+                                <input type="file" class="file-input active" name="upfile[]" value="" onchange="selectfile(this,0)"></input>
+                                <input type="file" class="file-input" name="upfile[]"  value="" onchange="selectfile(this,1)"></input>
+                                <input type="file" class="file-input" name="upfile[]"  value="" onchange="selectfile(this,2)"></input>
+                                <input type="file" class="file-input" name="upfile[]"  value="" onchange="selectfile(this,3)"></input>
+                                <input type="file" class="file-input" name="upfile[]"  value="" onchange="selectfile(this,4)"></input>
+                            </div>
+                            <div class="image-block">
+                                <ul id = "images-ul">
+                                    <li><img src="/static/images/ssl-item1.jpg" class="display-image" index-value="">
+                                    <img src="/static/images/delete.jpg" class="delete-image">
+                                    </li>
+                                    <li><img src="/static/images/ssl-item1.jpg" class="display-image">
+                                    <img src="/static/images/delete.jpg" class="delete-image">
+                                    </li>
+                                    <li><img src="/static/images/ssl-item1.jpg" class="display-image">
+                                    <img src="/static/images/delete.jpg" class="delete-image">
+                                    </li>
+                                    <li><img src="/static/images/ssl-item1.jpg" class="display-image">
+                                    <img src="/static/images/delete.jpg" class="delete-image">
+                                    </li>
+                                    <li><img src="/static/images/ssl-item1.jpg" class="display-image">
+                                    <img src="/static/images/delete.jpg" class="delete-image">
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <span class="upload-tip">
