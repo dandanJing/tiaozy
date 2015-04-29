@@ -365,7 +365,6 @@ a:hover{
     width: 900px;
     height:65px;
     float: left;
-    background-color: #eee;
 }
 
 #logo{
@@ -732,7 +731,6 @@ a:hover #fabu{
 .tab-nav{
     width: 640px;
     height: 22px;
-    /*background-color: #000;*/
     opacity: 1;
     position: absolute;
     bottom: 0px;
@@ -743,7 +741,6 @@ a:hover #fabu{
     list-style-type: none;
     position: absolute;
     height: 22px;
-    /*background-color: #000;*/
     opacity: 0.8;
     padding: 0px;
     margin-top: 6px;
