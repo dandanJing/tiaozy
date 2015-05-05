@@ -38,6 +38,7 @@ def publish(request):
                     item = item_sets[0]
                     result['ItemId']=itemid
                     result['ItemType']=item.ItemType
+                    print result
                     return render_to_response('modify_item_type.html',{'result':result})
             
     except Exception as e:

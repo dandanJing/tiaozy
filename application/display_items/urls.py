@@ -25,4 +25,5 @@ urlpatterns = patterns('',
     url(r'^delete-my-post-by-itemid','application.display_items.views.deleteMyPostByItemId',name='deleteMyPostByItemId'),
     url(r'^set-trade-success-by-itemid','application.display_items.views.setTradeSuccessByItemId',name='setTradeSuccessByItemId'),
     url(r'^modifyMyItem','application.display_items.views.modifyMyItemByItemId',name='modifyMyItemByItemId'),
+    url(r'^modify_item_type','application.display_items.views.modifyItemType',name="modifyItemType"),
 )

@@ -535,7 +535,6 @@ def modifyMyItemByItemId(request):
                 item_sets = user_items_table.objects.filter(ItemId=itemid)
                 if  item_sets.exists():
                     item = item_sets[0]
-                    print item
                     if item.TzyUser == request.user:
                         image_urls = json.loads(item.ItemImageUrls)
                         typeIndex = item.ItemType
@@ -559,6 +558,24 @@ def modifyMyItemByItemId(request):
                         return render_to_response('modify_item_info.html',{"item":result,"typeStr":typeStr})
     except Exception as e:
         logger.debug('modifyMyItemByItemId: %s' % e)
+
+    return HttpResponseRedirect("/index.html")
+
+def modifyItemType(request):
+    itemid = ""
+    typeIndex = '100'
+    try:
+        if request.method == "GET":
+            if request.user.is_authenticated(): 
+                itemid = request.GET.get("itemid")
+                typeIndex = request.GET.get("type")
+                item = user_items_table.objects.get(ItemId=itemid)
+                if item and item.TzyUser == request.user:
+                    item.ItemType = typeIndex
+                    item.save()
+                    return modifyMyItemByItemId(request)
+    except Exception as e:
+        logger.debug('modifyItemType: %s' % e)
 
     return HttpResponseRedirect("/index.html")
 
