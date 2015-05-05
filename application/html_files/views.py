@@ -25,10 +25,25 @@ def index(request):
     return render_to_response('index.html',{'login_user':login_user})
     
 def publish(request):
-    if request.user.is_authenticated():
-        return render_to_response('publish.html')
-    else:
-        return render_to_response("login.html")
+    itemid = None
+    result = {}
+    try:
+        if not request.user.is_authenticated():
+            return render_to_response("login.html")
+        else:
+            if request.method == "GET":
+                itemid = request.GET.get("itemid")
+                item_sets = user_items_table.objects.filter(ItemId=itemid)
+                if item_sets.exists():
+                    item = item_sets[0]
+                    result['ItemId']=itemid
+                    result['ItemType']=item.ItemType
+                    return render_to_response('modify_item_type.html',{'result':result})
+            
+    except Exception as e:
+        logger.debug('publish: %s' % e)
+
+    return render_to_response("publish.html")
 
 def pub_1(request):
     typeIndex = 101
@@ -41,7 +56,7 @@ def pub_1(request):
         if request.method == "GET":
             typeIndex = request.GET.get('type')
             typeStr = TYPEDIC[str(typeIndex)]
-            print "select typeStr:  %s" % typeStr
+            #print "select typeStr:  %s" % typeStr
         username =  request.user.username
         mobile = request.user.Mobilephone
     except Exception as e:

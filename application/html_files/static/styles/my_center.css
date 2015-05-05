@@ -581,6 +581,11 @@ a:hover{
     margin-right: 4px;
 }
 
+.item-btn .tradeSuccess{
+    color: #777;
+    border: 1px solid #c0cf70;
+}
+
 .nav-detail{
     width: 100%;
     float: left;

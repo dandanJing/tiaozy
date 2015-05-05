@@ -186,11 +186,13 @@ function showMyPosts(data){
         htmlInner +="<span class=\"old-price\">原价:"+item["OldPrice"]+"</span></div>";
         htmlInner +="<div class=\"bottom-info\"><span class=\"item-click\">浏览:"+item['ClickCount']+"</span>";
         htmlInner +="<span class=\"item-messages\">留言:"+item['MessageCount']+"</span></div></div>";
+        htmlInner +="<div class=\"item-btn\"><span onclick=\"deleteItem(this,'"+item["ItemId"]+"')\">删除</span>";
         if(item['IsTradeSuccess']){
-            htmlInner +="<div class=\"item-btn\"><span onclick=\"deleteItem(this)\">删除</span></div></li>";
+            htmlInner +="<span class=\"tradeSuccess\">交易完成</span></div></li>";
         }else{
-            htmlInner +="<div class=\"item-btn\"><span onclick=\"deleteItem(this,'"+item["ItemId"]+"')\">删除</span><span>修改</span><span onclick=\"setTradeSuccess(this,'"+item["ItemId"]+"')\">交易成功</span></div></li>";  
-        }  
+           htmlInner +="<span><a href=\"/modifyMyItem?itemid="+item['ItemId']+"\">修改</a></span>";
+           htmlInner +="<span class=\"notTrade\" onclick=\"setTradeSuccess(this,'"+item["ItemId"]+"')\">交易成功</span></div></li>"; 
+        }    
     }
     htmlInner += "</ul>";
     $("#post-content").html(htmlInner);

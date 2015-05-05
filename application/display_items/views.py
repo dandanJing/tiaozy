@@ -524,6 +524,44 @@ def setTradeSuccessByItemId(request):
 
     return handle_response(result)
 
+def modifyMyItemByItemId(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    result = {}
+    typeStr = ""
+    try:
+        if request.method == "GET":
+            if request.user.is_authenticated(): 
+                itemid = request.GET.get("itemid")
+                item_sets = user_items_table.objects.filter(ItemId=itemid)
+                if  item_sets.exists():
+                    item = item_sets[0]
+                    print item
+                    if item.TzyUser == request.user:
+                        image_urls = json.loads(item.ItemImageUrls)
+                        typeIndex = item.ItemType
+                        typeStr = TYPEDIC[str(typeIndex)]
+                        feature = 0
+                        if item.Feature == "全新":
+                            feature = 1
+                        result = {
+                            "ItemId":item.ItemId,
+                            "Title":item.ItemName,
+                            "Feature":feature,
+                            "Price":item.ItemPrice,
+                            "OldPrice":item.ItemOldPrice,
+                            "ImageUrls":image_urls,
+                            "Description":item.ItemDescription,
+                            "PostTime":formatTime(item.PostTime,"%Y-%m-%d %H:%M"),
+                            "IsTradeSuccess":item.IsTradeSuccess,
+                            'ContactUserPhone':item.ContactUserPhone,
+                            'ContactUserName':item.ContactUserName,
+                        }
+                        return render_to_response('modify_item_info.html',{"item":result,"typeStr":typeStr})
+    except Exception as e:
+        logger.debug('modifyMyItemByItemId: %s' % e)
+
+    return HttpResponseRedirect("/index.html")
+
 def postItemMessage(request):
     result = []
     itemid = None

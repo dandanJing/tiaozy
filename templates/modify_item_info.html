@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//WSC//DTD XHTML 1.0 Transitional //EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="zh-cn"/>
+    <title>修改发布信息-跳蚤园</title>
+    <link rel="shortcut icon" href="/static/images/ssl-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/styles/modify_item_info.css">
+    <script language="javascript"  src="/static/scripts/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="/static/scripts/jquery.alerts.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/static/toastr/toastr.min.css">
+    <script type="text/javascript" src="/static/toastr/toastr.min.js"></script>
+    <script src="/static/scripts/ajaxfileupload.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/scripts/global.js"></script>
+    <script language="javascript"  src="/static/scripts/modify_item_info.js"></script>
+</head>
+<body>
+    <div class="header">
+        <a href="/" id="logo">
+            <img src="/static/images/logo.jpg" alt="尚书林">
+        </a>
+        <div class="header-title">修改发布信息</div>
+        <div class="return-home">
+            <a href="/">返回首页</a>|<a href="/open-my-center/">返回用户中心</a>
+        </div>
+    </div>
+    {%  if item  %}
+    <div class="follow-steps">
+        <ol>
+            <li class="step1">
+                <i>1</i>
+                {% if typeStr %}
+                <a href="/publish/?itemid={{item.ItemId}}">重选类别</a>&nbsp;({{typeStr}})
+                {% else %}
+                <a href="/publish/?itemid={{item.ItemId}}"><strong>选择类别</strong></a>
+                {% endif %}
+                <span></span>
+                <em class="f1"></em>
+            </li>
+            <li class="step2 active">
+                <i>2</i>
+                <strong>填写信息</strong>
+                <span></span>
+            </li>
+            <li class="step3">
+                <i>3</i>
+                <strong>发布成功</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="input-box">
+        <form id="publishForm" enctype="multipart/form-data" method="POST" action="/modify-item/?itemid={{item.ItemId}}">
+            <div id="form-bd">
+                <div class="control-group ">
+                    <label class="control-label" for="title">
+                        <strong>标题</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="input-wrap">
+                            <input id="title" class="input title" type="text" value="{{item.Title}}" name="title">
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <label class="control-label">
+                        <strong>新旧</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="btn-group">
+                            <button class="J_RadioBtn btn active" type="button" value="1">全新
+                            </button>
+                            <button class="J_RadioBtn btn" type="button" value="0">非全新
+                            </button>    
+                            <input type="hidden" value="{{item.Feature}}" name="feature" id="feature"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <label class="control-label" for="price">
+                        <strong>价格</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="input-wrap">
+                            <input id="price" class="input J_PriceCheck" type="text" value="{{item.Price}}" name="price"></input>
+                            <span>元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <label class="control-label" for="price">
+                        <strong>原价</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="input-wrap">
+                            <input id="original-price" class="input J_PriceCheck" type="text" value="{{item.OldPrice}}" name="original-price"></input>
+                            <span>元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group normal">
+                    <label class="control-label" for="mobile">
+                        <strong>联系方式</strong>
+                    </label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <label class="add-on" for="name">手机号：
+                            </label>
+                            <input id="mobile" class="input" type="text" value="{{item.ContactUserPhone}}" name="mobile"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group name-wrap ">
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <label class="add-on" for="name">姓名：
+                            </label>
+                            <input id="name" class="input" type="text" value="{{item.ContactUserName}}" name="name"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="pic">
+                        <strong>
+                            宝贝图片
+                        </strong>
+                    </label>
+                    <div class="controls">
+                        <div id="J_UploadPic" class="upload">
+                            <div class="upload-inner">
+                                <img src="/static/images/add_image.png">
+                                <!-- <input type="file" id="upload-file" onchange="selectfile(this)"></input> -->
+                                <input type="file" class="file-input active" name="upfile[]" value="" onchange="selectfile(this,0)"></input>
+                                <input type="file" class="file-input" name="upfile[]"  value="" onchange="selectfile(this,1)"></input>
+                                <input type="file" class="file-input" name="upfile[]"  value="" onchange="selectfile(this,2)"></input>
+                                <input type="file" class="file-input" name="upfile[]"  value="" onchange="selectfile(this,3)"></input>
+                                <input type="file" class="file-input" name="upfile[]"  value="" onchange="selectfile(this,4)"></input>
+                            </div>
+                            <div class="image-block">
+                                <ul id = "images-ul">
+                                </ul>
+                            </div>
+                        </div>
+                        <span class="upload-tip">
+                        最多可上传5张照片，图片每张最大5M
+                        </span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="pic">
+                        <strong>
+                            宝贝描述
+                        </strong>
+                    </label>
+                    <div class="controls">
+                        <textarea name="description" value="{{item.Description}}"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <input id="btn-publish" class="btn-publish" type="button" style="width:110px;height:34px;" checked="checked" value="提交修改" onclick="submit_form();"></input>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>
