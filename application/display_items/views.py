@@ -58,7 +58,7 @@ def postItem(request):
             # print files
             print 'title: %s name: %s' %(title, postUsername)
             SessionId = os.urandom(10)
-            print request.FILES
+            #print request.FILES
             for fileEach in files:
                 result = uploadImage(fileEach,SessionId)
                 print result
@@ -92,7 +92,7 @@ def uploadImage(image_file,SessionId):
         if res.status == 200:
             result['ImageUrl'] = OSS_CDN_HOST + image_name
         else:
-            print res.status
+            #print res.status
             # err_msg=oss_xml_handler.ErrorXml(res.read())
             # print 'Code:'+err_msg.code
             # print 'Message:'+err_msg.msg
@@ -141,7 +141,7 @@ def getOnSelling(request):
             items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:3]
         else:
             items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')
-        print items_sets
+        #print items_sets
         if items_sets.exists():
             for item in items_sets.iterator():
                 image_urls = json.loads(item.ItemImageUrls)
@@ -234,7 +234,7 @@ def getEssenceBooks(request):
     except Exception as e:
         logger.debug('getEssenceBooks: %s' % e)
 
-    print essence_list
+    #print essence_list
     result["book_list"] = essence_list
     result["continuationToken"] = continuationToken
     return handle_response(result)
@@ -379,6 +379,7 @@ def openItem(request):
     return HttpResponseRedirect("/index.html")
 
 def getAllPostsForUser(request):
+    print 'request info: %s %s' % (request.method, request.path)
     result = []
     username = ""
     postUser = None
@@ -421,6 +422,7 @@ def getAllPostsForUser(request):
     return handle_response(result)
 
 def getMyPostsByType(request):
+    print 'request info: %s %s' % (request.method, request.path)
     result = []
     username = ""
     postUser = None
@@ -433,7 +435,7 @@ def getMyPostsByType(request):
             if postUser_set.exists():
                 postUser = postUser_set[0]
                 typeStr = "all"
-                num = len(user_items_table.objects.filter(TzyUser=postUser))
+                num = user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser).count()
                 pagenum = int(math.ceil(float(num)/ITEMS_PER_PAGE_FOR_MYCENTER))
                 if req.has_key('getPage'):
                     getpage = int(req['getPage'])
@@ -442,20 +444,20 @@ def getMyPostsByType(request):
                 if req.has_key('type'):
                     typeStr = req['type']
                     if typeStr == "time":
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-PostTime')[start_index:end_index]
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser).order_by('-PostTime')[start_index:end_index]
                     elif typeStr == "click":
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount')[start_index:end_index]
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser).order_by('-ClickCount')[start_index:end_index]
                     elif typeStr == "success":
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True)[start_index:end_index]
-                        num = len(user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True))
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser,IsTradeSuccess=True)[start_index:end_index]
+                        num = user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser,IsTradeSuccess=True).count()
                         pagenum = int(math.ceil(float(num)/ITEMS_PER_PAGE_FOR_MYCENTER))
                     else:
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser)[start_index:end_index]
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser)[start_index:end_index]
                 else:
-                    item_sets =  user_items_table.objects.filter(TzyUser=postUser)[start_index:end_index]
+                    item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser)[start_index:end_index]
                 if  item_sets.exists():
                     for item in  item_sets.iterator():
-                        message_count = len(item_messages_table.objects.filter(Item=item))
+                        message_count = item_messages_table.objects.filter(Item=item).count()
                         image_urls = json.loads(item.ItemImageUrls)
                         if len(image_urls):             
                             imageUrl = image_urls[0]
@@ -480,8 +482,49 @@ def getMyPostsByType(request):
     for_result = {"result":result,"Pagenum":range(1,pagenum+1),}
     return handle_response(for_result)
 
+def deleteMyPostByItemId(request):
+    result = {}
+    result['result']=False
+    itemid = ""
+    try:
+        req = json.loads(request.body)
+        if request.user.is_authenticated():
+            if req.has_key('itemid'):
+                itemid = req['itemid']
+                if user_items_table.objects.filter(ItemId=itemid).count() > 0:
+                    item = user_items_table.objects.get(ItemId=itemid)
+                    if item.TzyUser == request.user:
+                        item.IsDelete = True
+                        item.save()
+                        result['result']=True
+                
+    except Exception as e:
+        logger.debug('deleteMyPostByItemId: %s' % e)  
+
+    return handle_response(result)     
+
+def setTradeSuccessByItemId(request):
+    result={}
+    result['result']=False
+    itemid = ""
+    try:
+        req = json.loads(request.body)
+        if request.user.is_authenticated():
+            if req.has_key('itemid'):
+                itemid = req['itemid']
+                if user_items_table.objects.filter(ItemId=itemid).count() > 0:
+                    item = user_items_table.objects.get(ItemId=itemid)
+                    if item.TzyUser == request.user:
+                        item.IsTradeSuccess = True
+                        item.save()
+                        result['result']=True
+                
+    except Exception as e:
+        logger.debug('setTradeSuccessByItemId: %s' % e)  
+
+    return handle_response(result)
+
 def postItemMessage(request):
-    print 'request info: %s %s user %s' % (request.method, request.path, request.user)
     result = []
     itemid = None
     message = ""

@@ -22,4 +22,6 @@ urlpatterns = patterns('',
     url(r'^get-my-posts-by-type','application.display_items.views.getMyPostsByType',name='getMyPostsByType'),
     url(r'^post-item-message','application.display_items.views.postItemMessage',name='postItemMessage'),
     url(r'^get-item-messages','application.display_items.views.getItemMessages',name='getItemMessages'),
+    url(r'^delete-my-post-by-itemid','application.display_items.views.deleteMyPostByItemId',name='deleteMyPostByItemId'),
+    url(r'^set-trade-success-by-itemid','application.display_items.views.setTradeSuccessByItemId',name='setTradeSuccessByItemId'),
 )
