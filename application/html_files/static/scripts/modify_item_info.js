@@ -110,9 +110,9 @@ function submit_form(){
          toastr.error('请输入原价'); 
          return;
     }
-    if($("#J_UploadPic img").length<= 1){
-        toastr.error('请上传图片'); 
-        return;
-    }
+    // if($("#J_UploadPic img").length<= 1){
+    //     toastr.error('请上传图片'); 
+    //     return;
+    // }
     $("#publishForm").submit();
 }

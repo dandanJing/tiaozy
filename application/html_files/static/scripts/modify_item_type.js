@@ -12,7 +12,7 @@ function selectGroup(index,ths){
         var listValue = _lists[index-1];
         var htmlCon = "<ul>";
         for(var i=0; i< listValue.length;i++){
-            htmlCon = htmlCon +"<li><a href=\"/modify_item_type/?type="+(100*index+i)+"&itemid="+itemid+"\">"+listValue[i]+"</a></li>"
+            htmlCon = htmlCon +"<li><a href=\"/modify-item-type/?type="+(100*index+i)+"&itemid="+itemid+"\">"+listValue[i]+"</a></li>"
         }
         htmlCon = htmlCon +"</ul>";
         $("#list-inner").html(htmlCon);
@@ -37,7 +37,7 @@ function selectItemType(typeIndex){
             if(i==smallIndex){
                 classStr = "class=\"active\"";
             }
-            htmlCon = htmlCon +"<li " + classStr+"><a href=\"/modify_item_type/?type="+(100*groupIndex+i)+"&itemid="+itemid+"\">"+listValue[i]+"</a></li>"
+            htmlCon = htmlCon +"<li " + classStr+"><a href=\"/modify-item-type/?type="+(100*groupIndex+i)+"&itemid="+itemid+"\">"+listValue[i]+"</a></li>"
         }
         htmlCon = htmlCon +"</ul>";
         $("#list-inner").html(htmlCon);

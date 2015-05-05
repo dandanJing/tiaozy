@@ -579,6 +579,45 @@ def modifyItemType(request):
 
     return HttpResponseRedirect("/index.html")
 
+def modifyItemInfo(request):
+    itemid = ""
+    try:
+        if request.method == "POST" and request.user.is_authenticated():
+            itemid = request.GET.get("itemid")
+            item = user_items_table.objects.get(ItemId=itemid)
+            if item and item.TzyUser == request.user:
+                title = request.POST.get('title')
+                temp = request.POST.get('feature')
+                if temp == '1':
+                    feature = '1'
+                else:
+                    feature = '0'
+                oldPrice = request.POST.get('original-price')
+                price = request.POST.get('price')
+                contactUsername = request.POST.get('name')
+                mobile = request.POST.get('mobile')
+                description = request.POST.get('description')
+                if title != item.ItemName:
+                    item.ItemName = title
+                if feature != item.Feature:
+                    item.Feature = feature
+                if oldPrice != item.ItemOldPrice:
+                    item.ItemOldPrice = oldPrice
+                if price != item.ItemPrice:
+                    item.ItemPrice = price
+                if contactUsername != item.ContactUserName:
+                    item.ContactUserName = contactUsername
+                if mobile != item.ContactUserPhone:
+                    item.ContactUserPhone = mobile
+                if description != item.ItemDescription:
+                    item.ItemDescription = description
+                item.save()
+                return render_to_response('modify_item_success.html',{'ItemId':itemid})
+    except Exception as e:
+        logger.debug('modifyItemInfo: %s' % e)
+
+    return HttpResponseRedirect("/index.html")
+
 def postItemMessage(request):
     result = []
     itemid = None

@@ -190,7 +190,7 @@ function showMyPosts(data){
         if(item['IsTradeSuccess']){
             htmlInner +="<span class=\"tradeSuccess\">交易完成</span></div></li>";
         }else{
-           htmlInner +="<span><a href=\"/modifyMyItem?itemid="+item['ItemId']+"\">修改</a></span>";
+           htmlInner +="<span><a href=\"/modify-my-item?itemid="+item['ItemId']+"\">修改</a></span>";
            htmlInner +="<span class=\"notTrade\" onclick=\"setTradeSuccess(this,'"+item["ItemId"]+"')\">交易成功</span></div></li>"; 
         }    
     }
