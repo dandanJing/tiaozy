@@ -6,11 +6,15 @@ $(document).ready(function(){
 });
 
 function tapLeftMenu(data,ths){
-    if($(ths).hasClass("active")){
+    if($(ths).hasClass("active")&& data<5){
         return;
+    }else if(data < 5){
+        $(ths).siblings().removeClass("active");
+        $(ths).toggleClass("active");
+    }else{
+       $(ths).siblings().removeClass("active"); 
     }
-    $(ths).siblings().removeClass("active");
-    $(ths).toggleClass("active");
+
     if(data==1){
         $.ajax({
             url:"/get-my-personal-info",
@@ -36,9 +40,23 @@ function tapLeftMenu(data,ths){
         $("#right-body-cont").html(htmlInner);
         myPostPage = 1;
         selectMyPost(1,"");
+    }else if(data==5 || data==6 || data==7){
+        if($(ths).children().eq(0).hasClass('closed')){
+            console.log("data:"+data+' closed');
+            $(ths).children().eq(0).removeClass('closed');
+            $(ths).children().eq(0).toggleClass('opened');
+            $(ths).children().eq(1).css({"display":"block"});
+        }else{
+             console.log("data:"+data+' opened');
+            $(ths).children().eq(0).removeClass('opened');
+            $(ths).children().eq(0).toggleClass('closed');
+            $(ths).children().eq(1).css({"display":"none"});
+        }
     }
 }
 
+function tapLeftSmallMenu(data,ths){
+}
 ///////////////////////////////我的资料//////////////////////////////////
 function showMyPersonalInfo(data){
     var std_str = "";

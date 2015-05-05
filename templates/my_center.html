@@ -71,14 +71,28 @@
     <div class="content">
         <div class="cont-body">
             <div class="left-menu">
-                <ul>
+                <ul class="first-ul">
                     <li onclick="tapLeftMenu(1,this)"><i class="my-info"></i>我的资料</li>
                     <li onclick="tapLeftMenu(2,this)"><i class="my-info"></i>我的发布</li>
                     <li onclick="tapLeftMenu(3,this)"><i class="my-info"></i>我的求购</li>
-                    <li onclick="tapLeftMenu(4,this)"><i class="my-info"></i>我的收藏</li>
-                    <li onclick="tapLeftMenu(5,this)"><i class="my-info"></i>买家交易</li>
-                    <li onclick="tapLeftMenu(6,this)"><i class="my-info"></i>卖家交易</li>
-                    <li onclick="tapLeftMenu(7,this)"><i class="my-info"></i>我的消息</li>
+                    <li onclick="tapLeftMenu(4,this)"><i class="my-info my-save"></i>我的收藏</li>
+                    <li onclick="tapLeftMenu(5,this)"><i class="my-info closed"></i>买家交易
+                        <ul class="second-ul" style="display:none">
+                            <li onclick="tapLeftSmallMenu(5.1,this)">订单管理</li>
+                            <li onclick="tapLeftSmallMenu(5.2,this)">评价管理</li>
+                        </ul>
+                    </li>
+                    <li onclick="tapLeftMenu(6,this)"><i class="my-info closed"></i>卖家交易
+                        <ul class="second-ul" style="display:none">
+                            <li>订单管理</li>
+                        </ul>
+                    </li>
+                    <li onclick="tapLeftMenu(7,this)"><i class="my-info closed"></i>我的消息
+                        <ul class="second-ul" style="display:none">
+                            <li>网页对话</li>
+                            <li>物品留言</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="right-body" id="right-body-cont">
