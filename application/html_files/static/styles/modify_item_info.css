@@ -1,0 +1,355 @@
+@charset "utf-8";
+
+body{
+    font: 12px/1.2 Arial,Tahoma,"宋体",sans-serif;
+    color: #333;
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+}
+
+div{
+    display: block;
+}
+
+a{
+    text-decoration: none;
+}
+
+button::-moz-focus-inner{
+    border-color:transparent!important;
+}
+
+.header{
+    width: 1000px;
+    height: 79px;
+    border-bottom: 1px solid #DBE0E3;
+    margin: 0px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+#logo{
+    left: 20px;
+    top: 17px;
+    position: absolute;
+    width: 188px;
+    height: 61px;
+}
+
+.header-title{
+    float: left;
+    height: 39px;
+    border-left: 1px solid #EAEAEA;
+    margin-left: 240px;
+    margin-top: 25px;
+    padding-left: 15px;
+    font: 24px/1.8 "微软雅黑","黑体",sans-serif;
+    color: #666;
+}
+
+.return-home{
+    float: right;
+    right: 10px;
+    margin-top: 54px;
+}
+
+.return-home a{
+    margin: 0px 14px;
+    color: #666;
+}
+
+.follow-steps {
+    width: 1000px;
+    height: 35px;
+    overflow: hidden;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.follow-steps ol{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.follow-steps li {
+    width: 314px;
+    float: left;
+    padding: 0px;
+    background: url("/static/images/flow_step.png") no-repeat scroll 100% -150px #EEE;
+    color: #333;
+    font: 400 14px/30px arial,"宋体",sans-serif;
+    text-align: center;
+    position: relative;
+}
+
+.follow-steps .active{
+    background: url("/static/images/flow_step.png") repeat scroll 0px -120px transparent;
+    color: #FFF;
+}
+
+.follow-steps li i {
+    font: 700 20px Arial,Helvetica,sans-serif;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.follow-steps strong {
+    font-weight: 400;
+}
+
+.step1 a{
+    color: #000;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.follow-steps .step1 span,.follow-steps .step2 span{
+    display: block;
+    width: 18px;
+    height: 30px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    overflow: hidden;
+    background: url("/static/images/flow_step.png") no-repeat scroll 100% -30px transparent;
+    color: #FFF;
+}
+
+.follow-steps .step2 span{
+     background: url("/static/images/flow_step.png") no-repeat scroll 100% -60px transparent;
+}
+
+em .f1{
+    position: absolute;
+    width: 3px;
+    height: 30px;
+    left: 0px;
+    top: 0px;
+    background: url("/static/images/flow_step.png") no-repeat scroll 0px -180px transparent;
+}
+
+.input-box{
+    width: 800px;
+    margin: auto;
+    padding: auto;
+    margin-top: 15px;
+}
+
+.control-group {
+    padding: 0 0 0 94px;
+    margin-bottom: 20px;
+}
+
+.control-group input{
+    height: 25px;
+}
+
+.control-label {
+    float: left;
+    width: 98px;
+    margin-left: -115px;
+    padding-top: 8px;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.btn-group {
+    position: relative;
+    display: inline-block;
+    font-size: 0;
+    white-space: nowrap;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.btn-group .btn {
+    margin-right: -1px;
+    font-size: 12px;
+    padding: 2px 9px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #404040;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #efefef;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+    border-color: #ccc\9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.1);
+}
+
+.btn.active {
+    outline: 0;
+    background-color: #F78015;
+    color: #eee;
+    -webkit-box-shadow: inset 1px 2px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: inset 1px 2px 2px rgba(0,0,0,.2);
+    box-shadow: inset 1px 2px 2px rgba(0,0,0,.2);
+}
+
+#price{
+    width: 120px;
+}
+
+#original-price{
+    padding-left: 0px;
+    width: 120px;
+}
+
+.input-prepend {
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.input-prepend .add-on {
+    left: 6px;
+    position: absolute;
+    color: #777;
+    padding-top: 5px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.input-prepend input{
+    padding-left: 50px;
+    width: 150px;
+}
+
+.upload {
+    width: 750px;
+    height: 110px;
+    margin: 0px 5px;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.upload .upload-inner {
+    background-color: #f4f4f4;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ddd;
+    float: left;
+}
+
+.upload-inner .file-input{
+    float: left;
+    margin-left: 15px;
+    position: absolute;
+    margin-top: 4px;
+    height: 90px;
+    width: 90px;
+    display: none;
+}
+
+.upload-inner .active{
+    display: inline;
+    opacity: 0;
+}
+
+.upload-inner img {
+    background-position: -69px -20px;
+    width: 66px;
+    height: 54px;
+    position: absolute;
+    top: 28px;
+    left: 21px;
+}
+
+.image-block{
+    float: left;
+    width: 660px;
+    height: 150px;
+    overflow: hidden;
+    margin-left: -20px;
+    margin-top: -10px;
+}
+
+.image-block .display-image{
+    width: 100px;
+    height: 100px;
+    float: left;
+    z-index: 1;
+}
+
+.image-block ul{
+    list-style: none;
+    float: left;
+}
+
+.image-block li{
+    width: 110px;
+    height: 100px;
+    float: left;
+    overflow: hidden;
+    margin-right: 10px;
+    display: inline;
+}
+
+.image-block .delete-image{
+    width: 15px;
+    height: 15px;
+    z-index: 3;
+    position: absolute;
+}
+
+#pic-block{
+    float: left;
+    width: 500px;
+    margin-left: 10px;
+}
+
+#pic-block img{
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.upload-tip{
+    display: block;
+    color: #999;
+    text-align: middle;
+    width: 120px;
+    /*position: absolute;
+    top: 110px;*/
+}
+
+.btn-publish {
+    padding: 8px 10px;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-family: "Microsoft Yahei";
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    background-color: #F78015;
+    display: block;
+}
+
+.controls textarea{
+    width: 400px;
+    height: 150px;
+}

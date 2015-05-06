@@ -2,15 +2,21 @@ var myPostPage = 1;
 var myPostType = 1;
 $(document).ready(function(){
     var style = $("#selctType").html();
+    console.log("selectStyle:"+style);
+    style = 3;
     tapLeftMenu(style,$(".left-menu ul").children().eq(style-1));
 });
 
 function tapLeftMenu(data,ths){
-    if($(ths).hasClass("active")){
+    if($(ths).hasClass("active")&& data<5){
         return;
+    }else if(data < 5){
+        $(ths).siblings().removeClass("active");
+        $(ths).toggleClass("active");
+    }else{
+       $(ths).siblings().removeClass("active"); 
     }
-    $(ths).siblings().removeClass("active");
-    $(ths).toggleClass("active");
+
     if(data==1){
         $.ajax({
             url:"/get-my-personal-info",
@@ -36,64 +42,39 @@ function tapLeftMenu(data,ths){
         $("#right-body-cont").html(htmlInner);
         myPostPage = 1;
         selectMyPost(1,"");
-    }
-}
-
-function changePostPage(data,ths){
-    if($(ths).hasClass("active")){
-        return;
-    }
-
-    var pagesnum = $(ths).siblings().length-1;
-    if(data==-2 && myPostPage>1){
-        myPostPage-=1;
-    }else if(data==-1 && myPostPage < pagesnum){
-        myPostPage+=1;
-    }else if(data>=1){
-        myPostPage = data;
-    }else{
-        return;
-    }
-    selectMyPost(myPostType,"");
-}
-
-function showMyPosts(data){
-    var result = data['result'];
-    var pages = data['Pagenum'];
-    var htmlInner = "";
-    if(pages.length > 1){
-        htmlInner += "<div class=\"nav-detail\"><ul><li onclick=\"changePostPage(-2,this)\">上一页</li>";
-        for(var i =0; i <pages.length; i++){
-            if(myPostPage == pages[i]){
-                htmlInner += "<li class=\"active\" onclick=\"changePostPage("+pages[i]+",this)\">"+pages[i]+"</li>";
-            }else{
-                htmlInner += "<li onclick=\"changePostPage("+pages[i]+",this)\">"+pages[i]+"</li>";
-            }    
-        }     
-        htmlInner +="<li onclick=\"changePostPage(-1,this)\">下一页</li></ul></div>";
-    }
-    //
-    htmlInner +="<ul class=\"posts-ul\">";
-    for(var i=0; i< result.length;i++){
-        var item = result[i];
-        htmlInner +="<li><div class=\"item-time\">"+item["PostTime"]+"</div>";
-        htmlInner +="<div class=\"item-pic\"><a target=\"_blank\" href=\"/show_item_detail?id=\""+item["ItemId"]+"\">";
-        htmlInner +="<img class=\"J_ItemPic\" src=\""+item["ImageUrl"]+"\"></a></div>";
-        htmlInner +="<div class=\"item-info\"><p><a>"+item['Title']+"</a></p>";
-        htmlInner +="<div class=\"price-block\"><span class=\"price\"><b>¥</b><em>"+item["Price"]+"</em></span>";
-        htmlInner +="<span class=\"old-price\">原价:"+item["OldPrice"]+"</span></div>";
-        htmlInner +="<div class=\"bottom-info\"><span class=\"item-click\">浏览:"+item['ClickCount']+"</span>";
-        htmlInner +="<span class=\"item-messages\">留言:"+item['MessageCount']+"</span></div></div>";
-        if(item['IsTradeSuccess']){
-            htmlInner +="<div class=\"item-btn\"><span>删除</span></div></li>";
+    }else if(data==3){
+        $.ajax({
+            url:"/get-my-ask-items",
+            type:"post",
+            data:JSON.stringify({
+            }),
+            dataType:"json",
+            contentType:'application/json;charset=UTF-8',
+            success:function (data) {
+                showMyAskItem(data);
+            },
+            error:function (data) {
+               toastr.error("获取数据失败");
+            },
+        });
+    }else if(data==5 || data==6 || data==7){
+        if($(ths).children().eq(0).hasClass('closed')){
+            console.log("data:"+data+' closed');
+            $(ths).children().eq(0).removeClass('closed');
+            $(ths).children().eq(0).toggleClass('opened');
+            $(ths).children().eq(1).css({"display":"block"});
         }else{
-            htmlInner +="<div class=\"item-btn\"><span>删除</span><span>修改</span><span>交易成功</span></div></li>";  
-        }  
+             console.log("data:"+data+' opened');
+            $(ths).children().eq(0).removeClass('opened');
+            $(ths).children().eq(0).toggleClass('closed');
+            $(ths).children().eq(1).css({"display":"none"});
+        }
     }
-    htmlInner += "</ul>";
-    $("#post-content").html(htmlInner);
 }
 
+function tapLeftSmallMenu(data,ths){
+}
+///////////////////////////////我的资料//////////////////////////////////
 function showMyPersonalInfo(data){
     var std_str = "";
     var other_str = "";
@@ -146,7 +127,7 @@ function submitForm(){
         fileElementId:"avatar-input",
         dataType:"text",
         success:function(data) {
-            alert(data);
+            // alert(data);
         },
         error:function (data) {
             toastr.error("上传图片失败");
@@ -174,6 +155,8 @@ function submitForm(){
     });
 }
 
+
+///////////////////////////////我的发布//////////////////////////////////
 function selectMyPost(data,ths){
     if($(ths).hasClass("active")){
         return;
@@ -209,4 +192,154 @@ function selectMyPost(data,ths){
             toastr.error("获取数据失败");
         },
     });
+}
+
+function showMyPosts(data){
+    var result = data['result'];
+    var pages = data['Pagenum'];
+    var htmlInner = "";
+    if(pages.length > 1){
+        htmlInner += "<div class=\"nav-detail\"><ul><li onclick=\"changePostPage(-2,this)\">上一页</li>";
+        for(var i =0; i <pages.length; i++){
+            if(myPostPage == pages[i]){
+                htmlInner += "<li class=\"active\" onclick=\"changePostPage("+pages[i]+",this)\">"+pages[i]+"</li>";
+            }else{
+                htmlInner += "<li onclick=\"changePostPage("+pages[i]+",this)\">"+pages[i]+"</li>";
+            }    
+        }     
+        htmlInner +="<li onclick=\"changePostPage(-1,this)\">下一页</li></ul></div>";
+    }
+    //
+    htmlInner +="<ul class=\"posts-ul\">";
+    for(var i=0; i< result.length;i++){
+        var item = result[i];
+        htmlInner +="<li><div class=\"item-time\">"+item["PostTime"]+"</div>";
+        htmlInner +="<div class=\"item-pic\"><a target=\"_blank\" href=\"/open_item?id="+item["ItemId"]+"\">";
+        htmlInner +="<img class=\"J_ItemPic\" src=\""+item["ImageUrl"]+"\"></a></div>";
+        htmlInner +="<div class=\"item-info\"><p><a>"+item['Title']+"</a></p>";
+        htmlInner +="<div class=\"price-block\"><span class=\"price\"><b>¥</b><em>"+item["Price"]+"</em></span>";
+        htmlInner +="<span class=\"old-price\">原价:"+item["OldPrice"]+"</span></div>";
+        htmlInner +="<div class=\"bottom-info\"><span class=\"item-click\">浏览:"+item['ClickCount']+"</span>";
+        htmlInner +="<span class=\"item-messages\">留言:"+item['MessageCount']+"</span></div></div>";
+        htmlInner +="<div class=\"item-btn\"><span onclick=\"deleteItem(this,'"+item["ItemId"]+"')\">删除</span>";
+        if(item['IsTradeSuccess']){
+            htmlInner +="<span class=\"tradeSuccess\">交易完成</span></div></li>";
+        }else{
+           htmlInner +="<span><a href=\"/modify-my-item?itemid="+item['ItemId']+"\">修改</a></span>";
+           htmlInner +="<span class=\"notTrade\" onclick=\"setTradeSuccess(this,'"+item["ItemId"]+"')\">交易成功</span></div></li>"; 
+        }    
+    }
+    htmlInner += "</ul>";
+    $("#post-content").html(htmlInner);
+}
+
+function changePostPage(data,ths){
+    if($(ths).hasClass("active")){
+        return;
+    }
+
+    var pagesnum = $(ths).siblings().length-1;
+    if(data==-2 && myPostPage>1){
+        myPostPage-=1;
+    }else if(data==-1 && myPostPage < pagesnum){
+        myPostPage+=1;
+    }else if(data>=1){
+        myPostPage = data;
+    }else{
+        return;
+    }
+    selectMyPost(myPostType,"");
+}
+
+function deleteItem(ths,itemid){
+    $.ajax({
+    　　url : '/delete-my-post-by-itemid',
+    　　data : JSON.stringify({
+        "itemid":itemid,
+        }),
+       dataType:"json",
+    　　type : "POST",
+       contentType:'application/json;charset=UTF-8',
+    　　success : function(data) {
+            if(data['result']){
+                console.log("delete success");
+                $(ths).parent().parent().remove();
+            }else{
+                 toastr.error("删除失败");
+            }　   
+    　　},
+        error:function (data) {
+            toastr.error("删除失败");
+        },
+    });
+}
+
+function setTradeSuccess(ths,itemid){
+   $.ajax({
+    　　url : '/set-trade-success-by-itemid',
+    　　data : JSON.stringify({
+        "itemid":itemid,
+        }),
+       dataType:"json",
+    　　type : "POST",
+       contentType:'application/json;charset=UTF-8',
+    　　success : function(data) {
+             if(data['result']){
+
+             } else{
+                toastr.error("设置失败");
+             }
+    　　},
+        error:function (data) {
+            toastr.error("设置失败");
+        },
+    }); 
+}
+//////////////////////////////////////////我的求购///////////////////////////////////////////////////
+
+function showMyAskItem(data){
+    var htmlInner = "<div class=\"myask-title\"><div class=\"myask-title-nav\"><ul>";
+    htmlInner +=  "<li class=\"active\" onclick=\"\">所有求购</li><li onclick=\"\">按时间排序</li>";              
+    htmlInner +=  "<li onclick=\"\">按热度排序</li><li onclick=\"\">成功交易</li></ul></div></div>";                        
+    htmlInner +=  "<div class=\"myask-content\" id=\"myask-content\">";          
+    htmlInner +=  "<table><tr class=\"table-title\"><td width=\"150\">标题</td>";
+    htmlInner +=  "<td width=\"100\">最近编辑时间</td><td width=\"100\">发布时间</td>";                     
+    htmlInner +=  "<td width=\"80\">联系人</td><td width=\"120\">联系方式</td>";                        
+    htmlInner +=  "<td width=\"200\">详细描述</td><td width=\"150\" class=\"no-border\">操作</td></tr>";                       
+   for(var i=0;i<data.length;i++){
+        var item = data[i];
+         htmlInner += "<tr><td width=\"150\">"+item["Title"]+"</td>";
+         htmlInner += "<td width=\"100\">"+item["LastEditTime"]+"</td>";
+         htmlInner += "<td width=\"100\">"+item["PostTime"]+"</td>";
+         htmlInner += "<td width=\"80\">"+item["ContactUserName"]+"</td>";
+         htmlInner += "<td width=\"120\">"+item["ContactUserPhone"]+"</td>";
+         htmlInner += "<td width=\"200\">"+item["Description"]+"</td>";
+         htmlInner += "<td width=\"150\" class=\"no-border\">"+"<span class=\"delete-btn\" onclick=\"deleteMyAskItem(this,'"+item["ItemId"]+"')\">删除</span>";
+         htmlInner += "<span class=\"modify-btn\">修改</span>"+"</td></tr>";
+   }
+   htmlInner += "</table></div>";
+   $("#right-body-cont").html(htmlInner);
+}
+
+function deleteMyAskItem(ths,itemid){
+    console.log(itemid);
+    $.ajax({
+    　　url : '/delete-my-ask-by-itemid',
+    　　data : JSON.stringify({
+        "itemid":itemid,
+        }),
+       dataType:"json",
+    　　type : "POST",
+       contentType:'application/json;charset=UTF-8',
+    　　success : function(data) {
+             if(data['result']){
+                $(ths).parent().parent().remove();
+             } else{
+                toastr.error("删除失败");
+             }
+    　　},
+        error:function (data) {
+            toastr.error("删除失败");
+        },
+    }); 
 }

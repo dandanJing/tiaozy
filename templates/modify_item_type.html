@@ -5,22 +5,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <meta http-equiv="Content-Language" content="zh-cn"/>
-    <title>发布闲置-跳蚤园</title>
+    <title>修改闲置类别-跳蚤园</title>
     <link rel="shortcut icon" href="/static/images/ssl-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/static/styles/publish.css">
     <script language="javascript"  src="/static/scripts/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/static/scripts/validate.js"></script>
     <script type="text/javascript" src="/static/scripts/item_types.js"></script>
-    <script type="text/javascript" src="/static/scripts/publish.js"></script>
+    <script type="text/javascript" src="/static/scripts/modify_item_type.js"></script>
 </head>
 <body>
     <div class="header">
         <a href="/" id="logo">
             <img src="/static/images/logo.jpg" alt="尚书林">
         </a>
-        <div class="header-title">发布闲置</div>
+        <div class="header-title">修改闲置类别</div>
         <div class="return-home">
-            <a href="/">返回首页</a>
+            <a href="/">返回首页</a>|<a href="/open-my-center/">返回用户中心</a>
         </div>
     </div>
     <div class="follow-steps">
@@ -43,8 +43,14 @@
     </div>
     <div class="type-box">
         <div class="type-title">选择大类</div>
-        <ul class="type-ul">
-            <li onclick="selectGroup(1,this)" class="active">书籍／笔记</li>
+        {%  if result.ItemId %}
+        <div id="itemid" style="display:none">{{result.ItemId}}</div>
+        {%  endif %}
+        {%  if result.ItemType %}
+        <div id="itemType" style="display:none">{{result.ItemType}}</div>
+        {%  endif %}
+        <ul class="type-ul">     
+            <li onclick="selectGroup(1,this)">书籍／笔记</li>
             <li onclick="selectGroup(2,this)">化妆品</li>    
             <li onclick="selectGroup(3,this)">数码</li>
             <li onclick="selectGroup(4,this)">单车／电动车</li>

@@ -71,64 +71,56 @@
     <div class="content">
         <div class="cont-body">
             <div class="left-menu">
-                <ul>
+                <ul class="first-ul">
                     <li onclick="tapLeftMenu(1,this)"><i class="my-info"></i>我的资料</li>
                     <li onclick="tapLeftMenu(2,this)"><i class="my-info"></i>我的发布</li>
                     <li onclick="tapLeftMenu(3,this)"><i class="my-info"></i>我的求购</li>
-                    <li onclick="tapLeftMenu(4,this)"><i class="my-info"></i>我的收藏</li>
-                    <li onclick="tapLeftMenu(5,this)"><i class="my-info"></i>买家交易</li>
-                    <li onclick="tapLeftMenu(6,this)"><i class="my-info"></i>卖家交易</li>
-                    <li onclick="tapLeftMenu(7,this)"><i class="my-info"></i>我的消息</li>
+                    <li onclick="tapLeftMenu(4,this)"><i class="my-info my-save"></i>我的收藏</li>
+                    <li onclick="tapLeftMenu(5,this)"><i class="my-info closed"></i>买家交易
+                        <ul class="second-ul" style="display:none">
+                            <li onclick="tapLeftSmallMenu(5.1,this)">订单管理</li>
+                            <li onclick="tapLeftSmallMenu(5.2,this)">评价管理</li>
+                        </ul>
+                    </li>
+                    <li onclick="tapLeftMenu(6,this)"><i class="my-info closed"></i>卖家交易
+                        <ul class="second-ul" style="display:none">
+                            <li>订单管理</li>
+                        </ul>
+                    </li>
+                    <li onclick="tapLeftMenu(7,this)"><i class="my-info closed"></i>我的消息
+                        <ul class="second-ul" style="display:none">
+                            <li>网页对话</li>
+                            <li>物品留言</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="right-body" id="right-body-cont">
-                <div class="mypost-title">
-                    <div class="post-title-nav">
+                <div class="myask-title">
+                    <div class="myask-title-nav">
                         <ul>
-                            <li class="active" onclick="selectMyPost(1,this)">所有发布</li>
-                            <li onclick="selectMyPost(2,this)">按时间排序</li>
-                            <li onclick="selectMyPost(3,this)">按热度排序</li>
-                            <li onclick="selectMyPost(4,this)">成功交易</li>
+                            <li class="active" onclick="">所有求购</li>
+                            <li onclick="">按时间排序</li>
+                            <li onclick="">按热度排序</li>
+                            <li onclick="">成功交易</li>
                         </ul>
                     </div> 
-                    <div class="nav-detail">
+                    <!-- <div class="nav-detail">
                         <ul><li>上一页</li><li>1</li><li>2</li><li>下一页</li></ul>
-                    </div>         
+                    </div>  -->        
                 </div>
-                <div class="post-content" id="post-content">
-
-                    <ul>
-                        <li>
-                            <div class="item-time">发布时间: 2015-04-21 18:40
-                            </div>
-                            <div class="item-pic">
-                                <a href="/show_item_detail?id=" target="_blank">
-                                    <img class="J_ItemPic" src="/static/images/ssl-item1.jpg" title="">
-                                </a>
-                            </div>
-                            <div class="item-info">
-                                <p><a>hahadsafasfdsfafafadadfdafadfasafafasdfadfafdaf</a></p>  
-                                <div class="price-block">
-                                    <span class="price">
-                                        <b>¥</b>
-                                        <em>25</em>
-                                    </span>
-                                    <span class="old-price">
-                                        原价:¥45
-                                    </span>
-                                </div>
-                                <div class="bottom-info">
-                                    <span class="item-click">浏览:20</span> 
-                                    <span class="item-messages">留言:10</span>
-                                </div>         
-                            </div>
-                            <div class="item-btn">
-                                <span>删除</span>
-                                <span>修改</span>
-                                <span>交易成功</span>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="myask-content" id="myask-content">
+                    <table width="810">
+                        <tr class="table-title">
+                            <td width="150">标题</td>
+                            <td width="100">最近编辑时间</td>
+                            <td width="100">发布时间</td>
+                            <td width="80">联系人</td>
+                            <td width="120">联系方式</td>
+                            <td width="200">详细描述</td>
+                            <td width="60" class="no-border">操作</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

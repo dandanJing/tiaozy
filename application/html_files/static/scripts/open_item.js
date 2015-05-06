@@ -67,7 +67,7 @@ function showMessages(data){
     
     for(var i=0; i<data.length; i++){
         var item = data[i];
-        htmlInner += "<li><img src=\"/static/images/avatar.png\"> <div class=\"message-cont\">";
+        htmlInner += "<li><img src=\"/static/images/avatar.jpg\"> <div class=\"message-cont\">";
         htmlInner += item['Message']+"</div><div class=\"message-time\">"+item['PostTime']+"</div></li>";                       
     }
     htmlInner += "</ul>";
@@ -78,7 +78,7 @@ function appendMessage(data){
     var htmlInner = $("#messages-display").html();
     for(var i=0; i<data.length; i++){
         var item = data[i];
-        htmlInner += "<li><img src=\"/static/images/avatar.png\"> <div class=\"message-cont\">";
+        htmlInner += "<li><img src=\"/static/images/avatar.jpg\"> <div class=\"message-cont\">";
         htmlInner += item['Message']+"</div><div class=\"message-time\">"+item['PostTime']+"</div></li>";                       
     }
     $("#messages-display").html(htmlInner);
