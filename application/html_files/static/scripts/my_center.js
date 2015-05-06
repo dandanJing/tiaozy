@@ -302,27 +302,28 @@ function showMyAskItem(data){
     htmlInner +=  "<li class=\"active\" onclick=\"\">所有求购</li><li onclick=\"\">按时间排序</li>";              
     htmlInner +=  "<li onclick=\"\">按热度排序</li><li onclick=\"\">成功交易</li></ul></div></div>";                        
     htmlInner +=  "<div class=\"myask-content\" id=\"myask-content\">";          
-    htmlInner +=  "<table><tr class=\"table-title\"><td width=\"150\">标题</td>";
+    htmlInner +=  "<table><tr class=\"table-title\"><td width=\"150\">标题</td><td width=\"50\">浏览</td>";
     htmlInner +=  "<td width=\"100\">最近编辑时间</td><td width=\"100\">发布时间</td>";                     
     htmlInner +=  "<td width=\"80\">联系人</td><td width=\"120\">联系方式</td>";                        
     htmlInner +=  "<td width=\"200\">详细描述</td><td width=\"150\" class=\"no-border\">操作</td></tr>";                       
    for(var i=0;i<data.length;i++){
         var item = data[i];
          htmlInner += "<tr><td width=\"150\">"+item["Title"]+"</td>";
+         htmlInner += "<td width=\"50\">"+item["ClickCount"]+"</td>";
          htmlInner += "<td width=\"100\">"+item["LastEditTime"]+"</td>";
          htmlInner += "<td width=\"100\">"+item["PostTime"]+"</td>";
          htmlInner += "<td width=\"80\">"+item["ContactUserName"]+"</td>";
          htmlInner += "<td width=\"120\">"+item["ContactUserPhone"]+"</td>";
          htmlInner += "<td width=\"200\">"+item["Description"]+"</td>";
          htmlInner += "<td width=\"150\" class=\"no-border\">"+"<span class=\"delete-btn\" onclick=\"deleteMyAskItem(this,'"+item["ItemId"]+"')\">删除</span>";
-         htmlInner += "<span class=\"modify-btn\">修改</span>"+"</td></tr>";
+         htmlInner += "<span class=\"modify-btn\"><a href=\"/ask-item/?itemid="+item["ItemId"]+"\">修改</a></span>"+"</td></tr>";
    }
    htmlInner += "</table></div>";
    $("#right-body-cont").html(htmlInner);
 }
 
 function deleteMyAskItem(ths,itemid){
-    console.log(itemid);
+    console.log("delete:"+itemid);
     $.ajax({
     　　url : '/delete-my-ask-by-itemid',
     　　data : JSON.stringify({
@@ -343,3 +344,5 @@ function deleteMyAskItem(ths,itemid){
         },
     }); 
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////

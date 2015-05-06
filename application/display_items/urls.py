@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^modify-item-info','application.display_items.views.modifyItemInfo',name="modifyItemInfo"),
     url(r'^get-my-ask-items','application.display_items.views.getMyAskItems',name="getMyAskItems"),
     url(r'^delete-my-ask-by-itemid','application.display_items.views.deleteMyAskByItemId',name="deleteMyAskByItemId"),
+    url(r'^modify-ask-info','application.display_items.views.modifyAskInfo',name="modifyAskInfo"),
 
     url(r'^get-on-selling','application.display_items.homepage.getOnSelling',name='getOnSelling'),
     url(r'^get-on-asking','application.display_items.homepage.getOnAsking',name='getOnAsking'),

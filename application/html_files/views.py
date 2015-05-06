@@ -5,6 +5,7 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect
 from application.ssl_users.models import tzy_users
 from application.ssl_users.models import user_items_table
+from application.display_items.models import ask_info_table
 import logging
 import json
 logger = logging.getLogger(__name__)
@@ -68,10 +69,27 @@ def pub_1(request):
 def askItem(request):
     username = None
     mobile = None
+    itemid = None
+    result = {}
     try:
         if request.user.is_authenticated():
             username =  request.user.username
             mobile = request.user.Mobilephone
+            if request.method == "GET":
+                itemid = request.GET.get("itemid")
+                if itemid is not None:
+                    item_sets = ask_info_table.objects.filter(ItemId=itemid)
+                    if item_sets.exists():
+                        item = item_sets[0]
+                        if item.TzyUser == request.user:
+                            result={
+                                "ItemId":item.ItemId,
+                                "Title":item.ItemTitle,
+                                "ContactUserName":item.ContactUserName,
+                                "ContactUserPhone":item.ContactUserPhone,
+                                "Description":item.ItemDescription,
+                            }
+                            return render_to_response('modify_ask_item.html',result)
     except Exception as e:
         logger.debug('askItem: %s' % e)
     return render_to_response('ask_item.html',{'username':username,'mobile':mobile})

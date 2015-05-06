@@ -124,7 +124,7 @@ def postAskInfo(request):
             itemObject.PostTime = createdTime
             itemObject.LastEditTime = itemObject.PostTime
             itemObject.ItemDescription = description
-            itemObject.ContactUsername = contactUsername
+            itemObject.ContactUserName = contactUsername
             itemObject.ContactUserPhone = mobile
             itemObject.save() 
             return HttpResponseRedirect("/index.html")
@@ -427,6 +427,32 @@ def modifyItemInfo(request):
 
     return HttpResponseRedirect("/index.html")
 
+def modifyAskInfo(request):
+    try:
+        if request.method == "POST" and request.user.is_authenticated():
+            itemid = request.GET.get("itemid")
+            item = ask_info_table.objects.get(ItemId=itemid)
+            if item and item.TzyUser == request.user:
+                title = request.POST.get('title')
+                mobile = request.POST.get('mobile')
+                contactUsername = request.POST.get('name')
+                description = request.POST.get('description')
+                if title != item.ItemTitle:
+                    item.ItemTitle = title
+                if mobile != item.ContactUserPhone:
+                    item.ContactUserPhone = mobile
+                if contactUsername != item.ContactUserName:
+                    item.ContactUserName = contactUsername
+                if description != item.ItemDescription:
+                    item.ItemDescription = description
+                item.LastEditTime = getCurrentTime()
+                item.save()
+                return HttpResponseRedirect("/open-my-center/")
+    except Exception as e:
+        logger.debug('modifyAskInfo: %s' % e)
+
+    return HttpResponseRedirect("/index.html")
+
 def postItemMessage(request):
     result = []
     itemid = None
@@ -533,3 +559,4 @@ def deleteMyAskByItemId(request):
         logger.debug('deleteMyAskByItemId: %s' % e)
 
     return handle_response(result)
+
