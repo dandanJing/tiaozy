@@ -38,6 +38,8 @@ class user_items_table(models.Model):
     ReportReason        = models.TextField(default='')
     ItemDescription     = models.TextField(default='')
     IsTradeSuccess      = models.BooleanField(default=False)
+    IsDelete            = models.BooleanField(default=False)
+    IsForeverDelete     = models.BooleanField(default=False)
 
     @classmethod
     def isItemExist(cls, item_id):

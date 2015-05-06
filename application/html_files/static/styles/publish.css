@@ -176,3 +176,8 @@ a{
     float: left;
     color: #000;
 }
+
+#list-inner .active a{
+    color: #55f;
+    text-decoration: underline;
+}

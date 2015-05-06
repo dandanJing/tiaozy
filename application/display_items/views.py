@@ -58,7 +58,7 @@ def postItem(request):
             # print files
             print 'title: %s name: %s' %(title, postUsername)
             SessionId = os.urandom(10)
-            print request.FILES
+            #print request.FILES
             for fileEach in files:
                 result = uploadImage(fileEach,SessionId)
                 print result
@@ -92,7 +92,7 @@ def uploadImage(image_file,SessionId):
         if res.status == 200:
             result['ImageUrl'] = OSS_CDN_HOST + image_name
         else:
-            print res.status
+            #print res.status
             # err_msg=oss_xml_handler.ErrorXml(res.read())
             # print 'Code:'+err_msg.code
             # print 'Message:'+err_msg.msg
@@ -122,6 +122,7 @@ def postAskInfo(request):
             if request.user.is_authenticated():
                 itemObject.TzyUser = request.user
             itemObject.PostTime = createdTime
+            itemObject.LastEditTime = itemObject.PostTime
             itemObject.ItemDescription = description
             itemObject.ContactUsername = contactUsername
             itemObject.ContactUserPhone = mobile
@@ -132,201 +133,6 @@ def postAskInfo(request):
         logger.debug('postAskInfo: %s' % e)
         
     return HttpResponseRedirect("/ask_item.html")
-
-def getOnSelling(request):
-    print 'request info: %s %s' % (request.method, request.path)
-    try:
-        result = []
-        if user_items_table.objects.exclude(IsBlock=True).count() > 2:
-            items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:3]
-        else:
-            items_sets = user_items_table.objects.exclude(IsBlock=True).order_by('-PostTime')
-        print items_sets
-        if items_sets.exists():
-            for item in items_sets.iterator():
-                image_urls = json.loads(item.ItemImageUrls)
-                if len(image_urls) > 0:                    
-                    imageUrl = image_urls[0]
-                else:
-                    imageUrl = ""
-                result.append({
-                    "ItemId":item.ItemId,
-                    "Title":item.ItemName,
-                    "Price":item.ItemPrice,
-                    "OldPrice":item.ItemOldPrice,
-                    "ImageUrl":imageUrl,
-                    "Description":item.ItemDescription,
-                })
-
-    except Exception as e:
-        logger.debug('getOnSelling: %s' % e)
-
-    return handle_response(result)
-
-def getOnAsking(request):
-    print 'request info: %s %s' % (request.method, request.path)
-    try:
-        result = []
-        if ask_info_table.objects.exclude(IsBlock=True).count() > 2:
-            items_sets = ask_info_table.objects.exclude(IsBlock=True).order_by('-PostTime')[:3]
-        else:
-            items_sets = ask_info_table.objects.exclude(IsBlock=True).order_by('-PostTime')
-        if items_sets.exists():
-            for item in items_sets.iterator():
-                result.append({
-                    "ItemId":item.ItemId,
-                    "Title":item.ItemTitle,
-                    "Description":item.ItemDescription,
-                    "PostTime":formatTime(item.PostTime,"%Y-%m-%d %H:%M")
-                })
-
-    except Exception as e:
-        logger.debug('getOnAsking: %s' % e)
-
-    return handle_response(result)
-
-def getEssenceBooks(request):
-    result = {}
-    essence_list = []
-    pagenum = 1
-    continuationToken = False
-    print "getEssenceBooks"
-    try:
-        user_ssl_sets = tzy_users.objects.filter(username="尚书林")
-        if user_ssl_sets.exists():
-            user_ssl = user_ssl_sets[0]
-            #pagenum
-            req = json.loads(request.body)
-            if req.has_key('pagenum'):
-                pagenum = req['pagenum']
-                if pagenum <= 0:
-                    pagenum = 1
-
-            # essence items
-            start_index = (pagenum-1)*6
-            end_index = pagenum*6
-            total_num = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime').count()
-            if  total_num >= end_index:
-                hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:end_index]
-            elif total_num > start_index:
-                hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:]
-            else:
-                result["book_list"] = essence_list
-                result["continuationToken"] = continuationToken
-                return handle_response(result)  
-            if  hot_sets.exists():
-                for item in  hot_sets.iterator():
-                    image_urls = json.loads(item.ItemImageUrls)
-                    if len(image_urls):             
-                        imageUrl = image_urls[0]
-                    else:
-                        imageUrl = ""
-                    essence_list.append({
-                        "ItemId":item.ItemId,
-                        "Title":item.ItemName,
-                        "Price":item.ItemPrice,
-                        "OldPrice":item.ItemOldPrice,
-                        "ImageUrl":imageUrl,
-                        "Description":item.ItemDescription,
-                    })
-            if len(essence_list) == 6:
-                continuationToken = True
-    except Exception as e:
-        logger.debug('getEssenceBooks: %s' % e)
-
-    print essence_list
-    result["book_list"] = essence_list
-    result["continuationToken"] = continuationToken
-    return handle_response(result)
-
-def getSSLEnBooks(request):
-    en_result = []
-    try:    
-        # en items ,ItemType="100"
-        en_result = getBooksWithType("")
-    except Exception as e:
-        logger.debug('getSSLEnBooks: %s' % e)
-    
-    return handle_response(en_result)
-
-def getSSLMaPhBooks(request):
-    maph_result = []
-    try:    
-        maph_result = getBooksWithType("")
-    except Exception as e:
-        logger.debug('getSSLMaPhBooks: %s' % e)
-
-    return handle_response(maph_result)
-
-def getSSLEecpBooks(request):
-    eecp_result = []
-    try:    
-        eecp_result = getBooksWithType("102")
-    except Exception as e:
-        logger.debug('getSSLEecpBooks: %s' % e)
-
-    return handle_response(eecp_result)
-
-def getSSLSocBooks(request):
-    soc_result = []
-    try:    
-        soc_result = getBooksWithType("103")
-    except Exception as e:
-        logger.debug('getSSLSocBooks: %s' % e)
-
-    return handle_response(soc_result)
-
-def getSSLEcBooks(request):
-    ec_result = []
-    try:    
-        ec_result = getBooksWithType("104")
-    except Exception as e:
-        logger.debug('getSSLEcBooks: %s' % e)
-
-    return handle_response(ec_result)
-
-def getSSLArtBooks(request):
-    art_result = []
-    try:    
-        art_result = getBooksWithType("105")
-    except Exception as e:
-        logger.debug('getSSLArtBooks: %s' % e)
-
-    return handle_response(art_result)
-
-def getBooksWithType(typeStr):
-    try:
-        result = [];
-        user_ssl = tzy_users.objects.filter(username="尚书林")
-        if typeStr == "":
-            if user_items_table.objects.filter(TzyUser=user_ssl).count()>=12:
-                book_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[:12]
-            else:
-                book_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')
-        else:
-            if user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).count()>=12:
-                book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).order_by('-ClickCount','-PostTime')[:12]
-            else:
-                book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).order_by('-ClickCount','-PostTime')
-        if  book_sets.exists():
-            for item in  book_sets.iterator():
-                image_urls = json.loads(item.ItemImageUrls)
-                if len(image_urls):             
-                    imageUrl = image_urls[0]
-                else:
-                    imageUrl = ""
-                result.append({
-                    "ItemId":item.ItemId,
-                    "Title":item.ItemName,
-                    "Price":item.ItemPrice,
-                    "OldPrice":item.ItemOldPrice,
-                    "ImageUrl":imageUrl,
-                    "Description":item.ItemDescription,
-                })
-    except Exception as e:
-        logger.debug('getBooksWithType: %s' % e)
-
-    return result
 
 def openItem(request):
     print 'request info: %s %s' % (request.method, request.path)
@@ -379,6 +185,7 @@ def openItem(request):
     return HttpResponseRedirect("/index.html")
 
 def getAllPostsForUser(request):
+    print 'request info: %s %s' % (request.method, request.path)
     result = []
     username = ""
     postUser = None
@@ -421,6 +228,7 @@ def getAllPostsForUser(request):
     return handle_response(result)
 
 def getMyPostsByType(request):
+    print 'request info: %s %s' % (request.method, request.path)
     result = []
     username = ""
     postUser = None
@@ -433,7 +241,7 @@ def getMyPostsByType(request):
             if postUser_set.exists():
                 postUser = postUser_set[0]
                 typeStr = "all"
-                num = len(user_items_table.objects.filter(TzyUser=postUser))
+                num = user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser).count()
                 pagenum = int(math.ceil(float(num)/ITEMS_PER_PAGE_FOR_MYCENTER))
                 if req.has_key('getPage'):
                     getpage = int(req['getPage'])
@@ -442,20 +250,20 @@ def getMyPostsByType(request):
                 if req.has_key('type'):
                     typeStr = req['type']
                     if typeStr == "time":
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-PostTime')[start_index:end_index]
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser).order_by('-PostTime')[start_index:end_index]
                     elif typeStr == "click":
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount')[start_index:end_index]
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser).order_by('-ClickCount')[start_index:end_index]
                     elif typeStr == "success":
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True)[start_index:end_index]
-                        num = len(user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True))
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser,IsTradeSuccess=True)[start_index:end_index]
+                        num = user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser,IsTradeSuccess=True).count()
                         pagenum = int(math.ceil(float(num)/ITEMS_PER_PAGE_FOR_MYCENTER))
                     else:
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser)[start_index:end_index]
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser)[start_index:end_index]
                 else:
-                    item_sets =  user_items_table.objects.filter(TzyUser=postUser)[start_index:end_index]
+                    item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser)[start_index:end_index]
                 if  item_sets.exists():
                     for item in  item_sets.iterator():
-                        message_count = len(item_messages_table.objects.filter(Item=item))
+                        message_count = item_messages_table.objects.filter(Item=item).count()
                         image_urls = json.loads(item.ItemImageUrls)
                         if len(image_urls):             
                             imageUrl = image_urls[0]
@@ -480,8 +288,146 @@ def getMyPostsByType(request):
     for_result = {"result":result,"Pagenum":range(1,pagenum+1),}
     return handle_response(for_result)
 
+def deleteMyPostByItemId(request):
+    result = {}
+    result['result']=False
+    itemid = ""
+    try:
+        req = json.loads(request.body)
+        if request.user.is_authenticated():
+            if req.has_key('itemid'):
+                itemid = req['itemid']
+                if user_items_table.objects.filter(ItemId=itemid).count() > 0:
+                    item = user_items_table.objects.get(ItemId=itemid)
+                    if item.TzyUser == request.user:
+                        item.IsDelete = True
+                        item.save()
+                        result['result']=True
+                
+    except Exception as e:
+        logger.debug('deleteMyPostByItemId: %s' % e)  
+
+    return handle_response(result)     
+
+def setTradeSuccessByItemId(request):
+    result={}
+    result['result']=False
+    itemid = ""
+    try:
+        req = json.loads(request.body)
+        if request.user.is_authenticated():
+            if req.has_key('itemid'):
+                itemid = req['itemid']
+                if user_items_table.objects.filter(ItemId=itemid).count() > 0:
+                    item = user_items_table.objects.get(ItemId=itemid)
+                    if item.TzyUser == request.user:
+                        item.IsTradeSuccess = True
+                        item.save()
+                        result['result']=True
+                
+    except Exception as e:
+        logger.debug('setTradeSuccessByItemId: %s' % e)  
+
+    return handle_response(result)
+
+def modifyMyItemByItemId(request):
+    print 'request info: %s %s' % (request.method, request.path)
+    result = {}
+    typeStr = ""
+    try:
+        if request.method == "GET":
+            if request.user.is_authenticated(): 
+                itemid = request.GET.get("itemid")
+                item_sets = user_items_table.objects.filter(ItemId=itemid)
+                if  item_sets.exists():
+                    item = item_sets[0]
+                    if item.TzyUser == request.user:
+                        image_urls = json.loads(item.ItemImageUrls)
+                        typeIndex = item.ItemType
+                        typeStr = TYPEDIC[str(typeIndex)]
+                        feature = 0
+                        if item.Feature == "全新":
+                            feature = 1
+                        result = {
+                            "ItemId":item.ItemId,
+                            "Title":item.ItemName,
+                            "Feature":feature,
+                            "Price":item.ItemPrice,
+                            "OldPrice":item.ItemOldPrice,
+                            "ImageUrls":image_urls,
+                            "Description":item.ItemDescription,
+                            "PostTime":formatTime(item.PostTime,"%Y-%m-%d %H:%M"),
+                            "IsTradeSuccess":item.IsTradeSuccess,
+                            'ContactUserPhone':item.ContactUserPhone,
+                            'ContactUserName':item.ContactUserName,
+                        }
+                        return render_to_response('modify_item_info.html',{"item":result,"typeStr":typeStr})
+    except Exception as e:
+        logger.debug('modifyMyItemByItemId: %s' % e)
+
+    return HttpResponseRedirect("/index.html")
+
+def modifyItemType(request):
+    itemid = ""
+    typeIndex = '100'
+    try:
+        if request.method == "GET":
+            if request.user.is_authenticated(): 
+                itemid = request.GET.get("itemid")
+                typeIndex = request.GET.get("type")
+                item = user_items_table.objects.get(ItemId=itemid)
+                if item and item.TzyUser == request.user:
+                    item.ItemType = typeIndex
+                    item.LastEditTime = getCurrentTime()
+                    item.save()
+                    return modifyMyItemByItemId(request)
+    except Exception as e:
+        logger.debug('modifyItemType: %s' % e)
+
+    return HttpResponseRedirect("/index.html")
+
+def modifyItemInfo(request):
+    itemid = ""
+    try:
+        if request.method == "POST" and request.user.is_authenticated():
+            itemid = request.GET.get("itemid")
+            item = user_items_table.objects.get(ItemId=itemid)
+            if item and item.TzyUser == request.user:
+                title = request.POST.get('title')
+                temp = request.POST.get('feature')
+                print temp
+                if temp == '1':
+                    feature = '全新'
+                else:
+                    feature = '非全新'
+                oldPrice = request.POST.get('original-price')
+                price = request.POST.get('price')
+                contactUsername = request.POST.get('name')
+                mobile = request.POST.get('mobile')
+                description = request.POST.get('description')
+                if title != item.ItemName:
+                    item.ItemName = title
+                if feature != item.Feature:
+                    item.Feature = feature
+                if oldPrice != item.ItemOldPrice:
+                    item.ItemOldPrice = oldPrice
+                if price != item.ItemPrice:
+                    item.ItemPrice = price
+                if contactUsername != item.ContactUserName:
+                    item.ContactUserName = contactUsername
+                if mobile != item.ContactUserPhone:
+                    item.ContactUserPhone = mobile
+                if description != item.ItemDescription:
+                    item.ItemDescription = description
+                item.LastEditTime = getCurrentTime()
+                item.save()
+                return render_to_response('modify_item_success.html',{'ItemId':itemid})
+    except Exception as e:
+        logger.debug('modifyItemInfo: %s' % e)
+
+    return HttpResponseRedirect("/index.html")
+
 def postItemMessage(request):
-    print 'request info: %s %s user %s' % (request.method, request.path, request.user)
     result = []
     itemid = None
     message = ""
@@ -543,5 +489,47 @@ def getItemMessages(request):
 
     except Exception as e:
         logger.debug('getItemMessages: %s' % e)
+
+    return handle_response(result)
+
+def getMyAskItems(request):
+    result = []
+    try:
+        if request.user.is_authenticated():
+            item_sets = ask_info_table.objects.filter(TzyUser=request.user).exclude(IsDelete=True)
+            if  item_sets.exists():
+                for item in item_sets.iterator():
+                    result.append({
+                        "ItemId":item.ItemId,
+                        "Title":item.ItemTitle,
+                        "Description":item.ItemDescription,
+                        "PostTime":formatTime(item.PostTime,"%Y-%m-%d %H:%M"),
+                        "LastEditTime":formatTime(item.LastEditTime,"%Y-%m-%d %H:%M"),
+                        "ClickCount":item.ClickCount,
+                        "ContactUserName":item.ContactUserName,
+                        "ContactUserPhone":item.ContactUserPhone,
+                    })
+    except Exception as e:
+        logger.debug('getMyAskItems: %s' % e)
+
+    return handle_response(result)
+
+def deleteMyAskByItemId(request):
+    result = {}
+    result['result']=False
+    itemid = ""
+    try:
+        req = json.loads(request.body)
+        if request.user.is_authenticated():
+            if req.has_key('itemid'):
+                itemid = req['itemid']
+                if ask_info_table.objects.filter(ItemId=itemid).count() > 0:
+                    item = ask_info_table.objects.get(ItemId=itemid)
+                    if item.TzyUser == request.user:
+                        item.IsDelete = True
+                        item.save()
+                        result['result']=True
+    except Exception as e:
+        logger.debug('deleteMyAskByItemId: %s' % e)
 
     return handle_response(result)
