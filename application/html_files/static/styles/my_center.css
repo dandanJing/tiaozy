@@ -464,6 +464,7 @@ a:hover{
     margin-top: 5px;
 }
 
+/*------------------------我的发布------------------*/
 .post-title-nav{
     width: 100%;
     padding:0px 10px;
@@ -634,3 +635,65 @@ a:hover{
    border: 1px solid #e04060;
    color: #e04060; 
 }
+
+/*---------------我的求购-----------------------*/
+.myask-title-nav{
+    width: 100%;
+    padding:0px 10px;
+    list-style: none;
+    float: left;
+    border-bottom:1px solid #e0e0e0;
+}
+
+.myask-title-nav li{
+    display: inline;
+    width: 100px;
+    padding: 4px 15px;
+    color: #44f;
+    margin-right: 15px;
+    text-align: center;
+    border: 1px solid #d7d7d7;
+    float: left;
+}
+
+.myask-title-nav .active{
+    color: #000;
+    font-weight: 550;
+    border-top: 2px solid #ffa0a0;
+}
+
+.myask-content table{
+    margin-top: 10px;
+    float: left; 
+    table-layout:fixed; 
+}
+
+.myask-content table tr{
+    float: left;
+    display: block;
+    color: #000;
+    line-height: 36px;
+    text-align: center;
+    border: 1px solid #E3E3E3;
+}
+
+.myask-content table td{
+   border-right: 1px dashed #aaa; 
+   padding: 0;
+}
+
+.table-title{
+    background-color: #F4F4F4;
+    border: 1px solid #E3E3E3; 
+}
+
+.table-title .no-border, .myask-content .no-border{
+    border-right: none;
+}
+
+.delete-btn, .modify-btn{
+    padding: 5px 15px;
+    margin: 5px;
+    border: 1px solid #e3a0a0;
+}
+

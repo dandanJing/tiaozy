@@ -122,6 +122,7 @@ def postAskInfo(request):
             if request.user.is_authenticated():
                 itemObject.TzyUser = request.user
             itemObject.PostTime = createdTime
+            itemObject.LastEditTime = itemObject.PostTime
             itemObject.ItemDescription = description
             itemObject.ContactUsername = contactUsername
             itemObject.ContactUserPhone = mobile
@@ -377,6 +378,7 @@ def modifyItemType(request):
                 item = user_items_table.objects.get(ItemId=itemid)
                 if item and item.TzyUser == request.user:
                     item.ItemType = typeIndex
+                    item.LastEditTime = getCurrentTime()
                     item.save()
                     return modifyMyItemByItemId(request)
     except Exception as e:
@@ -416,6 +418,7 @@ def modifyItemInfo(request):
                     item.ContactUserPhone = mobile
                 if description != item.ItemDescription:
                     item.ItemDescription = description
+                item.LastEditTime = getCurrentTime()
                 item.save()
                 return render_to_response('modify_item_success.html',{'ItemId':itemid})
     except Exception as e:
@@ -485,5 +488,47 @@ def getItemMessages(request):
 
     except Exception as e:
         logger.debug('getItemMessages: %s' % e)
+
+    return handle_response(result)
+
+def getMyAskItems(request):
+    result = []
+    try:
+        if request.user.is_authenticated():
+            item_sets = ask_info_table.objects.filter(TzyUser=request.user).exclude(IsDelete=True)
+            if  item_sets.exists():
+                for item in item_sets.iterator():
+                    result.append({
+                        "ItemId":item.ItemId,
+                        "Title":item.ItemTitle,
+                        "Description":item.ItemDescription,
+                        "PostTime":formatTime(item.PostTime,"%Y-%m-%d %H:%M"),
+                        "LastEditTime":formatTime(item.LastEditTime,"%Y-%m-%d %H:%M"),
+                        "ClickCount":item.ClickCount,
+                        "ContactUserName":item.ContactUserName,
+                        "ContactUserPhone":item.ContactUserPhone,
+                    })
+    except Exception as e:
+        logger.debug('getMyAskItems: %s' % e)
+
+    return handle_response(result)
+
+def deleteMyAskByItemId(request):
+    result = {}
+    result['result']=False
+    itemid = ""
+    try:
+        req = json.loads(request.body)
+        if request.user.is_authenticated():
+            if req.has_key('itemid'):
+                itemid = req['itemid']
+                if ask_info_table.objects.filter(ItemId=itemid).count() > 0:
+                    item = ask_info_table.objects.get(ItemId=itemid)
+                    if item.TzyUser == request.user:
+                        item.IsDelete = True
+                        item.save()
+                        result['result']=True
+    except Exception as e:
+        logger.debug('deleteMyAskByItemId: %s' % e)
 
     return handle_response(result)

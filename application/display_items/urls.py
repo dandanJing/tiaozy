@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     url(r'^modify-my-item','application.display_items.views.modifyMyItemByItemId',name='modifyMyItemByItemId'),
     url(r'^modify-item-type','application.display_items.views.modifyItemType',name="modifyItemType"),
     url(r'^modify-item-info','application.display_items.views.modifyItemInfo',name="modifyItemInfo"),
+    url(r'^get-my-ask-items','application.display_items.views.getMyAskItems',name="getMyAskItems"),
+    url(r'^delete-my-ask-by-itemid','application.display_items.views.deleteMyAskByItemId',name="deleteMyAskByItemId"),
 
     url(r'^get-on-selling','application.display_items.homepage.getOnSelling',name='getOnSelling'),
     url(r'^get-on-asking','application.display_items.homepage.getOnAsking',name='getOnAsking'),

@@ -2,6 +2,8 @@ var myPostPage = 1;
 var myPostType = 1;
 $(document).ready(function(){
     var style = $("#selctType").html();
+    console.log("selectStyle:"+style);
+    style = 3;
     tapLeftMenu(style,$(".left-menu ul").children().eq(style-1));
 });
 
@@ -40,6 +42,21 @@ function tapLeftMenu(data,ths){
         $("#right-body-cont").html(htmlInner);
         myPostPage = 1;
         selectMyPost(1,"");
+    }else if(data==3){
+        $.ajax({
+            url:"/get-my-ask-items",
+            type:"post",
+            data:JSON.stringify({
+            }),
+            dataType:"json",
+            contentType:'application/json;charset=UTF-8',
+            success:function (data) {
+                showMyAskItem(data);
+            },
+            error:function (data) {
+               toastr.error("获取数据失败");
+            },
+        });
     }else if(data==5 || data==6 || data==7){
         if($(ths).children().eq(0).hasClass('closed')){
             console.log("data:"+data+' closed');
@@ -278,4 +295,51 @@ function setTradeSuccess(ths,itemid){
         },
     }); 
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////我的求购///////////////////////////////////////////////////
+
+function showMyAskItem(data){
+    var htmlInner = "<div class=\"myask-title\"><div class=\"myask-title-nav\"><ul>";
+    htmlInner +=  "<li class=\"active\" onclick=\"\">所有求购</li><li onclick=\"\">按时间排序</li>";              
+    htmlInner +=  "<li onclick=\"\">按热度排序</li><li onclick=\"\">成功交易</li></ul></div></div>";                        
+    htmlInner +=  "<div class=\"myask-content\" id=\"myask-content\">";          
+    htmlInner +=  "<table><tr class=\"table-title\"><td width=\"150\">标题</td>";
+    htmlInner +=  "<td width=\"100\">最近编辑时间</td><td width=\"100\">发布时间</td>";                     
+    htmlInner +=  "<td width=\"80\">联系人</td><td width=\"120\">联系方式</td>";                        
+    htmlInner +=  "<td width=\"200\">详细描述</td><td width=\"150\" class=\"no-border\">操作</td></tr>";                       
+   for(var i=0;i<data.length;i++){
+        var item = data[i];
+         htmlInner += "<tr><td width=\"150\">"+item["Title"]+"</td>";
+         htmlInner += "<td width=\"100\">"+item["LastEditTime"]+"</td>";
+         htmlInner += "<td width=\"100\">"+item["PostTime"]+"</td>";
+         htmlInner += "<td width=\"80\">"+item["ContactUserName"]+"</td>";
+         htmlInner += "<td width=\"120\">"+item["ContactUserPhone"]+"</td>";
+         htmlInner += "<td width=\"200\">"+item["Description"]+"</td>";
+         htmlInner += "<td width=\"150\" class=\"no-border\">"+"<span class=\"delete-btn\" onclick=\"deleteMyAskItem(this,'"+item["ItemId"]+"')\">删除</span>";
+         htmlInner += "<span class=\"modify-btn\">修改</span>"+"</td></tr>";
+   }
+   htmlInner += "</table></div>";
+   $("#right-body-cont").html(htmlInner);
+}
+
+function deleteMyAskItem(ths,itemid){
+    console.log(itemid);
+    $.ajax({
+    　　url : '/delete-my-ask-by-itemid',
+    　　data : JSON.stringify({
+        "itemid":itemid,
+        }),
+       dataType:"json",
+    　　type : "POST",
+       contentType:'application/json;charset=UTF-8',
+    　　success : function(data) {
+             if(data['result']){
+                $(ths).parent().parent().remove();
+             } else{
+                toastr.error("删除失败");
+             }
+    　　},
+        error:function (data) {
+            toastr.error("删除失败");
+        },
+    }); 
+}
