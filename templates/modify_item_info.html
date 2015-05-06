@@ -69,10 +69,17 @@
                     </label>
                     <div class="controls">
                         <div class="btn-group">
+                            {% if item.Feature %}
                             <button class="J_RadioBtn btn active" type="button" value="1">全新
                             </button>
                             <button class="J_RadioBtn btn" type="button" value="0">非全新
-                            </button>    
+                            </button>   
+                            {% else %} 
+                             <button class="J_RadioBtn btn" type="button" value="1">全新
+                            </button>
+                            <button class="J_RadioBtn btn active" type="button" value="0">非全新
+                            </button>
+                            {% endif %}
                             <input type="hidden" value="{{item.Feature}}" name="feature" id="feature"></input>
                         </div>
                     </div>

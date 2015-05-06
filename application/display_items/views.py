@@ -395,10 +395,11 @@ def modifyItemInfo(request):
             if item and item.TzyUser == request.user:
                 title = request.POST.get('title')
                 temp = request.POST.get('feature')
+                print temp
                 if temp == '1':
-                    feature = '1'
+                    feature = '全新'
                 else:
-                    feature = '0'
+                    feature = '非全新'
                 oldPrice = request.POST.get('original-price')
                 price = request.POST.get('price')
                 contactUsername = request.POST.get('name')
