@@ -300,7 +300,7 @@ function setTradeSuccess(ths,itemid){
 function showMyAskItem(data){
     var htmlInner = "<div class=\"myask-title\"><div class=\"myask-title-nav\"><ul>";
     htmlInner +=  "<li class=\"active\" onclick=\"\">所有求购</li><li onclick=\"\">按时间排序</li>";              
-    htmlInner +=  "<li onclick=\"\">按热度排序</li><li onclick=\"\">成功交易</li></ul></div></div>";                        
+    htmlInner +=  "<li onclick=\"\">按浏览次数排序</li><li onclick=\"\">回复次数排序</li><li onclick=\"\">成功交易</li></ul></div></div>";                        
     htmlInner +=  "<div class=\"myask-content\" id=\"myask-content\">";          
     htmlInner +=  "<table><tr class=\"table-title\"><td width=\"150\">标题</td><td width=\"50\">浏览</td>";
     htmlInner +=  "<td width=\"100\">最近编辑时间</td><td width=\"100\">发布时间</td>";                     
