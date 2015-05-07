@@ -5,6 +5,7 @@ $(document).ready(function(){
 	loadMessages(msgPageNum);
 });
 
+/////////////////////////////////load data///////////////////////////////////////////////
 function getAllPost(data,ths){
 	$(ths).siblings().removeClass("active");
 	$(ths).toggleClass("active");
@@ -74,15 +75,7 @@ function showMessages(data){
     $("#messages-display").html(htmlInner);
 }
 
-function appendMessage(data){
-    var htmlInner = $("#messages-display").html();
-    for(var i=0; i<data.length; i++){
-        var item = data[i];
-        htmlInner += "<li><img src=\"/static/images/avatar.jpg\"> <div class=\"message-cont\">";
-        htmlInner += item['Message']+"</div><div class=\"message-time\">"+item['PostTime']+"</div></li>";                       
-    }
-    $("#messages-display").html(htmlInner);
-}
+///////////////////////////////description action////////////////////////////////////////
 
 function clickDetailBottom(index,ths){
     $(ths).siblings().removeClass("active");
@@ -96,15 +89,7 @@ function clickDetailBottom(index,ths){
     }
 };
 
-function textDidChange(){
-    var remain = 200-$("#message-text").val().length;
-    if(remain < 0){
-        $(".send-textnum").html(remain+'/200');
-    }else{
-       $(".send-textnum").html(remain+'/200'); 
-    }
-};
-
+///////////////////////////////message action//////////////////////////////////////
 function sendMessage(){
     var text = $("#message-text").val();
     if(text.length <=0){
@@ -162,4 +147,69 @@ function tapPage(ths){
         $(ths).siblings().removeClass("active");
         $(ths).toggleClass("active");
     }
+}
+
+function appendMessage(data){
+    var htmlInner = $("#messages-display").html();
+    for(var i=0; i<data.length; i++){
+        var item = data[i];
+        htmlInner += "<li><img src=\"/static/images/avatar.jpg\"> <div class=\"message-cont\">";
+        htmlInner += item['Message']+"</div><div class=\"message-time\">"+item['PostTime']+"</div></li>";                       
+    }
+    $("#messages-display").html(htmlInner);
+}
+
+function textDidChange(){
+    var remain = 200-$("#message-text").val().length;
+    if(remain < 0){
+        $(".send-textnum").html(remain+'/200');
+    }else{
+       $(".send-textnum").html(remain+'/200'); 
+    }
+};
+/////////////////////////////////item action/////////////////////////////////////
+function setTradeSuccess(ths,itemid){
+   $.ajax({
+    　　url : '/set-trade-success-by-itemid',
+    　　data : JSON.stringify({
+        "itemid":itemid,
+        }),
+       dataType:"json",
+    　　type : "POST",
+       contentType:'application/json;charset=UTF-8',
+    　　success : function(data) {
+             if(data['result']){
+                var htmlInner = "<div class=\"trade-successed\">交易已完成</div>";
+                 htmlInner +=  "<div class=\"delete-item\" onclick=\"deleteItem(this,itemid)\">删除</div>";
+                $("#action-box").html(htmlInner);
+             } else{
+                toastr.error("设置失败");
+             }
+    　　},
+        error:function (data) {
+            toastr.error("设置失败");
+        },
+    }); 
+}
+
+function deleteItem(ths,itemid){
+    $.ajax({
+    　　url : '/delete-my-post-by-itemid',
+    　　data : JSON.stringify({
+        "itemid":itemid,
+        }),
+       dataType:"json",
+    　　type : "POST",
+       contentType:'application/json;charset=UTF-8',
+    　　success : function(data) {
+            if(data['result']){
+               window.location.href = "/";
+            }else{
+                toastr.error("删除失败");
+            }　   
+    　　},
+        error:function (data) {
+            toastr.error("删除失败");
+        },
+    });
 }

@@ -90,11 +90,11 @@ def getEssenceBooks(request):
             # essence items
             start_index = (pagenum-1)*6
             end_index = pagenum*6
-            total_num = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime').count()
+            total_num = user_items_table.objects.filter(TzyUser=user_ssl).exclude(IsDelete=True).order_by('-ClickCount','-PostTime').count()
             if  total_num >= end_index:
-                hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:end_index]
+                hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).exclude(IsDelete=True).order_by('-ClickCount','-PostTime')[start_index:end_index]
             elif total_num > start_index:
-                hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[start_index:]
+                hot_sets = user_items_table.objects.filter(TzyUser=user_ssl).exclude(IsDelete=True).order_by('-ClickCount','-PostTime')[start_index:]
             else:
                 result["book_list"] = essence_list
                 result["continuationToken"] = continuationToken
@@ -184,15 +184,15 @@ def getBooksWithType(typeStr):
         result = [];
         user_ssl = tzy_users.objects.filter(username="尚书林")
         if typeStr == "":
-            if user_items_table.objects.filter(TzyUser=user_ssl).count()>=12:
-                book_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')[:12]
+            if user_items_table.objects.filter(TzyUser=user_ssl).exclude(IsDelete=True).count()>=12:
+                book_sets = user_items_table.objects.filter(TzyUser=user_ssl).exclude(IsDelete=True).order_by('-ClickCount','-PostTime')[:12]
             else:
-                book_sets = user_items_table.objects.filter(TzyUser=user_ssl).order_by('-ClickCount','-PostTime')
+                book_sets = user_items_table.objects.filter(TzyUser=user_ssl).exclude(IsDelete=True).order_by('-ClickCount','-PostTime')
         else:
-            if user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).count()>=12:
-                book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).order_by('-ClickCount','-PostTime')[:12]
+            if user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).exclude(IsDelete=True).count()>=12:
+                book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).exclude(IsDelete=True).order_by('-ClickCount','-PostTime')[:12]
             else:
-                book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).order_by('-ClickCount','-PostTime')
+                book_sets = user_items_table.objects.filter(TzyUser=user_ssl,ItemType=typeStr).exclude(IsDelete=True).order_by('-ClickCount','-PostTime')
         if  book_sets.exists():
             for item in  book_sets.iterator():
                 image_urls = json.loads(item.ItemImageUrls)

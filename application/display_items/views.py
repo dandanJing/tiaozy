@@ -164,16 +164,16 @@ def openItem(request):
                 result["LastEditTime"] = formatTime(item.LastEditTime,"%Y-%m-%d %H:%M")
                 result["Feature"] = item.Feature
                 result["IsOwner"] = is_owner
+                result["IsTradeSuccess"] = item.IsTradeSuccess
                 result["ContactUserName"] = item.ContactUserName
                 result["UserDisplayPhone"] = item.ContactUserPhone[:7]
                 result["ContactUserPhone"] = item.ContactUserPhone
                 result["QQ"] = postUser.QQ
                 result["PostUserName"] = postUser.username
-                user_post_sets = user_items_table.objects.filter(TzyUser=postUser)
-                result["UserPostCount"] = len(user_post_sets)
-                result["ReceiveCommentCount"] = len(comments_table.objects.filter(ItemPostUsername=postUser.username))
-                result["SuccessDeal"] = len(user_post_sets.filter(IsTradeSuccess=True))
-                result["MessageCount"] = len(item_messages_table.objects.filter(Item=item))
+                result["UserPostCount"] = user_items_table.objects.filter(TzyUser=postUser).exclude(IsDelete=True).count()
+                result["ReceiveCommentCount"] = comments_table.objects.filter(ItemPostUsername=postUser.username).count()
+                result["SuccessDeal"] = user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser,IsTradeSuccess=True).count()
+                result["MessageCount"] = item_messages_table.objects.filter(Item=item).count()
                 pagenum = int(math.ceil(float(result["MessageCount"])/MESSAGES_PER_PAGE))
                 if pagenum > 1:
                     result["MessagePageIndexs"] = range(1,pagenum+1)
@@ -197,15 +197,15 @@ def getAllPostsForUser(request):
             if postUser_set.exists():
                 postUser = postUser_set[0]
                 if req.has_key('is_trade_success'):
-                    if user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True).count()>=5:
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True).order_by('-ClickCount','-PostTime')[:5]
+                    if user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser,IsTradeSuccess=True).count()>=5:
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser,IsTradeSuccess=True).order_by('-ClickCount','-PostTime')[:5]
                     else:
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser,IsTradeSuccess=True).order_by('-ClickCount','-PostTime')
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser,IsTradeSuccess=True).order_by('-ClickCount','-PostTime')
                 else:
-                    if user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime').count()>=5:
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')[:5]
+                    if user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser).order_by('-ClickCount','-PostTime').count()>=5:
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')[:5]
                     else:
-                        item_sets =  user_items_table.objects.filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')
+                        item_sets =  user_items_table.objects.exclude(IsDelete=True).filter(TzyUser=postUser).order_by('-ClickCount','-PostTime')
                 if  item_sets.exists():
                     for item in  item_sets.iterator():
                         image_urls = json.loads(item.ItemImageUrls)

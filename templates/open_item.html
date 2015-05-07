@@ -8,13 +8,15 @@
     <title>跳蚤园</title>
     <link rel="shortcut icon" href="/static/images/ssl-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/static/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/static/styles/topbar.css">
+    <link rel="stylesheet" href="/static/styles/open_item.css">
     <script language="javascript"  src="/static/scripts/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script src="/static/scripts/jquery.alerts.js" type="text/javascript"></script>
     <script type="text/javascript" src="/static/toastr/toastr.min.js"></script>
-    <link rel="stylesheet" href="/static/styles/open_item.css">
     <script type="text/javascript" src="/static/scripts/open_item.js"></script>
     <script type="text/javascript" src="/static/tiny_mce/tiny_mce.js"></script>
     <script type="text/javascript" src="/static/tiny_mce/textareas.js"></script>
+    <script type="text/javascript" src="/static/scripts/my_menu.js"></script>
 </head>
 <body class="homebody">
     <div id = "topbar">
@@ -35,12 +37,13 @@
             <div class="bar_right">
                 <div class="return-home"><a href="/">首页</a>&nbsp;&nbsp;|</div>
                 <div id="my_menu" class="">
-                    <a id="to_my_menu" href="" target="_self">我的尚书</a>
+                    <a id="to_my_menu" href="/open-my-center/">用户中心</a>
                     <span class="arrow"></span>
                     <div id="my_menu_box">
-                        <a href="">我的发布</a>
-                        <a href="">我的足迹</a>
-                        <a href="">已买到的宝贝</a>
+                        <a href="/open-my-center/?type=1">我的资料</a>
+                        <a href="/open-my-center/?type=2">我的发布</a>
+                        <a href="/open-my-center/?type=3">我的求购</a>
+                        <a href="/open-my-center/?type=4">已买到的宝贝</a>
                     </div>
                 </div>
                 {% if result.Username %}
@@ -74,7 +77,7 @@
                 </div>
             </form>
             <a href="/publish/" id="fabu" rel="nofollow"><i></i>发布闲置</a>
-            <a href="/" id="delinfo" rel="nofollow" class="search-no">修改<i>/</i>删除信息</a>
+            <a href="/open-my-center/?type=2" id="delinfo" rel="nofollow" class="search-no">修改<i>/</i>删除信息</a>
         </div>
     </div>
     {% if result %}
@@ -176,21 +179,28 @@
                             <div class="sub_content">24位用户发布了相似物品</div>
                         </li>
                     </ul>
-                    {% if result.IsOwner %}
-                    <div class="edit-item">
-                        修改当前发布
+                    <div id="action-box">
+                        {% if result.IsOwner %}
+                            {% if result.IsTradeSuccess %}
+                            <div class="trade-successed">交易已完成</div>
+                            <div class="delete-item" onclick="deleteItem(this,'{{result.ItemId}}')">删除</div>
+                            {% else %}
+                            <div class="edit-item">
+                                <a href="/modify-my-item?itemid={{result.ItemId}}">修改当前发布</a>
+                            </div>
+                            <div class="trade-success" onclick="setTradeSuccess(this,'{{result.ItemId}}')">
+                                完成交易
+                            </div>
+                            {% endif %}
+                        {% else %}
+                        <div class="post-new-item">
+                            我也要卖
+                        </div>
+                        <div class="buy-item">
+                            加入购物车
+                        </div>
+                        {% endif %}
                     </div>
-                    <div class="trade-success">
-                        完成交易
-                    </div>
-                    {% else %}
-                    <div class="post-new-item">
-                        我也要卖
-                    </div>
-                    <div class="buy-item">
-                        加入购物车
-                    </div>
-                    {% endif %}
                 </div>
             </div>
             <div class="body-right">

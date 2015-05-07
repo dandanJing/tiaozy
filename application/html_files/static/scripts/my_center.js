@@ -3,7 +3,7 @@ var myPostType = 1;
 $(document).ready(function(){
     var style = $("#selctType").html();
     console.log("selectStyle:"+style);
-    style = 3;
+    // style = 3;
     tapLeftMenu(style,$(".left-menu ul").children().eq(style-1));
 });
 
